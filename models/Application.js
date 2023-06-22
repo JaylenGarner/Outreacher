@@ -1,7 +1,7 @@
-import { Schema, Model, Models } from "mongoose";
+import { Schema, model, models } from "mongoose";
 import { isUrl } from "validator";
 
-const applicationSchema = new Schema({
+const ApplicationSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -50,3 +50,8 @@ const applicationSchema = new Schema({
     default: () => Date.now(),
   },
 });
+
+const Application =
+  models.Application || model("Application", ApplicationSchema);
+
+export default Application;

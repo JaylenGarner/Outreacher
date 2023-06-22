@@ -1,7 +1,7 @@
-import { Schema, Model, Models } from "mongoose";
+import { Schema, model, models } from "mongoose";
 import { isEmail } from "validator";
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   firstName: {
     type: String,
     required: [true, "First name is required"],
@@ -49,4 +49,6 @@ const userSchema = new Schema({
   },
 });
 
-// export const User = mongoose.model("User", userSchema);
+const User = models.User || model("User", UserSchema);
+
+export default User;
