@@ -1,5 +1,4 @@
 import { Schema, model, models } from "mongoose";
-import { isUrl } from "validator";
 
 const ApplicationSchema = new Schema({
   userId: {
@@ -18,7 +17,6 @@ const ApplicationSchema = new Schema({
   posting: {
     type: String,
     maxLength: [2048, "Posting URL must not exceed 2048 characters"],
-    validate: [isUrl, "Invalid URL"],
   },
   salary: {
     type: String,
