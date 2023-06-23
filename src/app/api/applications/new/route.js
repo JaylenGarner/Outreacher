@@ -16,7 +16,7 @@ export const POST = async (req) => {
   try {
     await dbConnect();
     const newApplication = new Application({
-      userId,
+      user: userId,
       company,
       position,
       posting,

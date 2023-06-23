@@ -1,25 +1,32 @@
 import User from "../../../../models/User";
 import { dbConnect } from "../../../../lib/db";
+import * as bcrypt from "bcrypt";
 
 export const POST = async (req) => {
-  const { firstName, lastName, email, username, password } = await req.sjon();
   try {
+    const body = await req.json();
+    const { firstName, lastName, email, username } = body;
     await dbConnect();
-    const newUser = new User({
+
+    const user = await new User({
       firstName,
       lastName,
       email,
       username,
-      password,
+      password: await bcrypt.hash(body.password, 10),
     });
 
-    await newUser.save();
+    await user.save();
 
-    return new Response(JSON.stringify(newUser), {
+    console.log(user);
+
+    const { password, ...result } = user.toObject();
+    return new Response(JSON.stringify(result), {
       status: 201,
     });
   } catch (error) {
-    return new Response("Failed to create new user. Error:", {
+    console.log(error);
+    return new Response("Failed to create new user.", {
       status: 500,
     });
   }

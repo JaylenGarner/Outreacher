@@ -1,4 +1,5 @@
 import { Schema, model, models } from "mongoose";
+import Application from "./Application";
 import { isEmail } from "validator";
 
 const UserSchema = new Schema({
@@ -30,7 +31,7 @@ const UserSchema = new Schema({
     type: String,
     required: [true, "Password is required"],
     minLength: [8, "Password must be at least 8 characters"],
-    maxLength: [20, "Password must not exceed 20 characters"],
+    maxLength: [100, "Password must not exceed 100 characters"],
   },
   applications: [
     {
