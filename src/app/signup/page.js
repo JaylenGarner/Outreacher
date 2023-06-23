@@ -11,9 +11,9 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
-    <div className="h-screen flex justify-center items-center">
-      <form className="flex flex-col space-y-2 items-center justify-center border border-slate-700 p-6">
-        <h1 className="font-bold text-3xl pb-4">Signup</h1>
+    <div className="h-screen flex_center">
+      <form className="form">
+        <h1 className="form_heading">Signup</h1>
 
         <input
           type="text"
@@ -21,7 +21,7 @@ const Signup = () => {
           onChange={(e) => setFirstName(e.target.value)}
           placeholder="First Name"
           required
-          className="border border-slate-800 p-1"
+          className="input"
         ></input>
 
         <input
@@ -30,7 +30,7 @@ const Signup = () => {
           onChange={(e) => setLastName(e.target.value)}
           placeholder="Last Name"
           required
-          className="border border-slate-800 p-1"
+          className="input"
         ></input>
 
         <input
@@ -39,7 +39,7 @@ const Signup = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           required
-          className="border border-slate-800 p-1"
+          className="input"
         ></input>
 
         <input
@@ -48,7 +48,7 @@ const Signup = () => {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           required
-          className="border border-slate-800 p-1"
+          className="input"
         ></input>
 
         <input
@@ -57,7 +57,7 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           required
-          className="border border-slate-800 p-1"
+          className="input"
         ></input>
 
         <input
@@ -66,12 +66,12 @@ const Signup = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="Confirm Password"
           required
-          className="border border-slate-800 p-1"
+          className="input"
         ></input>
 
         <span className="pt-4">
           Have an account? &nbsp;
-          <a href="/login" className="underline underline-offset-2">
+          <a href="/login" className="form_link">
             Login here
           </a>
         </span>

@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* General */
+
+.flex_center {
+    @apply flex justify-center items-center
+}
+
+/* Forms */
+
+.form{
+    @apply flex flex-col space-y-2 items-center justify-center border border-slate-700 p-6
+}
+
+.form_heading {
+    @apply font-bold text-3xl pb-4
+}
+
+.input {
+    @apply border border-slate-800 p-1
+}
+
+.form_link {
+    @apply  underline underline-offset-2
+}
