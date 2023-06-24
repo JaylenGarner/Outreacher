@@ -8,7 +8,7 @@ const Login = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
-    <div className="h-screen flex_center">
+    <div className="grow flex_center">
       <form className="form">
         <h1 className="form_heading">Login</h1>
 
