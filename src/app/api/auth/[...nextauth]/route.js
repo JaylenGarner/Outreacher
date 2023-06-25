@@ -1,29 +1,37 @@
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
+import { stringify } from "postcss";
 
-const authOptions = {
+const handler = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: { label: "Email" },
+        username: { label: "Username" },
         password: { label: "Password" },
       },
-      authorize(credentials, req) {
-        if (
-          credentials?.email === "jay@jay.com" &&
-          credentials.password === "password"
-        ) {
-          return {
-            id: "1",
-            email: "jay@jay.com",
-          };
+
+      async authorize(credentials, req) {
+        const res = await fetch("http://localhost:3000/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+
+        const user = await res.json();
+
+        if (user) {
+          return user;
+        } else {
+          return null;
         }
-        return null;
       },
     }),
   ],
-};
-
-const handler = NextAuth(authOptions);
+});
 
 export { handler as GET, handler as POST };
