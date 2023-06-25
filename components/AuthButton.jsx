@@ -11,7 +11,7 @@ const AuthButton = () => {
   }
 
   if (!session && !session?.user) {
-    redirect("api/auth/signin");
+    redirect("/auth/login");
   }
 
   return (

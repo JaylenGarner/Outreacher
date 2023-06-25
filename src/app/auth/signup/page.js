@@ -71,7 +71,7 @@ const Signup = () => {
 
         <span className="pt-4">
           Have an account? &nbsp;
-          <a href="/login" className="form_link">
+          <a href="/auth/login" className="form_link">
             Login here
           </a>
         </span>

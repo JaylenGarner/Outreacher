@@ -1,22 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await signIn("credentials", {
+      username,
+      password,
+      redirect: false,
+    });
+
+    if (result.error) {
+      setError("Invalid credentials, please try again.");
+    }
+  };
 
   return (
     <div className="grow flex_center">
       <form className="form">
         <h1 className="form_heading">Login</h1>
 
+        {error && <span className="text-red-500">{error}</span>}
+
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
           required
           className="input"
         ></input>
@@ -30,18 +47,11 @@ const Login = () => {
           className="input"
         ></input>
 
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          required
-          className="input"
-        ></input>
+        <button onClick={handleSubmit}>Login</button>
 
-        <span className="pt-4">
+        <span className="pt-2">
           Don't have an account? &nbsp;
-          <a href="/signup" className="form_link">
+          <a href="/auth/signup" className="form_link">
             Signup here
           </a>
         </span>

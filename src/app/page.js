@@ -1,10 +1,10 @@
 "use client";
-import { getServerSession } from "next-auth";
+
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
-  return (
-    <main className="flex ">
-      <h1>home</h1>
-    </main>
-  );
+  const { data: session, status } = useSession();
+
+  redirect("/dashboard");
 }

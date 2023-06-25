@@ -18,8 +18,6 @@ export const POST = async (req) => {
 
     await user.save();
 
-    console.log(user);
-
     const { password, ...result } = user.toObject();
     return new Response(JSON.stringify(result), {
       status: 201,

@@ -22,6 +22,10 @@ const handler = NextAuth({
           }),
         });
 
+        if (!res.ok) {
+          return new Error("Invalid credentials");
+        }
+
         const user = await res.json();
 
         if (user) {
@@ -32,6 +36,10 @@ const handler = NextAuth({
       },
     }),
   ],
+
+  pages: {
+    signIn: "/auth/login",
+  },
 });
 
 export { handler as GET, handler as POST };
