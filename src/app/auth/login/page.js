@@ -7,7 +7,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +23,7 @@ const Login = () => {
 
   return (
     <div className="grow flex_center">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1 className="form_heading">Login</h1>
 
         {error && <span className="text-red-500">{error}</span>}
@@ -47,7 +46,7 @@ const Login = () => {
           className="input"
         ></input>
 
-        <button onClick={handleSubmit}>Login</button>
+        <button type="submit">Login</button>
 
         <span className="pt-2">
           Don't have an account? &nbsp;

@@ -8,6 +8,22 @@ export const POST = async (req) => {
     const { firstName, lastName, email, username } = body;
     await dbConnect();
 
+    const existingUser = await User.findOne().or([{ email }, { username }]);
+
+    if (existingUser) {
+      let error;
+
+      if (existingUser.email === email) {
+        error = "Email is in use";
+      } else {
+        error = "Username is taken";
+      }
+
+      return new Response(JSON.stringify(error), {
+        status: 400,
+      });
+    }
+
     const user = await new User({
       firstName,
       lastName,
@@ -23,9 +39,10 @@ export const POST = async (req) => {
       status: 201,
     });
   } catch (error) {
-    console.log(error);
-    return new Response("Failed to create new user.", {
-      status: 500,
+    const errorObj = Object.values(error.errors);
+
+    return new Response(JSON.stringify(errorObj[0].message), {
+      status: 400,
     });
   }
 };

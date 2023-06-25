@@ -1,19 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import handleSignup from "../../../../lib/handleSignup";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
+  const router = useRouter();
+  const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [LastName, setLastName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await handleSignup(
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+      confirmPassword,
+      setError,
+      router
+    );
+  };
+
   return (
     <div className="grow flex_center">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1 className="form_heading">Signup</h1>
+
+        {error && <span className="text-red-700">{error}</span>}
 
         <input
           type="text"
@@ -26,7 +46,7 @@ const Signup = () => {
 
         <input
           type="text"
-          value={LastName}
+          value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           placeholder="Last Name"
           required
@@ -69,7 +89,11 @@ const Signup = () => {
           className="input"
         ></input>
 
-        <span className="pt-4">
+        <button type="submit" className="pt-2">
+          Sign Up
+        </button>
+
+        <span>
           Have an account? &nbsp;
           <a href="/auth/login" className="form_link">
             Login here
