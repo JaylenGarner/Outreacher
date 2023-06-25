@@ -1,4 +1,4 @@
-import React from "react";
+import AuthButton from "./AuthButton";
 
 const Nav = () => {
   return (
@@ -6,7 +6,7 @@ const Nav = () => {
       <a href="/">
         <h1 className="text-xl font-bold">Outreacher</h1>
       </a>
-      <button>Sign Out</button>
+      <AuthButton />
     </div>
   );
 };

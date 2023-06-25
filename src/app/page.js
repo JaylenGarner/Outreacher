@@ -1,6 +1,7 @@
-import Image from "next/image";
+"use client";
+import { getServerSession } from "next-auth";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="flex ">
       <h1>home</h1>
