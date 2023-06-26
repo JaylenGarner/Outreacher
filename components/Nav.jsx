@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import AuthButton from "./AuthButton";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const Nav = () => {
   const { data: session, status } = useSession();
@@ -17,9 +18,14 @@ const Nav = () => {
 
   return (
     <div className="flex justify-between border-b p-2 border-slate-500">
-      <a href="/">
+      <Link href="/dashboard">
         <h1 className="text-xl font-bold">Outreacher</h1>
-      </a>
+      </Link>
+
+      <Link href="/applications">
+        <h1 className="text-lg">Applications</h1>
+      </Link>
+
       <AuthButton />
     </div>
   );

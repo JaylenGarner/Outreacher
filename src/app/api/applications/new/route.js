@@ -32,9 +32,10 @@ export const POST = async (req) => {
       status: 201,
     });
   } catch (error) {
-    console.log(error);
-    return new Response("Failed to create new application", {
-      status: 500,
+    const errorObj = Object.values(error.errors);
+
+    return new Response(JSON.stringify(errorObj[0].message), {
+      status: 400,
     });
   }
 };

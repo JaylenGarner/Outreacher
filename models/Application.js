@@ -36,8 +36,16 @@ const ApplicationSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["queue", "applied", "rejected", "interview", "hired"],
-    maxLength: [9, "Application status must not exceed 9 characters"],
+    enum: [
+      "Queue",
+      "Applied",
+      "Interview",
+      "Coding Challenge",
+      "No Response",
+      "Rejected",
+      "Offer",
+      "Hired",
+    ],
   },
   createdAt: {
     type: Date,
