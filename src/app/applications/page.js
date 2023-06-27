@@ -6,9 +6,6 @@ import ApplicationForm from "../../../components/ApplicationForm";
 
 const Applications = () => {
   const applications = useSelector((state) => state.applicationReducer);
-
-  console.log(Object.values(applications));
-
   const [formOpen, setFormOpen] = useState(false);
 
   return (

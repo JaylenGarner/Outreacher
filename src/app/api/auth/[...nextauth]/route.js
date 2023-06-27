@@ -1,8 +1,7 @@
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
-import { stringify } from "postcss";
 
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     Credentials({
       credentials: {
@@ -46,6 +45,8 @@ const handler = NextAuth({
   pages: {
     signIn: "/auth/login",
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

@@ -5,10 +5,13 @@ export const applications = createSlice({
   initialState: {},
   reducers: {
     getApplications: (state, action) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
+      const newState = { ...state };
+
+      action.payload.forEach((application) => {
+        newState[application._id] = application;
+      });
+
+      return newState;
     },
     createApplication: (state, action) => {
       return {

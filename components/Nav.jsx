@@ -1,19 +1,36 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import AuthButton from "./AuthButton";
+import { useDispatch } from "react-redux";
+import { getApplications } from "@/redux/reducers/applicationSlice";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import AuthButton from "./AuthButton";
 
 const Nav = () => {
   const { data: session, status } = useSession();
+  const dispatch = useDispatch();
 
   if (status === "loading") {
     return <></>;
   }
 
   if (!session) {
-    redirect("/auth/login");
+    return redirect("/auth/login");
+  }
+
+  const fetchApplications = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/applications`);
+      const data = await response.json();
+      dispatch(getApplications(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (status === "authenticated") {
+    fetchApplications();
   }
 
   return (
