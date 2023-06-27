@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { createApplication } from "@/redux/reducers/applicationSlice";
 
 const ApplicationForm = ({ setFormOpen }) => {
   const { data: session } = useSession();
+  const dispatch = useDispatch();
+
   const [error, setError] = useState("");
 
   const [company, setCompany] = useState("");
@@ -13,7 +17,7 @@ const ApplicationForm = ({ setFormOpen }) => {
   const [salary, setSalary] = useState("");
   const [location, setLocation] = useState("");
   const [notes, setNotes] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Queue");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +43,7 @@ const ApplicationForm = ({ setFormOpen }) => {
 
     if (response.ok) {
       setFormOpen(false);
+      dispatch(createApplication(data));
       return data;
     } else {
       setError(data);
@@ -67,6 +72,7 @@ const ApplicationForm = ({ setFormOpen }) => {
         value={position}
         placeholder="Position"
         onChange={(e) => setPosition(e.target.value)}
+        required
       />
 
       <input
