@@ -15,10 +15,10 @@ const AuthButton = () => {
   }
 
   return (
-    <>
-      <h1>{session?.user?.email}</h1>
+    <div className="flex space-x-4">
+      <h1 className="font-bold">{session?.user?.username}</h1>
       <button onClick={() => signOut()}>Sign Out</button>
-    </>
+    </div>
   );
 };
 

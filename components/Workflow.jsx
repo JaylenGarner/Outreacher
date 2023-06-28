@@ -8,7 +8,7 @@ const Workflow = () => {
   const workflow = useSelector((state) => state.workflowReducer);
 
   return (
-    <div className="text-lg font-bold flex flex-col bg-blue-600 items-center">
+    <div className="text-lg font-bold flex flex-col items-center">
       <h1 className="pt-4">Work Flow</h1>
       {workflow === "Application Form" && <ApplicationForm />}
       {workflow === "Applictaion Details" && <Application />}

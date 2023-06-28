@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body className={`${inter.className} h-screen`}>
+        <body className={`${inter.className} h-screen bg-slate-200`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </Provider>

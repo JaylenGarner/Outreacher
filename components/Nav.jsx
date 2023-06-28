@@ -34,7 +34,7 @@ const Nav = () => {
   }
 
   return (
-    <div className="flex justify-between border-b p-4 border-slate-500 h-20">
+    <div className="flex justify-between items-center border-b p-2 border-slate-500 h-16 bg-slate-900 text-white ">
       <Link href="/dashboard">
         <h1 className="text-xl font-bold">Outreacher</h1>
       </Link>

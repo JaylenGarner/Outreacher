@@ -7,10 +7,11 @@ const Dashboard = () => {
     <div className="max-h-screen flex flex-col">
       <Nav />
       <div className="grid grid-cols-3 overflow-y-scroll">
-        <h1 className="bg-blue-300">daily reachout list</h1>
+        <h1 className="">daily reachout list</h1>
         <Workflow />
         <Applications />
       </div>
+      <span className="p-2 bg-slate-900 text-white">Footer Placeholder</span>
     </div>
   );
 };
