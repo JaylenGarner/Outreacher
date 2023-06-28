@@ -4,6 +4,7 @@ import { dbConnect } from "../../../../../lib/db";
 export const GET = async (req, { params }) => {
   try {
     await dbConnect();
+    console.log(params);
     const application = await Application.findById(params.id);
 
     if (!application) {
