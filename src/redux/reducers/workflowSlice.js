@@ -8,8 +8,11 @@ export const workflow = createSlice({
       state = action.payload;
       return state;
     },
+    clearWorkflow: () => {
+      return {};
+    },
   },
 });
 
-export const { setWorkflow } = workflow.actions;
+export const { setWorkflow, clearWorkflow } = workflow.actions;
 export default workflow.reducer;

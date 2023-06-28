@@ -11,7 +11,9 @@ const Dashboard = () => {
         <Workflow />
         <Applications />
       </div>
-      <span className="p-2 bg-slate-900 text-white">Footer Placeholder</span>
+      <span className="p-3 bg-slate-900 text-white absolute bottom-0 w-full">
+        Footer Placeholder
+      </span>
     </div>
   );
 };

@@ -19,8 +19,12 @@ export const applications = createSlice({
         [action.payload._id]: action.payload,
       };
     },
+    clearApplications: () => {
+      return {};
+    },
   },
 });
 
-export const { getApplications, createApplication } = applications.actions;
+export const { getApplications, createApplication, clearApplications } =
+  applications.actions;
 export default applications.reducer;

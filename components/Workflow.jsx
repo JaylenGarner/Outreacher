@@ -9,7 +9,7 @@ const Workflow = () => {
 
   return (
     <div className="text-lg font-bold flex flex-col items-center">
-      <h1 className="pt-4">Work Flow</h1>
+      <h1 className="m-4">Work Flow</h1>
       {workflow === "Application Form" && <ApplicationForm />}
       {workflow === "Applictaion Details" && <Application />}
     </div>

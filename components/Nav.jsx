@@ -11,10 +11,6 @@ const Nav = () => {
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
 
-  if (status === "loading") {
-    return <></>;
-  }
-
   if (!session) {
     return redirect("/auth/login");
   }
@@ -34,7 +30,7 @@ const Nav = () => {
   }
 
   return (
-    <div className="flex justify-between items-center border-b p-2 border-slate-500 h-16 bg-slate-900 text-white ">
+    <div className="flex justify-between items-center border-b p-3 border-slate-500 bg-slate-900 text-white">
       <Link href="/dashboard">
         <h1 className="text-xl font-bold">Outreacher</h1>
       </Link>

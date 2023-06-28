@@ -8,8 +8,12 @@ export const currentApplication = createSlice({
       state = action.payload;
       return state;
     },
+    clearCurrentApplication: () => {
+      return {};
+    },
   },
 });
 
-export const { setCurrentApplication } = currentApplication.actions;
+export const { setCurrentApplication, clearCurrentApplication } =
+  currentApplication.actions;
 export default currentApplication.reducer;
