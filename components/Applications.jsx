@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setWorkflow } from "@/redux/reducers/workFlowSlice";
-import { useSelector } from "react-redux";
-import Application from "./Application";
+import { setCurrentApplication } from "@/redux/reducers/currentApplication";
 
-const Applications = ({ setApplicationFormOpen }) => {
+const Applications = () => {
   const dispatch = useDispatch();
   const applications = useSelector((state) => state.applicationReducer);
-  const [applicationOpen, setApplicationOpen] = useState(false);
-  const [currentApplication, setCurrentApplication] = useState(null);
 
   return (
     <div className="flex flex-col flex_center  overflow-y-scroll">
@@ -18,8 +15,6 @@ const Applications = ({ setApplicationFormOpen }) => {
         <h2 className="text-lg font-bold">Applications &nbsp;</h2>
         <button
           onClick={() => {
-            console.log("opening application form");
-            // setApplicationFormOpen(true);
             dispatch(setWorkflow("Application Form"));
           }}
           className="text-xl"
@@ -27,14 +22,6 @@ const Applications = ({ setApplicationFormOpen }) => {
           +
         </button>
       </div>
-
-      {applicationOpen && (
-        <Application
-          currentApplication={currentApplication}
-          setCurrentApplication={setCurrentApplication}
-          setApplicationOpen={setApplicationOpen}
-        />
-      )}
 
       <div className="overflow-y-scroll w-5/6">
         {applications &&
@@ -45,8 +32,8 @@ const Applications = ({ setApplicationFormOpen }) => {
               <div
                 key={applicationId}
                 onClick={() => {
-                  setCurrentApplication(applications[applicationId]);
-                  setApplicationOpen(true);
+                  dispatch(setCurrentApplication(applications[applicationId]));
+                  dispatch(setWorkflow("Applictaion Details"));
                 }}
                 className="h-1/6 border border-slate-800 p-2 flex flex-col mb-2 rounded-lg"
               >

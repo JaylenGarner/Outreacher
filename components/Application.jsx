@@ -1,16 +1,22 @@
 "use client";
 
-const Application = ({
-  currentApplication,
-  setCurrentApplication,
-  setApplicationOpen,
-}) => {
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { setWorkflow } from "@/redux/reducers/workFlowSlice";
+import { setCurrentApplication } from "@/redux/reducers/currentApplication";
+
+const Application = () => {
+  const dispatch = useDispatch();
+  const currentApplication = useSelector(
+    (state) => state.currentApplicationReducer
+  );
+
   return (
     <div className=" p-4 flex flex-col w-full text-ellipsis overflow-x-hidden h-full">
       <button
         onClick={() => {
-          setApplicationOpen(false);
-          setCurrentApplication(null);
+          dispatch(setWorkflow({}));
+          dispatch(setCurrentApplication({}));
         }}
       >
         x
@@ -23,15 +29,6 @@ const Application = ({
       <span>{currentApplication?.posting || ""}</span>
       <span>{currentApplication?.location || ""}</span>
       <span>{currentApplication?.notes || ""}</span>
-
-      <span
-        onClick={() => {
-          setApplicationOpen(false);
-          setCurrentApplication(null);
-        }}
-      >
-        x
-      </span>
     </div>
   );
 };
