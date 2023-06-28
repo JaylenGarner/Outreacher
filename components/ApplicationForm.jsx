@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
+import { setWorkflow } from "@/redux/reducers/workFlowSlice";
 
-const ApplicationForm = ({ setFormOpen }) => {
+const ApplicationForm = () => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
 
   const [error, setError] = useState("");
-
   const [company, setCompany] = useState("");
   const [position, setPosition] = useState("");
   const [posting, setPosting] = useState("");
@@ -42,7 +42,7 @@ const ApplicationForm = ({ setFormOpen }) => {
     const data = await response.json();
 
     if (response.ok) {
-      setFormOpen(false);
+      dispatch(setWorkflow({}));
       dispatch(createApplication(data));
       return data;
     } else {
@@ -55,6 +55,7 @@ const ApplicationForm = ({ setFormOpen }) => {
       onSubmit={handleSubmit}
       className="flex flex-col flex_center space-y-2 pt-6"
     >
+      <button onClick={() => dispatch(setWorkflow({}))}>x</button>
       <h1 className="text-xl font-bold">Create Application</h1>
 
       {error && <span>{error}</span>}

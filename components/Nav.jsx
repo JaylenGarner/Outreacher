@@ -38,11 +38,6 @@ const Nav = () => {
       <Link href="/dashboard">
         <h1 className="text-xl font-bold">Outreacher</h1>
       </Link>
-
-      <Link href="/applications">
-        <h1 className="text-lg">Applications</h1>
-      </Link>
-
       <AuthButton />
     </div>
   );
