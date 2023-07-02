@@ -45,7 +45,6 @@ const ApplicationFormModal = () => {
     const data = await response.json();
 
     if (response.ok) {
-      // dispatch(setWorkflow("Dashboard"));
       dispatch(createApplication(data));
       dispatch(clearCurrentModal());
       return data;
@@ -64,27 +63,23 @@ const ApplicationFormModal = () => {
         stiffness: 230,
         damping: 30,
       }}
-      className="bg-white h-[500px] w-[800px] rounded-xl z-20"
+      className="modal"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="flex flex_center ">
-        <h1 className="text-2xl pt-4 pr-4 font-bold text-center">
-          Log Application
-        </h1>
+      <div className="flex flex_center">
+        <h1 className="modal_header pr-4">Log Application</h1>
         <motion.button
+          transition={{ duration: 0.5 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.8 }}
-          className="pt-4 hover:text-red-600"
+          className="pt-4 hover:text-[#E01D48]"
           onClick={() => dispatch(clearCurrentModal())}
         >
           <FontAwesomeIcon icon={faTrash} />
         </motion.button>
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col w-full h-full items-center space-y-4 pr-8 pl-8"
-      >
+      <form onSubmit={handleSubmit} className="form">
         {error ? (
           <motion.span
             initial={{ scale: 0, opacity: 0 }}
@@ -165,15 +160,25 @@ const ApplicationFormModal = () => {
           placeholder="Notes..."
           cols={30}
           rows={4}
-          className="w-[662px] p-2 border border-black rounded-md text-ellipsis text-lg"
+          className=" input textarea"
         ></textarea>
 
-        <button
+        <motion.button
+          transition={{ duration: 0.7 }}
+          initial={{
+            background: "linear-gradient(to bottom left, #D846EE, #4E45E4)",
+          }}
+          whileHover={{
+            scale: 1.02,
+            opacity: 0.95,
+            background: "linear-gradient(to bottom left, #E01D48 , #7B39ED)",
+          }}
+          whileTap={{ scale: 0.8 }}
           type="submit"
-          className="violet_gradient rounded-md text-ellipsis w-[300px] h-14 text-white text-xl font-bold"
+          className="button "
         >
           Log
-        </button>
+        </motion.button>
       </form>
     </motion.div>
   );

@@ -16,10 +16,7 @@ const Backdrop = () => {
   };
 
   return (
-    <motion.div
-      className="absolute h-screen w-full flex flex_center bg-black bg-opacity-50 z-10"
-      onClick={handleClick}
-    >
+    <motion.div className="backdrop" onClick={handleClick}>
       {currentModal === "Application" && <ApplicationModal />}
       {currentModal === "Create Application" && <ApplicationFormModal />}
     </motion.div>

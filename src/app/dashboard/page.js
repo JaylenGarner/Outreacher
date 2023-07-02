@@ -13,14 +13,14 @@ const Dashboard = () => {
 
   return (
     <motion.div
-      className="h-screen w-screen flex flex-col overflow-y-hidden"
+      className="dashboard_container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "linear", duration: 1 }}
+      exit={{ opacity: 0 }}
     >
       <Nav />
       {modalOpen && <Backdrop />}
-      <div className="grid grid-cols-2 overflow-scroll">
+      <div className="dashboard">
         <h1>reach out list</h1>
         <Applications />
       </div>

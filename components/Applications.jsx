@@ -1,10 +1,13 @@
 "use client";
 
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setCurrentApplication } from "@/redux/reducers/currentApplication";
+import { useSelector, useDispatch } from "react-redux";
+// import { setCurrentApplication } from "@/redux/reducers/currentApplication";
 import { setCurrentModal } from "@/redux/reducers/currentModal";
 import { motion } from "framer-motion";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
+import ApplicationCard from "./ApplicationCard";
 
 const Applications = () => {
   const dispatch = useDispatch();
@@ -19,8 +22,11 @@ const Applications = () => {
             dispatch(setCurrentModal("Create Application"));
           }}
           className="text-3xl text-white pb-1"
-          whileTap={{ scale: 0.7 }}
-          whileHover={{ scale: 1.1, opacity: 0.9 }}
+          whileTap={{ scale: 0.8 }}
+          whileHover={{
+            scale: 1.1,
+            opacity: 0.9,
+          }}
         >
           +
         </motion.button>
@@ -34,24 +40,7 @@ const Applications = () => {
       >
         {applications &&
           Object.values(applications).map((application) => {
-            const applicationId = application._id;
-
-            return (
-              <motion.div
-                whileHover={{ opacity: 0.8, scale: 0.99 }}
-                whileTap={{ scale: 0.8 }}
-                key={applicationId}
-                onClick={() => {
-                  dispatch(setCurrentApplication(applications[applicationId]));
-                  dispatch(setCurrentModal("Application"));
-                }}
-                className="h-1/6 p-2 flex flex-col mb-2 rounded-xl bg-white cursor-pointer flex_center"
-              >
-                <h2 className="font-bold text-xl">{application.company}</h2>
-                <span className="text-lg">{application.position}</span>
-                <span>{application.status}</span>
-              </motion.div>
-            );
+            return <ApplicationCard application={application} />;
           })}
       </motion.div>
     </div>
