@@ -1,14 +1,21 @@
+"use client";
+
 import Nav from "../../../components/Nav";
-import Workflow from "../../../components/Workflow";
 import Applications from "../../../components/Applications";
+import Backdrop from "../../../components/Backdrop";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
 const Dashboard = () => {
+  const modalOpen = useSelector((state) => state.currentModalReducer);
+
+  console.log(modalOpen);
+
   return (
-    <div className="h-screen flex flex-col overflow-y-hidden">
+    <div className="h-screen w-screen flex flex-col overflow-y-hidden">
       <Nav />
-      <div className="grid grid-cols-3 overflow-scroll">
-        <h1 className="">daily reachout list</h1>
-        <Workflow />
+      {modalOpen && <Backdrop />}
+      <div className="grid grid-cols-2 overflow-scroll">
+        <h1>reach out list</h1>
         <Applications />
       </div>
     </div>

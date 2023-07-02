@@ -3,7 +3,6 @@
 import { useDispatch } from "react-redux";
 import { clearApplications } from "@/redux/reducers/applicationSlice";
 import { clearCurrentApplication } from "@/redux/reducers/currentApplication";
-import { clearWorkflow } from "@/redux/reducers/workFlowSlice";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
@@ -15,7 +14,6 @@ const AuthButton = () => {
     signOut();
     dispatch(clearApplications());
     dispatch(clearCurrentApplication());
-    dispatch(clearWorkflow);
   };
 
   if (!session && !session?.user) {

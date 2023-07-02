@@ -8,10 +8,13 @@ const Application = () => {
   );
 
   return (
-    <div className=" p-4 flex flex-col w-full text-ellipsis overflow-x-hidden h-full">
-      <h1 className="text-lg font-bold">Application Details</h1>
-      <span>{currentApplication?.company}</span>
-      <span>{currentApplication?.position}</span>
+    <div className=" p-4 flex flex-col w-full h-full overflow-hidden text-ellipsis text-center space-y-2">
+      <h1 className="text-2xl font-bold truncate">
+        {currentApplication?.company}
+      </h1>
+      <span className="text-xl font-semibold italic">
+        {currentApplication?.position}
+      </span>
       <span>{currentApplication?.status}</span>
       <span>{currentApplication?.salary || ""}</span>
       <span>{currentApplication?.posting || ""}</span>

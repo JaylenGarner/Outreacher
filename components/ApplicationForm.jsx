@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
-import { setWorkflow } from "../src/redux/reducers/workflowSlice";
 
 const ApplicationForm = () => {
   const { data: session } = useSession();
@@ -42,7 +41,7 @@ const ApplicationForm = () => {
     const data = await response.json();
 
     if (response.ok) {
-      dispatch(setWorkflow("Dashboard"));
+      // dispatch(setWorkflow("Dashboard"));
       dispatch(createApplication(data));
       return data;
     } else {
