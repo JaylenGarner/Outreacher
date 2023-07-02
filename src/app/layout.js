@@ -15,9 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body
-          className={`${inter.className} h-screen bg-gradient-to-bl from-fuchsia-500 via-violet-600 to-indigo-600`}
-        >
+        <body className={`${inter.className} h-screen violet_gradient`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </Provider>

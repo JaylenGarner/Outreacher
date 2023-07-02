@@ -9,8 +9,6 @@ const ApplicationModal = () => {
   const dispatch = useDispatch();
   const application = useSelector((state) => state.currentApplicationReducer);
 
-  console.log(application);
-
   return (
     <motion.div
       initial={{ scale: 0, opacity: 0 }}
@@ -27,7 +25,7 @@ const ApplicationModal = () => {
         e.stopPropagation();
       }}
     >
-      Test
+      {application?.company}
     </motion.div>
   );
 };
