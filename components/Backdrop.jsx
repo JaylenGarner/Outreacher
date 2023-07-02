@@ -3,8 +3,9 @@
 import { setCurrentModal } from "@/redux/reducers/currentModal";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import ApplicationModal from "./ApplicationModal";
-import ApplicationFormModal from "./ApplicationFormModal";
+// import ApplicationFormModal from "./ApplicationFormModal";
+import CreateApplication from "./CreateApplication";
+import EditApplication from "./EditApplication";
 
 const Backdrop = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const Backdrop = () => {
 
   return (
     <motion.div className="backdrop" onClick={handleClick}>
-      {currentModal === "Application" && <ApplicationModal />}
-      {currentModal === "Create Application" && <ApplicationFormModal />}
+      {currentModal === "Edit Application" && <EditApplication />}
+      {currentModal === "Create Application" && <CreateApplication />}
     </motion.div>
   );
 };

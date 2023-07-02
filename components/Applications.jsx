@@ -1,17 +1,16 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-// import { setCurrentApplication } from "@/redux/reducers/currentApplication";
 import { setCurrentModal } from "@/redux/reducers/currentModal";
 import { motion } from "framer-motion";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-
 import ApplicationCard from "./ApplicationCard";
+import { useEffect } from "react";
 
 const Applications = () => {
   const dispatch = useDispatch();
   const applications = useSelector((state) => state.applicationReducer);
+
+  // useEffect(() => {}, [applications]);
 
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full">
@@ -40,7 +39,12 @@ const Applications = () => {
       >
         {applications &&
           Object.values(applications).map((application) => {
-            return <ApplicationCard application={application} />;
+            return (
+              <ApplicationCard
+                key={application._id}
+                application={application}
+              />
+            );
           })}
       </motion.div>
     </div>

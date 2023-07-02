@@ -20,7 +20,7 @@ const ApplicationCard = ({ application }) => {
       key={applicationId}
       onClick={() => {
         dispatch(setCurrentApplication(applications[applicationId]));
-        dispatch(setCurrentModal("Application"));
+        dispatch(setCurrentModal("Edit Application"));
       }}
     >
       <div className="w-1/3">
@@ -32,11 +32,10 @@ const ApplicationCard = ({ application }) => {
       </div>
 
       <div className="app_card_activity_div">
-        <span className="text-lg font-semibold">Last Activity</span>
-        <span className="italic font-semibold text-md">
-          {new Date(application.updatedAt).toLocaleDateString()}
+        <span className="text-lg font-bold">Status</span>
+        <span className="font-semibold text-md italic">
+          {application.status}
         </span>
-        <span className="font-semibold text-md">{application.status}</span>
       </div>
     </motion.div>
   );
