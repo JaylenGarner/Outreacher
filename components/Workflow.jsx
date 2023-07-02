@@ -7,10 +7,12 @@ import ApplicationForm from "./ApplicationForm";
 const Workflow = () => {
   const workflow = useSelector((state) => state.workflowReducer);
 
+  console.log(workflow);
+
   return (
-    <div className="text-lg font-bold flex flex-col items-center">
-      <h1 className="m-4">Work Flow</h1>
-      {workflow === "Application Form" && <ApplicationForm />}
+    <div className="text-xl font-bold flex flex-col items-center">
+      {workflow && <h1 className="text-xl font-bold m-4">{workflow}</h1>}
+      {workflow === "Log Application" && <ApplicationForm />}
       {workflow === "Applictaion Details" && <Application />}
     </div>
   );

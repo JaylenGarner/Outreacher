@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../../styles/globals.css";
 import { Inter } from "next/font/google";
 
 import Provider from "../../components/Provider";
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body className={`${inter.className} h-screen bg-slate-200`}>
+        <body className={`${inter.className} h-screen`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </Provider>

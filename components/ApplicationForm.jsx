@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
-import { setWorkflow } from "@/redux/reducers/workFlowSlice";
+import { setWorkflow } from "../src/redux/reducers/workflowSlice";
 
 const ApplicationForm = () => {
   const { data: session } = useSession();
@@ -42,7 +42,7 @@ const ApplicationForm = () => {
     const data = await response.json();
 
     if (response.ok) {
-      dispatch(setWorkflow({}));
+      dispatch(setWorkflow("Dashboard"));
       dispatch(createApplication(data));
       return data;
     } else {
@@ -51,73 +51,89 @@ const ApplicationForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col flex_center space-y-2 pt-6"
-    >
-      <button onClick={() => dispatch(setWorkflow({}))}>x</button>
-      <h1 className="text-xl font-bold">Create Application</h1>
+    <div className=" h-full ">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col flex_center space-y-3  w-full overflow-y-scroll"
+      >
+        {error && (
+          <span className="text-base w-5/6 text-center text-red-500">
+            {error}
+          </span>
+        )}
 
-      {error && <span>{error}</span>}
+        <input
+          type="text"
+          value={company}
+          placeholder="Company"
+          onChange={(e) => setCompany(e.target.value)}
+          required
+          className="input"
+        />
 
-      <input
-        type="text"
-        value={company}
-        placeholder="Company"
-        onChange={(e) => setCompany(e.target.value)}
-        required
-      />
+        <input
+          type="text"
+          value={position}
+          placeholder="Position"
+          onChange={(e) => setPosition(e.target.value)}
+          className="input"
+          required
+        />
 
-      <input
-        type="text"
-        value={position}
-        placeholder="Position"
-        onChange={(e) => setPosition(e.target.value)}
-        required
-      />
+        <input
+          type="text"
+          value={posting}
+          placeholder="Posting"
+          onChange={(e) => setPosting(e.target.value)}
+          className="input"
+        />
 
-      <input
-        type="text"
-        value={posting}
-        placeholder="Posting"
-        onChange={(e) => setPosting(e.target.value)}
-      />
+        <input
+          type="text"
+          value={salary}
+          placeholder="Salary"
+          onChange={(e) => setSalary(e.target.value)}
+          className="input"
+        />
 
-      <input
-        type="text"
-        value={salary}
-        placeholder="Salary"
-        onChange={(e) => setSalary(e.target.value)}
-      />
+        <input
+          type="text"
+          value={location}
+          placeholder="Location"
+          onChange={(e) => setLocation(e.target.value)}
+          className="input"
+        />
 
-      <input
-        type="text"
-        value={location}
-        placeholder="Location"
-        onChange={(e) => setLocation(e.target.value)}
-      />
+        <select
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+          className="input"
+        >
+          <option>Queue</option>
+          <option>Applied</option>
+          <option>Interview</option>
+          <option>Coding Challenge</option>
+          <option>No Response</option>
+          <option>Rejected</option>
+          <option>Offer</option>
+          <option>Hired</option>
+        </select>
 
-      <input
-        type="textarea"
-        value={notes}
-        placeholder="Notes"
-        onChange={(e) => setNotes(e.target.value)}
-        className="w-60 h-40"
-      />
+        <textarea
+          placeholder="Notes..."
+          cols={30}
+          rows={3}
+          className="w-5/6 p-2 border border-black rounded-md text-ellipsis text-lg"
+        ></textarea>
 
-      <select value={status} onChange={(e) => setStatus(e.target.value)}>
-        <option>Queue</option>
-        <option>Applied</option>
-        <option>Interview</option>
-        <option>Coding Challenge</option>
-        <option>No Response</option>
-        <option>Rejected</option>
-        <option>Offer</option>
-        <option>Hired</option>
-      </select>
-
-      <button type="submit">Submit</button>
-    </form>
+        <button
+          type="submit"
+          className="border border-black rounded-md text-ellipsis w-3/6 h-10"
+        >
+          Log
+        </button>
+      </form>
+    </div>
   );
 };
 

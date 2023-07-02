@@ -4,16 +4,13 @@ import Applications from "../../../components/Applications";
 
 const Dashboard = () => {
   return (
-    <div className="max-h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-y-hidden">
       <Nav />
-      <div className="grid grid-cols-3 overflow-y-scroll">
+      <div className="grid grid-cols-3 overflow-scroll">
         <h1 className="">daily reachout list</h1>
         <Workflow />
         <Applications />
       </div>
-      <span className="p-3 bg-slate-900 text-white absolute bottom-0 w-full">
-        Footer Placeholder
-      </span>
     </div>
   );
 };

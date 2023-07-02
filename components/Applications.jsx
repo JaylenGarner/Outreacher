@@ -10,12 +10,12 @@ const Applications = () => {
   const applications = useSelector((state) => state.applicationReducer);
 
   return (
-    <div className="flex flex-col flex_center  overflow-y-scroll">
-      <div className="flex flex_center ">
-        <h2 className="text-lg font-bold m-4">Applications &nbsp;</h2>
+    <div className="flex flex-col flex_center overflow-y-scroll">
+      <div className="flex flex_center">
+        <h2 className="text-xl font-bold m-4">Applications &nbsp;</h2>
         <button
           onClick={() => {
-            dispatch(setWorkflow("Application Form"));
+            dispatch(setWorkflow("Log Application"));
           }}
           className="text-xl"
         >

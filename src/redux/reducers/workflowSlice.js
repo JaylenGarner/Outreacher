@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const workflow = createSlice({
   name: "workflow",
-  initialState: {},
+  initialState: "Dashboard",
   reducers: {
     setWorkflow: (state, action) => {
       state = action.payload;
       return state;
     },
     clearWorkflow: () => {
-      return {};
+      return "Dashboard";
     },
   },
 });

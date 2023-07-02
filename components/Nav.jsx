@@ -32,7 +32,10 @@ const Nav = () => {
   return (
     <div className="flex justify-between items-center border-b p-3 border-slate-500 bg-slate-900 text-white">
       <Link href="/dashboard">
-        <h1 className="text-xl font-bold">Outreacher</h1>
+        <div className="flex space-x-2 flex_center">
+          <h1 className="text-2xl font-bold">Outreacher</h1>
+          <img src="/logo-white.png" className="h-10 " />
+        </div>
       </Link>
       <AuthButton />
     </div>

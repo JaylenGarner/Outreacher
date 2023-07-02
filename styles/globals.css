@@ -19,7 +19,7 @@
 }
 
 .input {
-    @apply border border-slate-800 p-1
+    @apply border border-black  p-2 rounded-md text-ellipsis w-5/6 h-10 text-lg
 }
 
 .form_link {
