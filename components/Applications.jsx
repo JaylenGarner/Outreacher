@@ -10,8 +10,6 @@ const Applications = () => {
   const dispatch = useDispatch();
   const applications = useSelector((state) => state.applicationReducer);
 
-  // useEffect(() => {}, [applications]);
-
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full">
       <div className="flex ">

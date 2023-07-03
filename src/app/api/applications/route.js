@@ -8,7 +8,10 @@ export const GET = async (req) => {
     const session = await getServerSession(authOptions);
     await dbConnect();
 
-    const applications = await Application.find({ user: session.user._id });
+    const applications = await Application.find({
+      user: session.user._id,
+      // Sort by most recent
+    }).sort({ updatedAt: -1 });
 
     if (!applications) {
       return new Response("No applications found", { status: 404 });

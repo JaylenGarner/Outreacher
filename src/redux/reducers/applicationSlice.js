@@ -15,8 +15,8 @@ export const applications = createSlice({
     },
     createApplication: (state, action) => {
       return {
-        ...state,
         [action.payload._id]: action.payload,
+        ...state,
       };
     },
     deleteApplication: (state, action) => {

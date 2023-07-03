@@ -6,6 +6,7 @@ import { setCurrentModal } from "@/redux/reducers/currentModal";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import getEmoji from "../lib/application/getEmoji";
 
 const ApplicationCard = ({ application }) => {
   const dispatch = useDispatch();
@@ -16,9 +17,9 @@ const ApplicationCard = ({ application }) => {
     <motion.div
       className="app_card"
       whileHover={{ opacity: 0.8, scale: 0.99 }}
-      whileTap={{ scale: 0.8 }}
       key={applicationId}
       onClick={() => {
+        console.log("test");
         dispatch(setCurrentApplication(applications[applicationId]));
         dispatch(setCurrentModal("Edit Application"));
       }}
@@ -32,9 +33,9 @@ const ApplicationCard = ({ application }) => {
       </div>
 
       <div className="app_card_activity_div">
-        <span className="text-lg font-bold">Status</span>
-        <span className="font-semibold text-md italic">
-          {application.status}
+        <span className="text-xl font-bold">Status</span>
+        <span className="font-semibold text-md">
+          {application.status} {getEmoji(application.status)}
         </span>
       </div>
     </motion.div>

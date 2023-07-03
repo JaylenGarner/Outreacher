@@ -52,8 +52,13 @@ const EditApplication = () => {
       className="modal"
       onClick={(e) => e.stopPropagation()}
     >
+      <span> </span>
+
       <div className="flex flex_center">
-        <h1 className="modal_header pr-4">Application</h1>
+        <h1 className="modal_header pr-4">
+          Last Activity &nbsp;
+          {new Date(application.updatedAt).toLocaleDateString()}
+        </h1>
         <motion.button
           transition={{ duration: 0.5 }}
           whileHover={{ scale: 1.1 }}
