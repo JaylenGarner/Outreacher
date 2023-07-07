@@ -5,21 +5,13 @@ import * as bcrypt from "bcrypt";
 export const POST = async (req) => {
   try {
     const body = await req.json();
-    const { firstName, lastName, email, username } = body;
+    const { firstName, lastName, email } = body;
     await dbConnect();
 
-    const existingUser = await User.findOne().or([{ email }, { username }]);
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      let error;
-
-      if (existingUser.email === email) {
-        error = "Email is in use";
-      } else {
-        error = "Username is taken";
-      }
-
-      return new Response(JSON.stringify(error), {
+      return new Response(JSON.stringify("Email is in use"), {
         status: 400,
       });
     }
@@ -28,7 +20,6 @@ export const POST = async (req) => {
       firstName,
       lastName,
       email,
-      username,
       password: await bcrypt.hash(body.password, 10),
     });
 

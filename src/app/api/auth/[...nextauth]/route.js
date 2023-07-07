@@ -5,7 +5,7 @@ export const authOptions = {
   providers: [
     Credentials({
       credentials: {
-        username: { label: "Username" },
+        email: { label: "Email" },
         password: { label: "Password" },
       },
 
@@ -16,7 +16,7 @@ export const authOptions = {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username: credentials?.username,
+            email: credentials?.email,
             password: credentials?.password,
           }),
         });

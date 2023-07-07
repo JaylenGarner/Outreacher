@@ -2,7 +2,7 @@
 
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
-import handleCreateApplication from "../lib/application/handleCreateApplication";
+import handleCreateApplication from "../../lib/application/handleCreateApplication";
 import { clearCurrentModal } from "@/redux/reducers/currentModal";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

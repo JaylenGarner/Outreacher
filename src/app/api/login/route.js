@@ -5,11 +5,11 @@ import * as bcrypt from "bcrypt";
 export const POST = async (req) => {
   try {
     const body = await req.json();
-    const { username, password } = body;
+    const { email, password } = body;
     await dbConnect();
 
     const user = await User.find({
-      username,
+      email,
     });
 
     if (user && (await bcrypt.compare(password, user[0].password))) {
@@ -20,6 +20,6 @@ export const POST = async (req) => {
       return new Response(JSON.stringify(null));
     }
   } catch (error) {
-    return new Response("The username or password is incorrect");
+    return new Response("The email or password is incorrect");
   }
 };

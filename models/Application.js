@@ -10,10 +10,12 @@ const ApplicationSchema = new Schema({
   company: {
     type: String,
     maxLength: [100, "Company name must not exceed 80 characters"],
+    required: [true, "Company name is required"],
   },
   position: {
     type: String,
     maxLength: [100, "Position title must not exceed 80 characters"],
+    required: [true, "Position title is required"],
   },
   posting: {
     type: String,
@@ -56,6 +58,11 @@ const ApplicationSchema = new Schema({
     type: Date,
     default: () => Date.now(),
   },
+});
+
+ApplicationSchema.pre("save", function (next) {
+  this.updatedAt = new Date();
+  next();
 });
 
 const Application =

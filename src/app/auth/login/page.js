@@ -5,13 +5,13 @@ import { signIn } from "next-auth/react";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await signIn("credentials", {
-      username,
+      email,
       password,
       redirect: false,
     });
@@ -30,9 +30,9 @@ const Login = () => {
 
         <input
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
           required
           className="input"
         ></input>

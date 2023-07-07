@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModal";
 import { motion } from "framer-motion";
 import ApplicationForm from "./ApplicationForm";
-import handleEditApplication from "../lib/application/handleEditApplication";
+import handleEditApplication from "../../lib/application/handleEditApplication";
 import { createApplication } from "@/redux/reducers/applicationSlice";
 import { deleteApplication } from "@/redux/reducers/applicationSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,8 +52,6 @@ const EditApplication = () => {
       className="modal"
       onClick={(e) => e.stopPropagation()}
     >
-      <span> </span>
-
       <div className="flex flex_center">
         <h1 className="modal_header pr-4">
           Last Activity &nbsp;

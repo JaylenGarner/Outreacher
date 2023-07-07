@@ -20,13 +20,6 @@ const UserSchema = new Schema({
     validate: [isEmail, "Invalid email"],
     maxLength: [50, "Email must not exceed 50 characters"],
   },
-  username: {
-    type: String,
-    required: [true, "Username is required"],
-    unique: [true, "Username is in use"],
-    minLength: [2, "Username must be at least 2 characters"],
-    maxLength: [20, "Username must not exceed 20 characters"],
-  },
   password: {
     type: String,
     required: [true, "Password is required"],
