@@ -1,4 +1,5 @@
 import Application from "../../../../../models/Application";
+import Contact from "../../../../../models/Contact";
 import { dbConnect } from "../../../../../lib/db";
 
 export const GET = async (req, { params }) => {
@@ -49,6 +50,9 @@ export const PUT = async (req, { params }) => {
 export const DELETE = async (req, { params }) => {
   try {
     await dbConnect();
+
+    await Contact.deleteMany({ application: params.id });
+
     const deletedApplication = await Application.findByIdAndDelete(params.id);
 
     if (!deletedApplication) {

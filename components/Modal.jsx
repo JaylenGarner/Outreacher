@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import CreateApplication from "./Applications/CreateApplication";
 import EditApplication from "./Applications/EditApplication";
 import CreateContact from "./Contacts/CreateContact";
-import EditContact from "./Contacts/EditContact";
 import ContactList from "./Contacts/ContactList";
 
 const Modal = () => {
@@ -40,7 +39,7 @@ const Modal = () => {
         {currentModal === "Create Application" && <CreateApplication />}
         {currentModal === "Edit Application" && <EditApplication />}
         {currentModal === "Create Contact" && <CreateContact />}
-        {currentModal === "Edit Contact" && <EditContact />}
+        {/* {currentModal === "Edit Contact" && <EditContact />} */}
         {currentModal === "Contact List" && <ContactList />}
       </motion.div>
     </motion.div>

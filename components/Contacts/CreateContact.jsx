@@ -1,14 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createContact } from "@/redux/reducers/contactSlice";
 import handleCreateContact from "../../lib/contact/handleCreateContact";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import ContactForm from "./ContactForm";
+import DeleteButton from "../Buttons/DeleteButton";
 
 const CreateContact = () => {
   const dispatch = useDispatch();
@@ -24,21 +22,17 @@ const CreateContact = () => {
     }
   };
 
+  const handleDiscard = async () => {
+    dispatch(clearCurrentModal());
+  };
+
   return (
     <>
       <div className="flex flex_center pt-4">
-        <h1 className="modal_header pr-2  max-w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">
+        <h1 className="modal_header pr-3 max-w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">
           Create Contact for {application.company}
         </h1>
-        <motion.button
-          transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.8 }}
-          className="pt-4 hover:text-[#E01D48]"
-          onClick={() => dispatch(clearCurrentModal())}
-        >
-          <FontAwesomeIcon icon={faTrash} />
-        </motion.button>
+        <DeleteButton action={handleDiscard} />
       </div>
       <ContactForm type={"Create"} handleCreate={handleCreate} error={error} />
     </>
