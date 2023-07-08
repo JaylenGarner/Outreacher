@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentModal } from "@/redux/reducers/currentModal";
+import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import ApplicationForm from "./ApplicationForm";
 import handleEditApplication from "../../lib/application/handleEditApplication";
@@ -15,12 +15,11 @@ const EditApplication = () => {
   const application = useSelector((state) => state.currentApplicationReducer);
 
   const handleUpdate = async (formData) => {
-    console.log("form data in component", formData);
-
     const updatedApplication = await handleEditApplication(
       formData,
       application._id
     );
+
     dispatch(createApplication(updatedApplication));
     dispatch(clearCurrentModal());
   };
@@ -40,19 +39,8 @@ const EditApplication = () => {
   };
 
   return (
-    <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 230,
-        damping: 30,
-      }}
-      className="modal"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex flex_center">
+    <>
+      <div className="flex flex_center pt-4">
         <h1 className="modal_header pr-4">
           Last Activity &nbsp;
           {new Date(application.updatedAt).toLocaleDateString()}
@@ -72,7 +60,7 @@ const EditApplication = () => {
         application={application}
         handleUpdate={handleUpdate}
       />
-    </motion.div>
+    </>
   );
 };
 

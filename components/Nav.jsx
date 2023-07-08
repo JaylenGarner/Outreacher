@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import AuthButton from "./AuthButton";
+import AuthButton from "./Buttons/AuthButton";
 
 const Nav = () => {
   return (

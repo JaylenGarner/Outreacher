@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentModal } from "@/redux/reducers/currentModal";
+import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
 import { useEffect } from "react";

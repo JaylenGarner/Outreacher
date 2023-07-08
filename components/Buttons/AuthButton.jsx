@@ -2,7 +2,7 @@
 
 import { useDispatch } from "react-redux";
 import { clearApplications } from "@/redux/reducers/applicationSlice";
-import { clearCurrentApplication } from "@/redux/reducers/currentApplication";
+import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 

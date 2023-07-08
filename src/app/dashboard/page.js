@@ -2,7 +2,7 @@
 
 import Nav from "../../../components/Nav";
 import Applications from "../../../components/Applications/Applications";
-import Backdrop from "../../../components/Backdrop";
+import Backdrop from "../../../components/Modal";
 import { getApplications } from "@/redux/reducers/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";

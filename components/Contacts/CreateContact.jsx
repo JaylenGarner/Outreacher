@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { createContact } from "@/redux/reducers/contactSlice";
 import handleCreateContact from "../../lib/contact/handleCreateContact";
-import { clearCurrentModal } from "@/redux/reducers/currentModal";
+import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -25,19 +25,8 @@ const CreateContact = () => {
   };
 
   return (
-    <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 230,
-        damping: 30,
-      }}
-      className="modal"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex flex_center">
+    <>
+      <div className="flex flex_center pt-4">
         <h1 className="modal_header pr-2  max-w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">
           Create Contact for {application.company}
         </h1>
@@ -52,7 +41,7 @@ const CreateContact = () => {
         </motion.button>
       </div>
       <ContactForm type={"Create"} handleCreate={handleCreate} error={error} />
-    </motion.div>
+    </>
   );
 };
 

@@ -143,7 +143,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         type="submit"
         className="button "
       >
-        {type === "Create" ? "Log" : "Save"}
+        {type === "Create" ? "Create" : "Save"}
       </motion.button>
     </form>
   );

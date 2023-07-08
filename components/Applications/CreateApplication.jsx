@@ -3,7 +3,7 @@
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
 import handleCreateApplication from "../../lib/application/handleCreateApplication";
-import { clearCurrentModal } from "@/redux/reducers/currentModal";
+import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -24,19 +24,8 @@ const CreateApplication = () => {
   };
 
   return (
-    <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 230,
-        damping: 30,
-      }}
-      className="modal"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex flex_center">
+    <>
+      <div className="flex flex_center pt-4">
         <h1 className="modal_header pr-4">Log Application</h1>
         <motion.button
           transition={{ duration: 0.5 }}
@@ -53,7 +42,7 @@ const CreateApplication = () => {
         handleCreate={handleCreate}
         error={error}
       />
-    </motion.div>
+    </>
   );
 };
 
