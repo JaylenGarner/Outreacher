@@ -14,7 +14,7 @@ const DeleteButton = ({ action }) => {
       >
         <FontAwesomeIcon
           icon={faTrash}
-          className="fa-lg hover:cursor-pointer"
+          className="fa-xl hover:cursor-pointer hover:text-red-400"
         />
       </motion.button>
     </>

@@ -7,6 +7,8 @@ import { deleteApplication } from "@/redux/reducers/applicationSlice";
 import handleEditApplication from "../../lib/application/handleEditApplication";
 import handleDeleteApplication from "../../lib/application/handleDeleteApplication";
 import ApplicationForm from "./ApplicationForm";
+import CreateContactButton from "../Buttons/CreateContactButton";
+import ContactListButton from "../Buttons/ContactListButton";
 import DeleteButton from "../Buttons/DeleteButton";
 
 const EditApplication = () => {
@@ -34,11 +36,13 @@ const EditApplication = () => {
 
   return (
     <>
-      <div className="flex flex_center pt-4">
-        <h1 className="modal_header pr-4">
+      <div className="flex flex_center pt-4 space-x-4">
+        <h1 className="modal_header">
           Last Activity &nbsp;
           {new Date(application.updatedAt).toLocaleDateString()}
         </h1>
+        <CreateContactButton application={application} />
+        <ContactListButton application={application} />
         <DeleteButton action={handleDelete} />
       </div>
       <ApplicationForm

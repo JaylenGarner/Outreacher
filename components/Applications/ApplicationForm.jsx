@@ -61,7 +61,7 @@ const ApplicationForm = ({
           {error}
         </motion.span>
       ) : (
-        <span className="pt-1"> &nbsp;</span>
+        <span className="pt-1"></span>
       )}
 
       <div className="flex justify-around w-full">

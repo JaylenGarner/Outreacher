@@ -12,7 +12,7 @@ const Applications = () => {
 
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full">
-      <div className="flex ">
+      <div className="flex">
         <h2 className="text-2xl font-bold m-4 text-white">Applications</h2>
         <motion.button
           onClick={() => {

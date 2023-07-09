@@ -49,7 +49,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
           {error}
         </motion.span>
       ) : (
-        <span className="pt-1"> &nbsp;</span>
+        <span className="pt-1"></span>
       )}
 
       <div className="flex justify-around w-full">
@@ -105,7 +105,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
           <option>Initial Outreach</option>
           <option>Follow Up</option>
           <option>Final Follow Up</option>
-          <option>Ongoing Communication</option>
+          <option>Correspondence</option>
         </select>
 
         <Tooltip id="date-tooltip" place="bottom" />

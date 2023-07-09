@@ -38,7 +38,7 @@ const ContactSchema = new Schema({
       "Initial Outreach",
       "Follow Up",
       "Final Follow Up",
-      "Ongoing Communication",
+      "Correspondence",
     ],
   },
   initialOutreach: {

@@ -4,11 +4,10 @@ import { useDispatch } from "react-redux";
 import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
-
+import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-const ContactListButton = ({ application }) => {
+const ApplicationButton = ({ application }) => {
   const dispatch = useDispatch();
 
   return (
@@ -18,13 +17,17 @@ const ContactListButton = ({ application }) => {
       onClick={(e) => {
         e.stopPropagation();
         dispatch(setCurrentApplication(application));
-        dispatch(setCurrentModal("Contact List"));
+        dispatch(setCurrentModal("Edit Application"));
       }}
-      className="hover:cursor-pointer"
     >
-      <FontAwesomeIcon icon={faAddressBook} className="fa-xl" />
+      <FontAwesomeIcon
+        icon={faFile}
+        className="fa-xl"
+        data-tooltip-id="application-tooltip"
+        data-tooltip-content="View Application"
+      />
     </motion.div>
   );
 };
 
-export default ContactListButton;
+export default ApplicationButton;

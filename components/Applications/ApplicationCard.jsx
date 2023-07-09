@@ -14,7 +14,7 @@ const ApplicationCard = ({ application }) => {
 
   return (
     <motion.div
-      className="app_card"
+      className="application_card"
       whileHover={{ opacity: 0.8, scale: 0.99 }}
       key={application._id}
       onClick={() => {
@@ -22,16 +22,16 @@ const ApplicationCard = ({ application }) => {
         dispatch(setCurrentModal("Edit Application"));
       }}
     >
-      <div className="w-1/3 flex justify-center space-x-4">
+      <div className="card_buttons">
         <CreateContactButton application={application} />
         <ContactListButton application={application} />
       </div>
 
-      <div className="app_card_company_div">
-        <p className="app_card_company">{application.company}</p>
+      <div className="card_content">
+        <p className="card_company">{application.company}</p>
       </div>
 
-      <div className="app_card_activity_div">
+      <div className="card_content_col">
         <span className="text-xl font-bold">Status</span>
         <span className="font-semibold text-md">
           {application.status} {getEmoji(application.status)}
