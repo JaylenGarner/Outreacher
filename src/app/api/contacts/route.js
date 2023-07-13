@@ -1,8 +1,32 @@
 import Contact from "../../../../models/Contact";
 import { dbConnect } from "../../../../lib/db";
+import { authOptions } from "../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+
+export const GET = async (req) => {
+  try {
+    const session = await getServerSession(authOptions);
+    await dbConnect();
+
+    const contacts = await Contact.find({
+      user: session.user._id,
+      // Sort by most recent
+    }).sort({ updatedAt: -1 });
+
+    if (!contacts) {
+      return new Response("No contacts found", { status: 404 });
+    }
+
+    return new Response(JSON.stringify(contacts), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response("Failed to fetch contacts", { status: 500 });
+  }
+};
 
 export const POST = async (req) => {
   const {
+    userId,
     applicationId,
     name,
     title,
@@ -18,6 +42,7 @@ export const POST = async (req) => {
     await dbConnect();
 
     const newContact = new Contact({
+      user: userId,
       application: applicationId,
       name,
       title,

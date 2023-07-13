@@ -1,13 +1,12 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
+import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-const ContactListButton = ({ application }) => {
+const CreateApplicationButton = () => {
   const dispatch = useDispatch();
 
   return (
@@ -16,14 +15,13 @@ const ContactListButton = ({ application }) => {
       transition={{ duration: 0.5 }}
       onClick={(e) => {
         e.stopPropagation();
-        dispatch(setCurrentApplication(application));
-        dispatch(setCurrentModal("Contact List"));
+        dispatch(setCurrentModal("Create Application"));
       }}
       className="hover:cursor-pointer"
     >
-      <FontAwesomeIcon icon={faAddressBook} className="fa-xl" />
+      <FontAwesomeIcon icon={faFileCirclePlus} className="fa-2xl text-white" />
     </motion.div>
   );
 };
 
-export default ContactListButton;
+export default CreateApplicationButton;

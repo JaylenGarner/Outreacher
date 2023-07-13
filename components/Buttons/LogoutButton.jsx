@@ -6,7 +6,7 @@ import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlic
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
-const AuthButton = () => {
+const LogoutButton = () => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
 
@@ -28,4 +28,4 @@ const AuthButton = () => {
   );
 };
 
-export default AuthButton;
+export default LogoutButton;

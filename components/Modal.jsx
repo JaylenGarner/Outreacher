@@ -4,10 +4,13 @@ import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
+import Login from "./Auth/Login";
 import CreateApplication from "./Applications/CreateApplication";
 import EditApplication from "./Applications/EditApplication";
 import CreateContact from "./Contacts/CreateContact";
 import ContactList from "./Contacts/ContactList";
+import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
+import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -17,9 +20,13 @@ const Modal = () => {
     if (
       currentModal === "Create Application" ||
       currentModal === "Create Contact"
-    )
+    ) {
       return;
-    dispatch(setCurrentModal(null));
+    } else {
+      dispatch(setCurrentModal(null));
+      dispatch(setCurrentApplication(null));
+      dispatch(setCurrentContact(null));
+    }
   };
 
   return (
@@ -36,6 +43,7 @@ const Modal = () => {
         className="modal"
         onClick={(e) => e.stopPropagation()}
       >
+        {currentModal === "Login" && <Login />}
         {currentModal === "Create Application" && <CreateApplication />}
         {currentModal === "Edit Application" && <EditApplication />}
         {currentModal === "Create Contact" && <CreateContact />}

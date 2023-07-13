@@ -49,6 +49,10 @@
     @apply flex flex-col w-full h-full items-center space-y-4 pr-8 pl-8
 }
 
+.login_form {
+    @apply form justify-center h-[500px]
+}
+
 .input {
     @apply p-2 border border-black rounded-md text-ellipsis w-2/5 text-lg outline-none
 }

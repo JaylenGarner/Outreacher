@@ -1,7 +1,13 @@
 import { Schema, model, models } from "mongoose";
+import User from "./User";
 import Application from "./Application";
 
 const ContactSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    index: true,
+  },
   application: {
     type: Schema.Types.ObjectId,
     ref: "Application",

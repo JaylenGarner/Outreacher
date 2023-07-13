@@ -1,13 +1,15 @@
 "use client";
 
 import Nav from "../../../components/Nav";
-import Applications from "../../../components/Applications/Applications";
-import Backdrop from "../../../components/Modal";
+import OutreachFeed from "../../../components/Contacts/OutreachFeed";
+import ApplicationsFeed from "../../../components/Applications/ApplicationsFeed";
+import Modal from "../../../components/Modal";
 import { getApplications } from "@/redux/reducers/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { getContacts } from "@/redux/reducers/contactSlice";
 
 const Dashboard = () => {
   const { data: session, status } = useSession();
@@ -15,7 +17,7 @@ const Dashboard = () => {
   const modalOpen = useSelector((state) => state.currentModalReducer);
 
   if (!session) {
-    return redirect("/auth/login");
+    return redirect("/");
   }
 
   const fetchApplications = async () => {
@@ -28,8 +30,19 @@ const Dashboard = () => {
     }
   };
 
+  const fetchContacts = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/contacts`);
+      const data = await response.json();
+      dispatch(getContacts(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (status === "authenticated") {
     fetchApplications();
+    fetchContacts();
   }
 
   return (
@@ -40,10 +53,10 @@ const Dashboard = () => {
       exit={{ opacity: 0 }}
     >
       <Nav />
-      {modalOpen && <Backdrop />}
+      {modalOpen && <Modal />}
       <div className="dashboard">
-        <h1>placeholder</h1>
-        <Applications />
+        <OutreachFeed />
+        <ApplicationsFeed />
       </div>
     </motion.div>
   );

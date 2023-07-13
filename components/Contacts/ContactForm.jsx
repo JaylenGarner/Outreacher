@@ -1,12 +1,14 @@
 "use client";
 
 import "react-tooltip/dist/react-tooltip.css";
-import { Tooltip } from "react-tooltip";
+import { useSelector } from "react-redux";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { Tooltip } from "react-tooltip";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
+  const { data: session } = useSession();
   const application = useSelector((state) => state.currentApplicationReducer);
 
   const [name, setName] = useState(contact ? contact?.name : "");
@@ -23,6 +25,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
 
     const formData = {
       e,
+      userId: session.user?._id,
       applicationId: application?._id,
       name,
       title,

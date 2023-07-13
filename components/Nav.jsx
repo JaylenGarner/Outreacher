@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import AuthButton from "./Buttons/AuthButton";
+import LogoutButton from "./Buttons/LogoutButton";
 
 const Nav = () => {
   return (
@@ -12,7 +12,7 @@ const Nav = () => {
           <img src="/logo-white.png" className="h-10" />
         </div>
       </Link>
-      <AuthButton />
+      <LogoutButton />
     </div>
   );
 };

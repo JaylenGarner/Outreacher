@@ -4,29 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
-import { useEffect } from "react";
+import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 
-const Applications = () => {
-  const dispatch = useDispatch();
+const ApplicationsFeed = () => {
   const applications = useSelector((state) => state.applicationReducer);
 
   return (
-    <div className="flex flex-col flex_center overflow-y-scroll w-full">
-      <div className="flex">
-        <h2 className="text-2xl font-bold m-4 text-white">Applications</h2>
-        <motion.button
-          onClick={() => {
-            dispatch(setCurrentModal("Create Application"));
-          }}
-          className="text-3xl text-white pb-1"
-          whileTap={{ scale: 0.8 }}
-          whileHover={{
-            scale: 1.1,
-            opacity: 0.9,
-          }}
-        >
-          +
-        </motion.button>
+    <div className="flex flex-col overflow-y-scroll w-full items-center">
+      <div className="flex flex_center">
+        <h2 className="text-4xl font-bold m-4 text-white">Applications</h2>
+        <CreateApplicationButton />
       </div>
 
       <motion.div
@@ -49,4 +36,4 @@ const Applications = () => {
   );
 };
 
-export default Applications;
+export default ApplicationsFeed;

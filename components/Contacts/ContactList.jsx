@@ -28,8 +28,6 @@ const ContactList = () => {
     fetchContacts();
   }, []);
 
-  console.log(contacts);
-
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full h-[500px]">
       <div className="flex flex_center ">

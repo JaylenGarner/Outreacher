@@ -16,8 +16,8 @@ const ContactCard = ({ contact, application }) => {
       whileHover={{ scale: 0.97, borderRadius: 0 }}
       key={contact._id}
       onClick={() => {
-        dispatch(setCurrentApplication(contact));
-        dispatch(setCurrentModal("Edit Application"));
+        // dispatch(setCurrentContact(contact));
+        // dispatch(setCurrentModal("Edit Application"));
       }}
     >
       <div className="card_content_col">
