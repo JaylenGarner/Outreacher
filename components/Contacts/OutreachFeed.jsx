@@ -1,6 +1,6 @@
 "use client";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import OutreachCard from "./OutreachCard";
 

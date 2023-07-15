@@ -47,17 +47,12 @@ const ContactSchema = new Schema({
       "Correspondence",
     ],
   },
-  initialOutreach: {
+  outreachDate: {
     type: Date,
     default: null,
   },
-  followUp: {
+  nextActionDate: {
     type: Date,
-    default: null,
-  },
-  finalOutreach: {
-    type: Date,
-    immutable: true,
     default: null,
   },
   createdAt: {

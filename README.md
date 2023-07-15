@@ -7,6 +7,7 @@ Redux
 Tailwind.css
 Next-Auth
 Bcrypt
+Day.js
 
 Attribution:
 

@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Tooltip } from "react-tooltip";
+import dayjs from "dayjs";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
   const { data: session } = useSession();
@@ -16,8 +17,14 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
   const [email, setEmail] = useState(contact ? contact?.email : "");
   const [number, setNumber] = useState(contact ? contact?.number : "");
   const [linkedIn, setLinkedIn] = useState(contact ? contact?.linkedIn : "");
-  const [outreachStage, setOutreachStage] = useState("Initial Outreach");
-  const [outreachDate, setOutreachDate] = useState("");
+  const [outreachStage, setOutreachStage] = useState(
+    contact ? contact?.outreachStage : "Initial Outreach"
+  );
+  const [outreachDate, setOutreachDate] = useState(
+    contact
+      ? dayjs(contact?.outreachDate).format("YYYY-MM-DD")
+      : dayjs().format("YYYY-MM-DD")
+  );
   const [notes, setNotes] = useState(contact ? contact?.notes : "");
 
   const handleSubmit = async (e) => {
@@ -33,7 +40,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
       linkedIn,
       number,
       outreachStage,
-      outreachDate,
+      outreachDate: dayjs(outreachDate).format(),
       notes,
     };
 
