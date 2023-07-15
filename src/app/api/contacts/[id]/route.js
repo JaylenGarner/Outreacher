@@ -1,5 +1,6 @@
 import Contact from "../../../../../models/Contact";
 import { dbConnect } from "../../../../../lib/db";
+import getNextActionDate from "../../../../../lib/contact/getNextActionDate";
 
 export const PUT = async (req, { params }) => {
   const {
@@ -15,6 +16,7 @@ export const PUT = async (req, { params }) => {
 
   try {
     await dbConnect();
+
     const contact = await Contact.findById(params.id);
 
     if (name) contact.name = name;
@@ -25,6 +27,9 @@ export const PUT = async (req, { params }) => {
     if (outreachStage) contact.outreachStage = outreachStage;
     if (outreachDate) contact.outreachDate = outreachDate;
     if (notes) contact.notes = notes;
+
+    const nextActionDate = getNextActionDate(outreachStage, outreachDate);
+    contact.nextActionDate = nextActionDate;
 
     await contact.save();
 

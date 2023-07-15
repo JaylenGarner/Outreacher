@@ -8,6 +8,8 @@ Tailwind.css
 Next-Auth
 Bcrypt
 Day.js
+Date Holidays US
+Font Awesome
 
 Attribution:
 

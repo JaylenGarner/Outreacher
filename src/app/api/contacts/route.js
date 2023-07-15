@@ -2,6 +2,7 @@ import Contact from "../../../../models/Contact";
 import { dbConnect } from "../../../../lib/db";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import getNextActionDate from "../../../../lib/contact/getNextActionDate";
 
 export const GET = async (req) => {
   try {
@@ -39,6 +40,7 @@ export const POST = async (req) => {
   } = await req.json();
 
   try {
+    const nextActionDate = getNextActionDate(outreachStage, outreachDate);
     await dbConnect();
 
     const newContact = new Contact({
@@ -52,6 +54,7 @@ export const POST = async (req) => {
       notes,
       outreachStage,
       outreachDate,
+      nextActionDate,
     });
 
     await newContact.save();
