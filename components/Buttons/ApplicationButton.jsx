@@ -22,7 +22,7 @@ const ApplicationButton = ({ application }) => {
     >
       <FontAwesomeIcon
         icon={faFile}
-        className="fa-xl"
+        className="fa-xl cursor-pointer"
         data-tooltip-id="application-tooltip"
         data-tooltip-content="View Application"
       />

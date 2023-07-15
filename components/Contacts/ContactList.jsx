@@ -1,32 +1,13 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getContacts } from "@/redux/reducers/contactSlice";
+import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactCard from "./ContactCard";
 
 const ContactList = () => {
-  const dispatch = useDispatch();
   const application = useSelector((state) => state.currentApplicationReducer);
   const contacts = useSelector((state) => state.contactReducer);
-
-  const fetchContacts = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/api/applications/${application._id}/contacts`
-      );
-      const data = await response.json();
-      dispatch(getContacts(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchContacts();
-  }, []);
 
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full h-[500px]">

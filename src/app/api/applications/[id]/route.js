@@ -2,21 +2,6 @@ import Application from "../../../../../models/Application";
 import Contact from "../../../../../models/Contact";
 import { dbConnect } from "../../../../../lib/db";
 
-export const GET = async (req, { params }) => {
-  try {
-    await dbConnect();
-    const application = await Application.findById(params.id);
-
-    if (!application) {
-      return new Response("Application not found", { status: 404 });
-    }
-
-    return new Response(JSON.stringify(application), { status: 200 });
-  } catch (error) {
-    return new Response("Failed to fetch application", { status: 500 });
-  }
-};
-
 export const PUT = async (req, { params }) => {
   const { company, position, posting, salary, location, notes, status } =
     await req.json();

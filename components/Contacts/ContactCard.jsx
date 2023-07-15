@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
+import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import ApplicationButton from "../Buttons/ApplicationButton";
 
@@ -16,8 +16,8 @@ const ContactCard = ({ contact, application }) => {
       whileHover={{ scale: 0.97, borderRadius: 0 }}
       key={contact._id}
       onClick={() => {
-        // dispatch(setCurrentContact(contact));
-        // dispatch(setCurrentModal("Edit Application"));
+        dispatch(setCurrentContact(contact));
+        dispatch(setCurrentModal("Edit Contact"));
       }}
     >
       <div className="card_content_col">

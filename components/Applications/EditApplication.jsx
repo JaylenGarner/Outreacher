@@ -9,6 +9,7 @@ import handleDeleteApplication from "../../lib/application/handleDeleteApplicati
 import ApplicationForm from "./ApplicationForm";
 import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactListButton from "../Buttons/ContactListButton";
+import { cascadeDeleteContacts } from "@/redux/reducers/contactSlice";
 import DeleteButton from "../Buttons/DeleteButton";
 
 const EditApplication = () => {
@@ -30,6 +31,7 @@ const EditApplication = () => {
 
     if (response) {
       dispatch(deleteApplication(application));
+      dispatch(cascadeDeleteContacts(application._id));
       dispatch(clearCurrentModal());
     }
   };

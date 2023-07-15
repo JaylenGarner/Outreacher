@@ -21,7 +21,7 @@ const OutreachFeed = () => {
       >
         {contacts &&
           Object.values(contacts).map((contact) => {
-            return <OutreachCard contact={contact} />;
+            return <OutreachCard key={contact._id} contact={contact} />;
           })}
       </motion.div>
     </div>

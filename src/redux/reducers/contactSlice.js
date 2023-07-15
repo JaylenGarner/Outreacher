@@ -21,8 +21,22 @@ export const contacts = createSlice({
     },
     deleteContact: (state, action) => {
       const newState = { ...state };
-      const application = action.payload;
-      delete newState[application._id];
+      const contact = action.payload;
+      delete newState[contact._id];
+      return newState;
+    },
+    cascadeDeleteContacts: (state, action) => {
+      const newState = { ...state };
+      const applicationId = action.payload;
+
+      console.log("In reducer", newState);
+
+      Object.values(newState).forEach((contact) => {
+        if (contact.application === applicationId) {
+          delete newState[contact._id];
+        }
+      });
+
       return newState;
     },
     clearContacts: () => {
@@ -31,6 +45,12 @@ export const contacts = createSlice({
   },
 });
 
-export const { getContacts, createContact, deleteContact, clearContacts } =
-  contacts.actions;
+export const {
+  getContacts,
+  createContact,
+  deleteContact,
+  cascadeDeleteContacts,
+  clearContacts,
+} = contacts.actions;
+
 export default contacts.reducer;
