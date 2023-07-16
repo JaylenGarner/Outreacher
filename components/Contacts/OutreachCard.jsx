@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 const OutreachCard = ({ contact }) => {
   const dispatch = useDispatch();
-  const applications = useSelector((state) => state.applicationReducer);
+  const applications = useSelector((state) => state.applications);
 
   return (
     <motion.div

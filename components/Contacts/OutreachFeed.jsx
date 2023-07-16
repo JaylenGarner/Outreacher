@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import OutreachCard from "./OutreachCard";
 
 const OutreachFeed = () => {
-  const contacts = useSelector((state) => state.contactReducer);
+  const contacts = useSelector((state) => state.contacts);
 
   return (
     <div className="flex flex-col items-center overflow-y-scroll w-full">

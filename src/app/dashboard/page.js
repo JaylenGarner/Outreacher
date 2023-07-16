@@ -14,7 +14,7 @@ import { getContacts } from "@/redux/reducers/contactSlice";
 const Dashboard = () => {
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
-  const modalOpen = useSelector((state) => state.currentModalReducer);
+  const modalOpen = useSelector((state) => state.currentModal);
 
   if (!session) {
     return redirect("/");

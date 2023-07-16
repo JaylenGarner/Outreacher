@@ -14,7 +14,7 @@ import DeleteButton from "../Buttons/DeleteButton";
 
 const EditApplication = () => {
   const dispatch = useDispatch();
-  const application = useSelector((state) => state.currentApplicationReducer);
+  const application = useSelector((state) => state.currentApplication);
 
   const handleUpdate = async (formData) => {
     const updatedApplication = await handleEditApplication(

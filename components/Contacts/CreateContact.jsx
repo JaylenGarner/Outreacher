@@ -11,7 +11,7 @@ import DeleteButton from "../Buttons/DeleteButton";
 const CreateContact = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
-  const application = useSelector((state) => state.currentApplicationReducer);
+  const application = useSelector((state) => state.currentApplication);
 
   const handleCreate = async (formData) => {
     const newContact = await handleCreateContact(formData, setError);

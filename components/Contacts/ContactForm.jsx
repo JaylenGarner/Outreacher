@@ -10,7 +10,7 @@ import dayjs from "dayjs";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
   const { data: session } = useSession();
-  const application = useSelector((state) => state.currentApplicationReducer);
+  const application = useSelector((state) => state.currentApplication);
 
   const [name, setName] = useState(contact ? contact?.name : "");
   const [title, setTitle] = useState(contact ? contact?.title : "");

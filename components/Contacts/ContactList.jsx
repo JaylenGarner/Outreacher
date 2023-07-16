@@ -6,8 +6,8 @@ import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactCard from "./ContactCard";
 
 const ContactList = () => {
-  const application = useSelector((state) => state.currentApplicationReducer);
-  const contacts = useSelector((state) => state.contactReducer);
+  const application = useSelector((state) => state.currentApplication);
+  const contacts = useSelector((state) => state.contacts);
 
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full h-[500px]">

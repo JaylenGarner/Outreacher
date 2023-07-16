@@ -29,8 +29,6 @@ export const contacts = createSlice({
       const newState = { ...state };
       const applicationId = action.payload;
 
-      console.log("In reducer", newState);
-
       Object.values(newState).forEach((contact) => {
         if (contact.application === applicationId) {
           delete newState[contact._id];

@@ -14,8 +14,8 @@ import handleDeleteContact from "../../lib/contact/handleDeleteContact";
 
 const EditContact = () => {
   const dispatch = useDispatch();
-  const application = useSelector((state) => state.currentApplicationReducer);
-  const contact = useSelector((state) => state.currentContactReducer);
+  const application = useSelector((state) => state.currentApplication);
+  const contact = useSelector((state) => state.currentContact);
 
   const handleUpdate = async (formData) => {
     const updatedContact = await handleEditContact(formData, contact._id);

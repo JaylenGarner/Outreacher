@@ -1,17 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import applicationReducer from "./reducers/applicationSlice";
-import currentApplicationReducer from "./reducers/currentApplicationSlice";
-import contactReducer from "./reducers/contactSlice";
-import currentModalReducer from "./reducers/currentModalSlice";
-import currentContactReducer from "./reducers/currentContactSlice";
+import applications from "./reducers/applicationSlice";
+import currentApplication from "./reducers/currentApplicationSlice";
+import contacts from "./reducers/contactSlice";
+import currentContact from "./reducers/currentContactSlice";
+import currentModal from "./reducers/currentModalSlice";
 
 const store = configureStore({
   reducer: {
-    applicationReducer,
-    currentApplicationReducer,
-    contactReducer,
-    currentContactReducer,
-    currentModalReducer,
+    applications,
+    currentApplication,
+    contacts,
+    currentContact,
+    currentModal,
   },
 });
 

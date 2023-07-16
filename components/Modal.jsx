@@ -15,7 +15,7 @@ import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
 
 const Modal = () => {
   const dispatch = useDispatch();
-  const currentModal = useSelector((state) => state.currentModalReducer);
+  const currentModal = useSelector((state) => state.currentModal);
 
   const handleClick = () => {
     if (

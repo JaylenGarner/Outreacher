@@ -7,7 +7,7 @@ import ApplicationCard from "./ApplicationCard";
 import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 
 const ApplicationsFeed = () => {
-  const applications = useSelector((state) => state.applicationReducer);
+  const applications = useSelector((state) => state.applications);
 
   return (
     <div className="flex flex-col overflow-y-scroll w-full items-center">

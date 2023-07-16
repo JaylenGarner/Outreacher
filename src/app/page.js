@@ -12,7 +12,7 @@ const Home = () => {
   const { data: session, status } = useSession();
 
   const dispatch = useDispatch();
-  const modalOpen = useSelector((state) => state.currentModalReducer);
+  const modalOpen = useSelector((state) => state.currentModal);
 
   if (status === "loading") {
     return <></>;
