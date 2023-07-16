@@ -57,6 +57,10 @@
     @apply p-2 border border-black rounded-md text-ellipsis w-2/5 text-lg outline-none
 }
 
+.settings_input {
+    @apply p-2 border border-black rounded-md text-ellipsis w-12 text-lg outline-none
+}
+
 .textarea {
     @apply w-[662px] resize-none
 }
