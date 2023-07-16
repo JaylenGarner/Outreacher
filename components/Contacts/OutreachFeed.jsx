@@ -1,11 +1,13 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
 import OutreachCard from "./OutreachCard";
+import getOutreachFeed from "../../lib/contact/getOutreachFeed";
+import { motion } from "framer-motion";
 
 const OutreachFeed = () => {
   const contacts = useSelector((state) => state.contacts);
+  const outreach = getOutreachFeed(contacts);
 
   return (
     <div className="flex flex-col items-center overflow-y-scroll w-full">
@@ -19,8 +21,8 @@ const OutreachFeed = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 35, damping: 14 }}
       >
-        {contacts &&
-          Object.values(contacts).map((contact) => {
+        {outreach &&
+          outreach.map((contact) => {
             return <OutreachCard key={contact._id} contact={contact} />;
           })}
       </motion.div>
