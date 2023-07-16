@@ -6,16 +6,14 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { setUser } from "@/redux/reducers/userSlice";
 import { useEffect } from "react";
 import handleEditSettings from "../lib/user/handleEditSettings";
+import { useSession } from "next-auth/react";
 
 const Settings = () => {
+  const { data: session, update } = useSession();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  console.log(user);
-
-  const [tooltipsEnabled, setTooltipsEnabled] = useState(
-    user?.tooltipsEnabled || false
-  );
+  const [tooltipsEnabled, setTooltipsEnabled] = useState(user?.tooltipsEnabled);
 
   const handleUpdate = async () => {
     const formData = {};
@@ -25,17 +23,24 @@ const Settings = () => {
       formData.tooltipsEnabled = tooltipsEnabled;
     }
 
-    console.log("FORM DATA", formData);
-
     if (Object.keys(formData).length > 0) {
       const updatedUser = await handleEditSettings(formData, userId);
       dispatch(setUser(updatedUser));
+      await update({
+        ...session,
+        user: {
+          ...session?.user,
+          tooltipsEnabled: tooltipsEnabled,
+        },
+      });
     }
   };
 
   useEffect(() => {
     handleUpdate();
   }, [tooltipsEnabled]);
+
+  console.log("SESSION", session);
 
   return (
     <>

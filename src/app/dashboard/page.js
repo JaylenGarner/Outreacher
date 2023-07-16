@@ -17,6 +17,7 @@ const Dashboard = () => {
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
   const modalOpen = useSelector((state) => state.currentModal);
+  const user = useSelector((state) => state.user);
 
   if (!session) {
     return redirect("/");
@@ -48,7 +49,7 @@ const Dashboard = () => {
       fetchContacts();
       dispatch(setUser(session.user));
     }
-  }, []);
+  }, [user]);
 
   return (
     <motion.div
