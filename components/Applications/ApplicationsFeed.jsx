@@ -11,8 +11,8 @@ const ApplicationsFeed = () => {
 
   return (
     <div className="flex flex-col overflow-y-scroll w-full items-center">
-      <div className="flex flex_center">
-        <h2 className="text-4xl font-bold m-4 text-white">Applications</h2>
+      <div className="flex flex_center m-8 space-x-4">
+        <h2 className="text-4xl font-bold  text-white">Applications</h2>
         <CreateApplicationButton />
       </div>
 
