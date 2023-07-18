@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SaveButton from "../Buttons/SaveButton";
+import SubmitButton from "../Buttons/SubmitButton";
 import dayjs from "dayjs";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
@@ -126,7 +126,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <SaveButton type={type} />
+      <SubmitButton type={type} />
     </form>
   );
 };

@@ -43,7 +43,11 @@ const Modal = () => {
           stiffness: 230,
           damping: 30,
         }}
-        className="modal"
+        className={
+          currentModal === "Login" || currentModal === "Signup"
+            ? "auth_modal"
+            : "modal"
+        }
         onClick={(e) => e.stopPropagation()}
       >
         {currentModal === "Login" && <Login />}

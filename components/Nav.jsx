@@ -11,8 +11,7 @@ const Nav = () => {
     <div className="nav">
       <Link href="/dashboard">
         <div className="flex space-x-2 flex_center">
-          <h1 className="text-2xl font-bold">Outreacher</h1>
-          <img src="/logo-white.png" className="h-10" />
+          <h1 className="text-3xl font-bold">Outreacher</h1>
         </div>
       </Link>
 

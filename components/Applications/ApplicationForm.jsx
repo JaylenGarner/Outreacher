@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SaveButton from "../Buttons/SaveButton";
+import SubmitButton from "../Buttons/SubmitButton";
 
 const ApplicationForm = ({
   type,
@@ -137,7 +137,7 @@ const ApplicationForm = ({
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <SaveButton type={type} />
+      <SubmitButton type={type} />
     </form>
   );
 };

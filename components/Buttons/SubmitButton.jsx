@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const SaveButton = ({ type }) => {
+const SubmitButton = ({ label }) => {
   return (
     <motion.button
       transition={{ duration: 0.7 }}
@@ -18,9 +18,9 @@ const SaveButton = ({ type }) => {
       type="submit"
       className="button "
     >
-      {type === "Create" ? "Log" : "Save"}
+      {label}
     </motion.button>
   );
 };
 
-export default SaveButton;
+export default SubmitButton;

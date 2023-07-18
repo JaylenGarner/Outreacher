@@ -11,7 +11,7 @@ const CreateApplicationButton = () => {
 
   return (
     <motion.div
-      whileHover={{ scale: 1.3 }}
+      whileHover={{ scale: 1.2 }}
       transition={{ duration: 0.5 }}
       onClick={(e) => {
         e.stopPropagation();

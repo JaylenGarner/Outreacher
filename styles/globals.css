@@ -35,8 +35,16 @@
 
 /* Modal */
 
+.modal_template {
+    @apply bg-white  rounded-xl z-20
+}
+
 .modal {
-    @apply bg-white h-[500px] w-[800px] rounded-xl z-20
+    @apply modal_template h-[500px] w-[800px]
+}
+
+.auth_modal {
+    @apply modal_template h-[370px] w-[650px]
 }
 
 .modal_header {
@@ -62,7 +70,7 @@
 }
 
 .form_link {
-    @apply  underline underline-offset-2
+    @apply  underline underline-offset-2 cursor-pointer
 }
 
 .button {
