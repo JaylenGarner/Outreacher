@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import handleSignup from "../../../../lib/handleSignup";
+import handleSignup from "../../lib/user/handleSignup";
 import { useRouter } from "next/navigation";
 
 const Signup = () => {

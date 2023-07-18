@@ -9,11 +9,11 @@
 }
 
 .violet_gradient {
-    @apply bg-gradient-to-bl from-fuchsia-500 via-violet-600 to-indigo-600
+    @apply bg-gradient-to-bl to-[#4916A1] from-[#FF0066]
 }
 
 .backdrop {
-    @apply absolute h-screen w-full flex flex_center bg-black bg-opacity-50 z-10
+    @apply absolute h-screen w-full flex flex_center bg-black bg-opacity-50 z-50
 }
 
 /* Nav */
