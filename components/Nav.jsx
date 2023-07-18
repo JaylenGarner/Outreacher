@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import SettingsButton from "./Buttons/SettingsButton";
 import LogoutButton from "./Buttons/LogoutButton";
 import Link from "next/link";
 
@@ -19,7 +18,6 @@ const Nav = () => {
 
       <div className="flex space-x-4 items-center">
         <h1 className="font-bold text-xl">{session?.user?.firstName}</h1>
-        <SettingsButton />
         <LogoutButton />
       </div>
     </div>

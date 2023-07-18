@@ -3,16 +3,8 @@ import { dbConnect } from "../../../../../lib/db";
 import getNextActionDate from "../../../../../lib/contact/getNextActionDate";
 
 export const PUT = async (req, { params }) => {
-  const {
-    name,
-    title,
-    email,
-    linkedIn,
-    number,
-    outreachStage,
-    outreachDate,
-    notes,
-  } = await req.json();
+  const { name, title, email, linkedIn, outreachStage, outreachDate, notes } =
+    await req.json();
 
   try {
     await dbConnect();
@@ -23,7 +15,6 @@ export const PUT = async (req, { params }) => {
     if (title) contact.title = title;
     if (email) contact.email = email;
     if (linkedIn) contact.linkedIn = linkedIn;
-    if (number) contact.number = number;
     if (outreachStage) contact.outreachStage = outreachStage;
     if (outreachDate) contact.outreachDate = outreachDate;
     if (notes) contact.notes = notes;

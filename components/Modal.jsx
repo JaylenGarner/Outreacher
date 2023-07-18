@@ -10,7 +10,6 @@ import EditApplication from "./Applications/EditApplication";
 import CreateContact from "./Contacts/CreateContact";
 import EditContact from "./Contacts/EditContact";
 import ContactList from "./Contacts/ContactList";
-import Settings from "./Settings";
 import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
 
@@ -51,7 +50,6 @@ const Modal = () => {
         {currentModal === "Create Contact" && <CreateContact />}
         {currentModal === "Edit Contact" && <EditContact />}
         {currentModal === "Contact List" && <ContactList />}
-        {currentModal === "Settings" && <Settings />}
       </motion.div>
     </motion.div>
   );

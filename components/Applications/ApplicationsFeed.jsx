@@ -1,7 +1,6 @@
 "use client";
 
-import { useSelector, useDispatch } from "react-redux";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
 import CreateApplicationButton from "../Buttons/CreateApplicationButton";

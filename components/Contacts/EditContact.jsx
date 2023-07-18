@@ -24,8 +24,6 @@ const EditContact = () => {
     dispatch(clearCurrentModal());
     dispatch(clearCurrentContact());
     dispatch(clearCurrentApplication());
-
-    console.log("contacts in edit", contacts);
   };
 
   const handleDelete = async () => {

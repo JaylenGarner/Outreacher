@@ -32,10 +32,6 @@ const UserSchema = new Schema({
       ref: "Application",
     },
   ],
-  tooltipsEnabled: {
-    type: Boolean,
-    default: true,
-  },
   createdAt: {
     type: Date,
     immutable: true,

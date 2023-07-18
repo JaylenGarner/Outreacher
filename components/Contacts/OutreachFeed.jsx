@@ -33,7 +33,13 @@ const OutreachFeed = () => {
       >
         {outreach &&
           outreach.map((contact) => {
-            return <OutreachCard key={contact._id} contact={contact} />;
+            return (
+              <OutreachCard
+                key={contact._id}
+                contact={contact}
+                className={"application_card"}
+              />
+            );
           })}
       </motion.div>
     </div>
