@@ -26,7 +26,7 @@ const Home = () => {
       <div className="flex flex_center flex-col space-y-6 max-w-[650px]">
         <h1 className="text-8xl font-bold text-white">Outreacher</h1>
         <p className="text-center  text-slate-300 font-semibold text-2xl flex-wrap">
-          Say goodbye to the hassle of manual follow-up tracking and let
+          Say goodbye to the hassle of tracking your follow-ups and let
           Outreacher simplify your job search. Our mission is to streamline your
           networking agenda and maximize the value of your outreach efforts.
           Spend less time on organization and more on making new connections.

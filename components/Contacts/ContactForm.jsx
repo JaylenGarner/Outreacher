@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SaveButton from "../Buttons/SaveButton";
 import dayjs from "dayjs";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
@@ -125,22 +126,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <motion.button
-        transition={{ duration: 0.7 }}
-        initial={{
-          background: "linear-gradient(to bottom left, #D846EE, #4E45E4)",
-        }}
-        whileHover={{
-          scale: 1.02,
-          opacity: 0.95,
-          background: "linear-gradient(to bottom left, #E01D48 , #7B39ED)",
-        }}
-        whileTap={{ scale: 0.8 }}
-        type="submit"
-        className="button "
-      >
-        {type === "Create" ? "Create" : "Save"}
-      </motion.button>
+      <SaveButton type={type} />
     </form>
   );
 };

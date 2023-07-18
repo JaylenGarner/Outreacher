@@ -80,7 +80,7 @@
 }
 
 .contact_card {
-    @apply card bg-indigo-600 text-white
+    @apply card bg-[#4916A1] text-white
 }
 
 .card_content {
