@@ -126,7 +126,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <SubmitButton type={type} />
+      <SubmitButton label={type === "Create" ? type : "Save"} />
     </form>
   );
 };
