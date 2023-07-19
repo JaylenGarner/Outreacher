@@ -20,12 +20,7 @@ const ApplicationButton = ({ application }) => {
         dispatch(setCurrentModal("Edit Application"));
       }}
     >
-      <FontAwesomeIcon
-        icon={faFile}
-        className="fa-xl cursor-pointer"
-        data-tooltip-id="application-tooltip"
-        data-tooltip-content="View Application"
-      />
+      <FontAwesomeIcon icon={faFile} className="fa-xl cursor-pointer" />
     </motion.div>
   );
 };

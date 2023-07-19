@@ -26,10 +26,6 @@ const ContactSchema = new Schema({
     type: String,
     maxLength: [100, "Email must not exceed 80 characters"],
   },
-  number: {
-    type: String,
-    maxLength: [15, "Phone number must not exceed 15 characters"],
-  },
   linkedIn: {
     type: String,
     maxLength: [2048, "LinkedIn URL must not exceed 2048 characters"],

@@ -1,11 +1,9 @@
 "use client";
 
-import "react-tooltip/dist/react-tooltip.css";
 import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Tooltip } from "react-tooltip";
 import dayjs from "dayjs";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
@@ -15,7 +13,6 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
   const [name, setName] = useState(contact ? contact?.name : "");
   const [title, setTitle] = useState(contact ? contact?.title : "");
   const [email, setEmail] = useState(contact ? contact?.email : "");
-  const [number, setNumber] = useState(contact ? contact?.number : "");
   const [linkedIn, setLinkedIn] = useState(contact ? contact?.linkedIn : "");
   const [outreachStage, setOutreachStage] = useState(
     contact ? contact?.outreachStage : "Initial Outreach"
@@ -38,7 +35,6 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
       title,
       email,
       linkedIn,
-      number,
       outreachStage,
       outreachDate: dayjs(outreachDate).format(),
       notes,
@@ -101,16 +97,10 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
       </div>
 
       <div className="flex justify-around w-full">
-        <Tooltip id="outreach-tooltip" place="bottom" />
-
         <select
           value={outreachStage}
           onChange={(e) => setOutreachStage(e.target.value)}
           className="input"
-          data-tooltip-id="date-tooltip"
-          data-tooltip-content={`What stage of the outreach process are you at${
-            name ? " with " + name + "?" : "?"
-          }`}
         >
           <option>Initial Outreach</option>
           <option>Follow Up</option>
@@ -118,15 +108,11 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
           <option>Correspondence</option>
         </select>
 
-        <Tooltip id="date-tooltip" place="bottom" />
-
         <input
           type="date"
           value={outreachDate}
           onChange={(e) => setOutreachDate(e.target.value)}
           className="input"
-          data-tooltip-id="date-tooltip"
-          data-tooltip-content="When did you reach out?"
         />
       </div>
 
