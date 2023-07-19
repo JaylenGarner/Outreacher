@@ -7,7 +7,6 @@ import handleEditContact from "../../lib/contact/handleEditContact";
 import ContactForm from "./ContactForm";
 import { clearCurrentContact } from "@/redux/reducers/currentContactSlice";
 import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import ContactListButton from "../Buttons/ContactListButton";
 import DeleteButton from "../Buttons/DeleteButton";
 import ApplicationButton from "../Buttons/ApplicationButton";
 import handleDeleteContact from "../../lib/contact/handleDeleteContact";
@@ -16,6 +15,7 @@ const EditContact = () => {
   const dispatch = useDispatch();
   const application = useSelector((state) => state.currentApplication);
   const contact = useSelector((state) => state.currentContact);
+  const contacts = useSelector((state) => state.contacts);
 
   const handleUpdate = async (formData) => {
     const updatedContact = await handleEditContact(formData, contact._id);

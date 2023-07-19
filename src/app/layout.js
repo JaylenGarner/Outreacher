@@ -1,10 +1,8 @@
 import "../../styles/globals.css";
-import { Inter } from "next/font/google";
+import { oswald } from "./fonts";
 
 import Provider from "../../components/Provider";
 import ReduxProvider from "@/redux/ReduxProvider";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Outreacher",
@@ -15,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body className={`${inter.className} h-screen violet_gradient`}>
+        <body className={`${oswald.className} h-screen violet_gradient`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </Provider>

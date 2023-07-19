@@ -3,7 +3,8 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import CreateContactButton from "../Buttons/CreateContactButton";
-import ContactCard from "./ContactCard";
+// import ContactCard from "./ContactCard";
+import OutreachCard from "./OutreachCard";
 
 const ContactList = () => {
   const application = useSelector((state) => state.currentApplication);
@@ -11,10 +12,8 @@ const ContactList = () => {
 
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full h-[500px]">
-      <div className="flex flex_center ">
-        <h2 className="text-2xl font-bold m-4">
-          Contacts for {application.company}
-        </h2>
+      <div className="flex flex_center space-x-4 m-4">
+        <h2 className="modal_header">Contacts for {application.company}</h2>
         <CreateContactButton application={application} />
       </div>
 
@@ -27,10 +26,10 @@ const ContactList = () => {
           Object.values(contacts).map((contact) => {
             if (contact?.application === application?._id) {
               return (
-                <ContactCard
+                <OutreachCard
                   key={contact._id}
                   contact={contact}
-                  application={application}
+                  className={"contact_card"}
                 />
               );
             }

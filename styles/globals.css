@@ -9,11 +9,11 @@
 }
 
 .violet_gradient {
-    @apply bg-gradient-to-bl from-fuchsia-500 via-violet-600 to-indigo-600
+    @apply bg-gradient-to-bl to-[#4916A1] from-[#FF0066]
 }
 
 .backdrop {
-    @apply absolute h-screen w-full flex flex_center bg-black bg-opacity-50 z-10
+    @apply absolute h-screen w-full flex flex_center bg-black bg-opacity-50 z-50
 }
 
 /* Nav */
@@ -35,12 +35,20 @@
 
 /* Modal */
 
+.modal_template {
+    @apply bg-white  rounded-xl z-20
+}
+
 .modal {
-    @apply bg-white h-[500px] w-[800px] rounded-xl z-20
+    @apply modal_template h-[500px] w-[800px]
+}
+
+.auth_modal {
+    @apply modal_template h-[370px] w-[650px]
 }
 
 .modal_header {
-    @apply  text-2xl font-bold text-center
+    @apply  text-2xl font-bold text-center line-clamp-1 max-w-[600px]
 }
 
 /* Forms */
@@ -62,11 +70,11 @@
 }
 
 .form_link {
-    @apply  underline underline-offset-2
+    @apply  underline underline-offset-2 cursor-pointer
 }
 
 .button {
-    @apply w-[300px] h-14 rounded-md  text-white text-xl font-bold text-ellipsis
+    @apply w-[240px] h-14 rounded-md  text-white text-xl font-bold text-ellipsis
 }
 
 /* Cards */
@@ -80,7 +88,7 @@
 }
 
 .contact_card {
-    @apply card border-2 border-black
+    @apply card bg-[#4916A1] text-white
 }
 
 .card_content {

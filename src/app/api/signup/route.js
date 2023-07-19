@@ -5,8 +5,10 @@ import * as bcrypt from "bcrypt";
 export const POST = async (req) => {
   try {
     const body = await req.json();
-    const { firstName, lastName, email } = body;
+    const { firstName, email } = body;
     await dbConnect();
+
+    console.log(body);
 
     const existingUser = await User.findOne({ email });
 
@@ -16,12 +18,13 @@ export const POST = async (req) => {
       });
     }
 
-    const user = await new User({
+    const user = new User({
       firstName,
-      lastName,
       email,
       password: await bcrypt.hash(body.password, 10),
     });
+
+    console.log("user creation", user);
 
     await user.save();
 
@@ -31,7 +34,7 @@ export const POST = async (req) => {
     });
   } catch (error) {
     const errorObj = Object.values(error.errors);
-
+    console.log(error);
     return new Response(JSON.stringify(errorObj[0].message), {
       status: 400,
     });

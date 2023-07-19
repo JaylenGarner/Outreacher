@@ -28,8 +28,8 @@ const CreateContact = () => {
 
   return (
     <>
-      <div className="flex flex_center pt-4">
-        <h1 className="modal_header pr-3 max-w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">
+      <div className="flex flex_center pt-4 space-x-4">
+        <h1 className="modal_header">
           Create Contact for {application.company}
         </h1>
         <DeleteButton action={handleDiscard} />

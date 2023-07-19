@@ -8,11 +8,6 @@ const UserSchema = new Schema({
     required: [true, "First name is required"],
     maxLength: [30, "First name must not exceed 30 characters"],
   },
-  lastName: {
-    type: String,
-    required: [true, "Last name is required"],
-    maxLength: [30, "Last name must not exceed 30 characters"],
-  },
   email: {
     type: String,
     required: [true, "Email is required"],

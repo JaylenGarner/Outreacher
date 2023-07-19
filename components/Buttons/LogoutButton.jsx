@@ -5,6 +5,9 @@ import { clearApplications } from "@/redux/reducers/applicationSlice";
 import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 const LogoutButton = () => {
   const { data: session } = useSession();
@@ -21,10 +24,14 @@ const LogoutButton = () => {
   }
 
   return (
-    <div className="flex space-x-4">
-      <h1 className="font-bold">{session?.user?.firstName}</h1>
-      <button onClick={() => handleSignOut()}>Sign Out</button>
-    </div>
+    <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.5 }}>
+      <button onClick={() => handleSignOut()}>
+        <FontAwesomeIcon
+          icon={faArrowRightFromBracket}
+          className="fa-xl cursor-pointer"
+        />
+      </button>
+    </motion.div>
   );
 };
 

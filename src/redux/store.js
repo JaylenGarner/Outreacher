@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import user from "./reducers/userSlice";
 import applications from "./reducers/applicationSlice";
 import currentApplication from "./reducers/currentApplicationSlice";
 import contacts from "./reducers/contactSlice";
@@ -7,6 +8,7 @@ import currentModal from "./reducers/currentModalSlice";
 
 const store = configureStore({
   reducer: {
+    user,
     applications,
     currentApplication,
     contacts,

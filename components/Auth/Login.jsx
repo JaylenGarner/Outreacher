@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "next-auth/react";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import SubmitButton from "../Buttons/SubmitButton";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -28,10 +29,21 @@ const Login = () => {
   };
 
   return (
-    <form className="login_form" onSubmit={handleSubmit}>
-      <h1 className="modal_header ">Login</h1>
+    <form className="form pt-4" onSubmit={handleSubmit}>
+      <h1 className="modal_header ">Login to Outreacher</h1>
 
-      {error && <span className="text-red-500">{error}</span>}
+      {error ? (
+        <motion.span
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="text-center text-red-500 font-bold text-lg"
+        >
+          {error}
+        </motion.span>
+      ) : (
+        <span></span>
+      )}
 
       <input
         type="text"
@@ -51,13 +63,18 @@ const Login = () => {
         className="input"
       ></input>
 
-      <button type="submit">Login</button>
+      <div className="pt-2">
+        <SubmitButton label={"Login"} />
+      </div>
 
-      <span className="pt-2">
+      <span>
         Don't have an account? &nbsp;
-        <a href="/auth/signup" className="form_link">
+        <span
+          className="form_link"
+          onClick={() => dispatch(setCurrentModal("Signup"))}
+        >
           Signup here
-        </a>
+        </span>
       </span>
     </form>
   );

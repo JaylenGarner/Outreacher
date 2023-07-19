@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 import Login from "./Auth/Login";
+import Signup from "./Auth/Signup";
+
 import CreateApplication from "./Applications/CreateApplication";
 import EditApplication from "./Applications/EditApplication";
 import CreateContact from "./Contacts/CreateContact";
@@ -41,10 +43,15 @@ const Modal = () => {
           stiffness: 230,
           damping: 30,
         }}
-        className="modal"
+        className={
+          currentModal === "Login" || currentModal === "Signup"
+            ? "auth_modal"
+            : "modal"
+        }
         onClick={(e) => e.stopPropagation()}
       >
         {currentModal === "Login" && <Login />}
+        {currentModal === "Signup" && <Signup />}
         {currentModal === "Create Application" && <CreateApplication />}
         {currentModal === "Edit Application" && <EditApplication />}
         {currentModal === "Create Contact" && <CreateContact />}

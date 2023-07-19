@@ -4,15 +4,25 @@ import { useSelector } from "react-redux";
 import OutreachCard from "./OutreachCard";
 import getOutreachFeed from "../../lib/contact/getOutreachFeed";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const OutreachFeed = () => {
   const contacts = useSelector((state) => state.contacts);
-  const outreach = getOutreachFeed(contacts);
+  const [outreach, setOutreach] = useState([]);
+
+  useEffect(() => {
+    const updateFeed = async () => {
+      const updatedFeed = await getOutreachFeed(contacts);
+      setOutreach(updatedFeed);
+    };
+
+    updateFeed();
+  }, [contacts]);
 
   return (
     <div className="flex flex-col items-center overflow-y-scroll w-full">
-      <div className="flex flex_center">
-        <h2 className="text-4xl font-bold m-4 text-white">Outreach</h2>
+      <div className="flex flex_center m-8">
+        <h2 className="text-4xl font-bold text-white">Outreach</h2>
       </div>
 
       <motion.div
@@ -23,7 +33,13 @@ const OutreachFeed = () => {
       >
         {outreach &&
           outreach.map((contact) => {
-            return <OutreachCard key={contact._id} contact={contact} />;
+            return (
+              <OutreachCard
+                key={contact._id}
+                contact={contact}
+                className={"application_card"}
+              />
+            );
           })}
       </motion.div>
     </div>

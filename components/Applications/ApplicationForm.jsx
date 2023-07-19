@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SubmitButton from "../Buttons/SubmitButton";
 
 const ApplicationForm = ({
   type,
@@ -136,22 +137,7 @@ const ApplicationForm = ({
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <motion.button
-        transition={{ duration: 0.7 }}
-        initial={{
-          background: "linear-gradient(to bottom left, #D846EE, #4E45E4)",
-        }}
-        whileHover={{
-          scale: 1.02,
-          opacity: 0.95,
-          background: "linear-gradient(to bottom left, #E01D48 , #7B39ED)",
-        }}
-        whileTap={{ scale: 0.8 }}
-        type="submit"
-        className="button "
-      >
-        {type === "Create" ? "Log" : "Save"}
-      </motion.button>
+      <SubmitButton label={type === "Create" ? type : "Save"} />
     </form>
   );
 };

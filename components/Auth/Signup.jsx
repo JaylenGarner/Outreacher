@@ -1,52 +1,65 @@
 "use client";
 
 import { useState } from "react";
-import handleSignup from "../../../../lib/handleSignup";
-import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { signIn } from "next-auth/react";
+import handleSignup from "../../lib/user/handleSignup";
+import { motion } from "framer-motion";
+import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import SubmitButton from "../Buttons/SubmitButton";
 
 const Signup = () => {
-  const router = useRouter();
+  const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleSignup(
+    const response = await handleSignup(
       firstName,
-      lastName,
       email,
       password,
       confirmPassword,
-      setError,
-      router
+      setError
     );
+
+    if (response.ok) {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      dispatch(setCurrentModal(null));
+    }
   };
 
   return (
-    <div className="grow flex_center">
-      <form className="form" onSubmit={handleSubmit}>
-        <h1 className="form_heading">Signup</h1>
+    <form className="form pt-4" onSubmit={handleSubmit}>
+      <h1 className="modal_header">Signup for Outreacher</h1>
 
-        {error && <span className="text-red-700">{error}</span>}
+      {error ? (
+        <motion.span
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="text-center text-red-500 font-bold text-lg"
+        >
+          {error}
+        </motion.span>
+      ) : (
+        <span></span>
+      )}
 
+      <div className="flex justify-around w-full">
         <input
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           placeholder="First Name"
-          required
-          className="input"
-        ></input>
-
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          placeholder="Last Name"
           required
           className="input"
         ></input>
@@ -59,7 +72,9 @@ const Signup = () => {
           required
           className="input"
         ></input>
+      </div>
 
+      <div className="flex justify-around w-full pb-4">
         <input
           type="password"
           value={password}
@@ -77,19 +92,20 @@ const Signup = () => {
           required
           className="input"
         ></input>
+      </div>
 
-        <button type="submit" className="pt-2">
-          Sign Up
-        </button>
+      <SubmitButton label={"Create Account"} />
 
-        <span>
-          Have an account? &nbsp;
-          <a href="/auth/login" className="form_link">
-            Login here
-          </a>
+      <span>
+        Have an account? &nbsp;
+        <span
+          className="form_link"
+          onClick={() => dispatch(setCurrentModal("Login"))}
+        >
+          Login here
         </span>
-      </form>
-    </div>
+      </span>
+    </form>
   );
 };
 

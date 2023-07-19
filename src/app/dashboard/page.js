@@ -8,13 +8,16 @@ import { getApplications } from "@/redux/reducers/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 import { redirect } from "next/navigation";
 import { getContacts } from "@/redux/reducers/contactSlice";
+import { setUser } from "@/redux/reducers/userSlice";
 
 const Dashboard = () => {
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
   const modalOpen = useSelector((state) => state.currentModal);
+  const user = useSelector((state) => state.user);
 
   if (!session) {
     return redirect("/");
@@ -40,10 +43,13 @@ const Dashboard = () => {
     }
   };
 
-  if (status === "authenticated") {
-    fetchApplications();
-    fetchContacts();
-  }
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetchApplications();
+      fetchContacts();
+      dispatch(setUser(session.user));
+    }
+  }, [user]);
 
   return (
     <motion.div
