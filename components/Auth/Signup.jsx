@@ -39,7 +39,7 @@ const Signup = () => {
 
   return (
     <form className="form pt-4" onSubmit={handleSubmit}>
-      <h1 className="modal_header ">Signup for Outreacher</h1>
+      <h1 className="modal_header">Signup for Outreacher</h1>
 
       {error ? (
         <motion.span

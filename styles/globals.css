@@ -74,7 +74,7 @@
 }
 
 .button {
-    @apply w-[300px] h-14 rounded-md  text-white text-xl font-bold text-ellipsis
+    @apply w-[240px] h-14 rounded-md  text-white text-xl font-bold text-ellipsis
 }
 
 /* Cards */
