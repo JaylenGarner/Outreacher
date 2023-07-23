@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "prisma": {
+    "seed" : "node prisma/seed.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -14,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^2.0.18",
+    "@prisma/client": "^5.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@tailwindcss/line-clamp": "^0.4.4",
     "autoprefixer": "10.4.14",
@@ -30,5 +34,8 @@
     "react-redux": "^8.1.1",
     "tailwindcss": "3.3.2",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.0.0"
   }
 }

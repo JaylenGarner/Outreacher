@@ -6,6 +6,9 @@ React
 Redux
 Tailwind.css
 Next-Auth
+PostgresSQL
+Prisma
+Docker (in dev environment)
 Bcrypt
 Day.js
 Date Holidays US
