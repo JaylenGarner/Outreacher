@@ -1,5 +1,3 @@
-// import User from "../../../../models/User";
-// import { dbConnect } from "../../../../lib/db";
 import prisma from "../../../../lib/prisma";
 import * as bcrypt from "bcrypt";
 
@@ -7,9 +5,6 @@ export const POST = async (req) => {
   try {
     const body = await req.json();
     const { email, password } = body;
-    // await dbConnect();
-
-    console.log("Start of login route");
 
     const user = await prisma.user.findUnique({
       where: {
@@ -17,20 +12,13 @@ export const POST = async (req) => {
       },
     });
 
-    console.log("USER", user);
-
     if (user && (await bcrypt.compare(password, user.password))) {
       const { password, ...userWithoutPassword } = user;
-
-      console.log("user without password", userWithoutPassword);
-
       return new Response(JSON.stringify(userWithoutPassword));
     } else {
-      console.log("HIT THE ELSE");
-      return new Response(JSON.stringify(null));
+      return new Response("Invalid credentials, please try again.");
     }
   } catch (error) {
-    console.log("ERROR");
-    return new Response("The email or password is incorrect");
+    console.log("error");
   }
 };

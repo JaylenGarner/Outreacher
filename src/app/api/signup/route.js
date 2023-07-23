@@ -31,10 +31,6 @@ export const POST = async (req) => {
       status: 201,
     });
   } catch (error) {
-    // const errorObj = Object.values(error.errors);
-    // console.log(error);
-    // return new Response(JSON.stringify(errorObj[0].message), {
-    //   status: 400,
-    // });
+    console.log(error);
   }
 };

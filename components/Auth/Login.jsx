@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "next-auth/react";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 
 const Login = () => {
@@ -23,9 +24,9 @@ const Login = () => {
 
     if (result.error) {
       setError("Invalid credentials, please try again.");
+    } else {
+      dispatch(setCurrentModal(null));
     }
-
-    dispatch(setCurrentModal(null));
   };
 
   return (
