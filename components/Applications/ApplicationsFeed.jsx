@@ -7,6 +7,8 @@ import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 
 const ApplicationsFeed = () => {
   const applications = useSelector((state) => state.applications);
+  const sortByUpdatedAtDesc = (a, b) =>
+    new Date(b.updatedAt) - new Date(a.updatedAt);
 
   return (
     <div className="flex flex-col overflow-y-scroll w-full items-center">
@@ -22,14 +24,17 @@ const ApplicationsFeed = () => {
         transition={{ type: "spring", stiffness: 35, damping: 14 }}
       >
         {applications &&
-          Object.values(applications).map((application) => {
-            return (
-              <ApplicationCard
-                key={application._id}
-                application={application}
-              />
-            );
-          })}
+          Object.values(applications)
+            .slice()
+            .sort(sortByUpdatedAtDesc)
+            .map((application) => {
+              return (
+                <ApplicationCard
+                  key={application.id}
+                  application={application}
+                />
+              );
+            })}
       </motion.div>
     </div>
   );

@@ -18,7 +18,7 @@ const EditContact = () => {
   const contacts = useSelector((state) => state.contacts);
 
   const handleUpdate = async (formData) => {
-    const updatedContact = await handleEditContact(formData, contact._id);
+    const updatedContact = await handleEditContact(formData, contact.id);
 
     dispatch(createContact(updatedContact));
     dispatch(clearCurrentModal());
@@ -27,7 +27,7 @@ const EditContact = () => {
   };
 
   const handleDelete = async () => {
-    const response = await handleDeleteContact(contact._id);
+    const response = await handleDeleteContact(contact.id);
 
     if (response) {
       dispatch(deleteContact(contact));

@@ -1,46 +1,47 @@
-import Application from "../../../../../models/Application";
-import Contact from "../../../../../models/Contact";
-import { dbConnect } from "../../../../../lib/db";
+import prisma from "../../../../../lib/prisma";
 
 export const PUT = async (req, { params }) => {
   const { company, position, posting, salary, location, notes, status } =
     await req.json();
 
   try {
-    await dbConnect();
-    const application = await Application.findById(params.id);
-
-    if (company) application.company = company;
-    if (position) application.position = position;
-    if (posting) application.posting = posting;
-    if (salary) application.salary = salary;
-    if (location) application.location = location;
-    if (notes) application.notes = notes;
-    if (status) application.status = status;
-
-    await application.save();
+    const application = await prisma.application.update({
+      where: {
+        id: Number(params.id),
+      },
+      data: {
+        company,
+        position,
+        posting,
+        salary,
+        location,
+        notes,
+        status,
+      },
+    });
 
     return new Response(JSON.stringify(application), {
       status: 201,
     });
   } catch (error) {
-    const errorObj = Object.values(error.errors);
+    console.log(error);
+    // const errorObj = Object.values(error.errors);
 
-    return new Response(JSON.stringify(errorObj[0].message), {
-      status: 400,
-    });
+    // return new Response(JSON.stringify(errorObj[0].message), {
+    //   status: 400,
+    // });
   }
 };
 
 export const DELETE = async (req, { params }) => {
   try {
-    await dbConnect();
+    const application = await prisma.application.delete({
+      where: {
+        id: Number(params.id),
+      },
+    });
 
-    await Contact.deleteMany({ application: params.id });
-
-    const deletedApplication = await Application.findByIdAndDelete(params.id);
-
-    if (!deletedApplication) {
+    if (!application) {
       return new Response("Application not found", { status: 404 });
     }
 

@@ -35,7 +35,7 @@ const OutreachFeed = () => {
           outreach.map((contact) => {
             return (
               <OutreachCard
-                key={contact._id}
+                key={contact.id}
                 contact={contact}
                 className={"application_card"}
               />

@@ -8,7 +8,7 @@ export const contacts = createSlice({
       const newState = { ...state };
 
       action.payload.forEach((contact) => {
-        newState[contact._id] = contact;
+        newState[contact.id] = contact;
       });
 
       return newState;
@@ -16,13 +16,13 @@ export const contacts = createSlice({
     createContact: (state, action) => {
       return {
         ...state,
-        [action.payload._id]: action.payload,
+        [action.payload.id]: action.payload,
       };
     },
     deleteContact: (state, action) => {
       const newState = { ...state };
       const contact = action.payload;
-      delete newState[contact._id];
+      delete newState[contact.id];
       return newState;
     },
     cascadeDeleteContacts: (state, action) => {
@@ -31,7 +31,7 @@ export const contacts = createSlice({
 
       Object.values(newState).forEach((contact) => {
         if (contact.application === applicationId) {
-          delete newState[contact._id];
+          delete newState[contact.id];
         }
       });
 

@@ -24,10 +24,10 @@ const ContactList = () => {
       >
         {contacts &&
           Object.values(contacts).map((contact) => {
-            if (contact?.application === application?._id) {
+            if (contact?.application === application?.id) {
               return (
                 <OutreachCard
-                  key={contact._id}
+                  key={contact.id}
                   contact={contact}
                   className={"contact_card"}
                 />

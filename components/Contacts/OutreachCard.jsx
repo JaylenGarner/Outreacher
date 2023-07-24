@@ -16,7 +16,7 @@ const OutreachCard = ({ contact, className }) => {
     <motion.div
       className={`${className}`}
       whileHover={{ opacity: 0.8, scale: 0.99 }}
-      key={contact._id}
+      key={contact.id}
       onClick={() => {
         dispatch(setCurrentContact(contact));
         dispatch(setCurrentApplication(applications[contact.application]));

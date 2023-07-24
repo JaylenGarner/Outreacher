@@ -29,7 +29,7 @@ model Application {
   location  String?
   notes     String?
   status    String
-  user      User      @relation(fields: [userId], references: [id])
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int
   contacts  Contact[]
   createdAt DateTime  @default(now())
@@ -44,7 +44,7 @@ model Contact {
   linkedIn       String?
   notes          String?
   outreachStage  String
-  application    Application @relation(fields: [applicationId], references: [id])
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId  Int
   outreachDate   DateTime
   nextActionDate DateTime

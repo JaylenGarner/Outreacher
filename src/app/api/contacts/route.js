@@ -10,7 +10,7 @@ export const GET = async (req) => {
     await dbConnect();
 
     const contacts = await Contact.find({
-      user: session.user._id,
+      user: session.user.id,
       // Sort by most recent
     }).sort({ updatedAt: -1 });
 

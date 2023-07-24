@@ -27,8 +27,6 @@ const Signup = () => {
     );
 
     if (response.ok) {
-      console.log("MADE IT TO SIGN IN ATTEMPT");
-
       await signIn("credentials", {
         email,
         password,

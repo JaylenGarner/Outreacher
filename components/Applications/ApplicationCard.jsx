@@ -16,7 +16,7 @@ const ApplicationCard = ({ application }) => {
     <motion.div
       className="application_card"
       whileHover={{ opacity: 0.8, scale: 0.99 }}
-      key={application._id}
+      key={application.id}
       onClick={() => {
         dispatch(setCurrentApplication(application));
         dispatch(setCurrentModal("Edit Application"));

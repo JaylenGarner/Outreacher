@@ -17,21 +17,24 @@ const EditApplication = () => {
   const application = useSelector((state) => state.currentApplication);
 
   const handleUpdate = async (formData) => {
+    console.log("BEGINNING OF HANDLE UPDATE");
     const updatedApplication = await handleEditApplication(
       formData,
-      application._id
+      application.id
     );
+
+    console.log("AFTER HANDLE UPDATE");
 
     dispatch(createApplication(updatedApplication));
     dispatch(clearCurrentModal());
   };
 
   const handleDelete = async () => {
-    const response = await handleDeleteApplication(application._id);
+    const response = await handleDeleteApplication(application.id);
 
     if (response) {
       dispatch(deleteApplication(application));
-      dispatch(cascadeDeleteContacts(application._id));
+      dispatch(cascadeDeleteContacts(application.id));
       dispatch(clearCurrentModal());
     }
   };

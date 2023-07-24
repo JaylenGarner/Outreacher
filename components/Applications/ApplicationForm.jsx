@@ -37,7 +37,7 @@ const ApplicationForm = ({
 
     const formData = {
       e,
-      userId: session.user._id,
+      userId: session.user.id,
       company,
       position,
       posting,
