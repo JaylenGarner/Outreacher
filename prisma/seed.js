@@ -27,7 +27,7 @@ async function seedApplication(userId) {
   return application;
 }
 
-async function seedContact(applicationId) {
+async function seedContact(applicationId, userId) {
   const contact = await prisma.contact.create({
     data: {
       name: "John Doe",
@@ -35,6 +35,7 @@ async function seedContact(applicationId) {
       email: "john.doe@example.com",
       outreachStage: "Initial Contact",
       applicationId: applicationId,
+      userId: userId,
       outreachDate: new Date(),
       nextActionDate: new Date(),
     },
@@ -50,7 +51,7 @@ async function main() {
     const application = await seedApplication(user.id);
     console.log({ application });
 
-    const contact = await seedContact(application.id);
+    const contact = await seedContact(application.id, user.id);
     console.log({ contact });
   } catch (e) {
     console.error(e);

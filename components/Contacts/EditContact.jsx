@@ -26,6 +26,8 @@ const EditContact = () => {
     dispatch(clearCurrentApplication());
   };
 
+  console.log("APPLICATION", application);
+
   const handleDelete = async () => {
     const response = await handleDeleteContact(contact.id);
 

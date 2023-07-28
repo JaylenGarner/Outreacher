@@ -25,11 +25,11 @@ export const PUT = async (req, { params }) => {
     });
   } catch (error) {
     console.log(error);
-    // const errorObj = Object.values(error.errors);
+    const errorObj = Object.values(error.errors);
 
-    // return new Response(JSON.stringify(errorObj[0].message), {
-    //   status: 400,
-    // });
+    return new Response(JSON.stringify(errorObj[0].message), {
+      status: 400,
+    });
   }
 };
 

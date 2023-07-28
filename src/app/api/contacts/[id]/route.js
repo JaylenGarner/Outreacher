@@ -1,5 +1,4 @@
-import Contact from "../../../../../models/Contact";
-import { dbConnect } from "../../../../../lib/db";
+import prisma from "../../../../../lib/prisma";
 import getNextActionDate from "../../../../../lib/contact/getNextActionDate";
 
 export const PUT = async (req, { params }) => {
@@ -7,22 +6,23 @@ export const PUT = async (req, { params }) => {
     await req.json();
 
   try {
-    await dbConnect();
-
-    const contact = await Contact.findById(params.id);
-
-    if (name) contact.name = name;
-    if (title) contact.title = title;
-    if (email) contact.email = email;
-    if (linkedIn) contact.linkedIn = linkedIn;
-    if (outreachStage) contact.outreachStage = outreachStage;
-    if (outreachDate) contact.outreachDate = outreachDate;
-    if (notes) contact.notes = notes;
-
     const nextActionDate = getNextActionDate(outreachStage, outreachDate);
-    contact.nextActionDate = nextActionDate;
 
-    await contact.save();
+    const contact = await prisma.contact.update({
+      where: {
+        id: Number(params.id),
+      },
+      data: {
+        name,
+        title,
+        email,
+        linkedIn,
+        outreachStage,
+        outreachDate,
+        notes,
+        nextActionDate,
+      },
+    });
 
     return new Response(JSON.stringify(contact), {
       status: 201,
@@ -38,11 +38,13 @@ export const PUT = async (req, { params }) => {
 
 export const DELETE = async (req, { params }) => {
   try {
-    await dbConnect();
+    const contact = await prisma.contact.delete({
+      where: {
+        id: Number(params.id),
+      },
+    });
 
-    const deletedContact = await Contact.findByIdAndDelete(params.id);
-
-    if (!deletedContact) {
+    if (!contact) {
       return new Response("Contact not found", { status: 404 });
     }
 

@@ -19,7 +19,7 @@ const OutreachCard = ({ contact, className }) => {
       key={contact.id}
       onClick={() => {
         dispatch(setCurrentContact(contact));
-        dispatch(setCurrentApplication(applications[contact.application]));
+        dispatch(setCurrentApplication(applications[contact.applicationId]));
         dispatch(setCurrentModal("Edit Contact"));
       }}
     >

@@ -3,12 +3,13 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import CreateContactButton from "../Buttons/CreateContactButton";
-// import ContactCard from "./ContactCard";
 import OutreachCard from "./OutreachCard";
 
 const ContactList = () => {
   const application = useSelector((state) => state.currentApplication);
   const contacts = useSelector((state) => state.contacts);
+
+  console.log("CONTACTS", contacts);
 
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full h-[500px]">
@@ -24,7 +25,7 @@ const ContactList = () => {
       >
         {contacts &&
           Object.values(contacts).map((contact) => {
-            if (contact?.application === application?.id) {
+            if (contact?.applicationId === application?.id) {
               return (
                 <OutreachCard
                   key={contact.id}

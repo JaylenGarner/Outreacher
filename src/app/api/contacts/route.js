@@ -1,5 +1,4 @@
-import Contact from "../../../../models/Contact";
-import { dbConnect } from "../../../../lib/db";
+import prisma from "../../../../lib/prisma";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import getNextActionDate from "../../../../lib/contact/getNextActionDate";
@@ -7,16 +6,15 @@ import getNextActionDate from "../../../../lib/contact/getNextActionDate";
 export const GET = async (req) => {
   try {
     const session = await getServerSession(authOptions);
-    await dbConnect();
 
-    const contacts = await Contact.find({
-      user: session.user.id,
-      // Sort by most recent
-    }).sort({ updatedAt: -1 });
-
-    if (!contacts) {
-      return new Response("No contacts found", { status: 404 });
-    }
+    const contacts = await prisma.contact.findMany({
+      where: {
+        userId: session.user.id,
+      },
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
 
     return new Response(JSON.stringify(contacts), { status: 200 });
   } catch (error) {
@@ -40,24 +38,27 @@ export const POST = async (req) => {
 
   try {
     const nextActionDate = getNextActionDate(outreachStage, outreachDate);
-    await dbConnect();
 
-    const newContact = new Contact({
-      user: userId,
-      application: applicationId,
-      name,
-      title,
-      email,
-      linkedIn,
-      notes,
-      outreachStage,
-      outreachDate,
-      nextActionDate,
+    console.log("HERE");
+
+    const contact = await prisma.contact.create({
+      data: {
+        userId,
+        applicationId,
+        name,
+        title,
+        email,
+        linkedIn,
+        notes,
+        outreachStage,
+        outreachDate,
+        nextActionDate,
+      },
     });
 
-    await newContact.save();
+    console.log("CONTACT");
 
-    return new Response(JSON.stringify(newContact), {
+    return new Response(JSON.stringify(contact), {
       status: 201,
     });
   } catch (error) {
