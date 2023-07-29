@@ -13,6 +13,7 @@ Bcrypt
 Day.js
 Date Holidays US
 Font Awesome
+Yup
 
 Attribution:
 
