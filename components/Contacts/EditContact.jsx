@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createContact, deleteContact } from "@/redux/reducers/contactSlice";
@@ -13,20 +14,24 @@ import handleDeleteContact from "../../lib/contact/handleDeleteContact";
 
 const EditContact = () => {
   const dispatch = useDispatch();
+  const [error, setError] = useState("");
   const application = useSelector((state) => state.currentApplication);
   const contact = useSelector((state) => state.currentContact);
-  const contacts = useSelector((state) => state.contacts);
 
   const handleUpdate = async (formData) => {
-    const updatedContact = await handleEditContact(formData, contact.id);
+    const updatedContact = await handleEditContact(
+      formData,
+      contact.id,
+      setError
+    );
 
-    dispatch(createContact(updatedContact));
-    dispatch(clearCurrentModal());
-    dispatch(clearCurrentContact());
-    dispatch(clearCurrentApplication());
+    if (updatedContact) {
+      dispatch(createContact(updatedContact));
+      dispatch(clearCurrentModal());
+      dispatch(clearCurrentContact());
+      dispatch(clearCurrentApplication());
+    }
   };
-
-  console.log("APPLICATION", application);
 
   const handleDelete = async () => {
     const response = await handleDeleteContact(contact.id);
@@ -48,6 +53,7 @@ const EditContact = () => {
         type={"Edit"}
         contact={contact}
         handleUpdate={handleUpdate}
+        error={error}
       />
     </>
   );

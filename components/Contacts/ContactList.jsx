@@ -9,8 +9,6 @@ const ContactList = () => {
   const application = useSelector((state) => state.currentApplication);
   const contacts = useSelector((state) => state.contacts);
 
-  console.log("CONTACTS", contacts);
-
   return (
     <div className="flex flex-col flex_center overflow-y-scroll w-full h-[500px]">
       <div className="flex flex_center space-x-4 m-4">

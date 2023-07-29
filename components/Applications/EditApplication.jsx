@@ -19,11 +19,9 @@ const EditApplication = () => {
   const [error, setError] = useState("");
 
   const handleUpdate = async (formData) => {
-    const applicationId = application.id;
-
     const updatedApplication = await handleEditApplication(
       formData,
-      applicationId,
+      application.id,
       setError
     );
 

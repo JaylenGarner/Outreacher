@@ -39,8 +39,6 @@ export const POST = async (req) => {
   try {
     const nextActionDate = getNextActionDate(outreachStage, outreachDate);
 
-    console.log("HERE");
-
     const contact = await prisma.contact.create({
       data: {
         userId,
@@ -55,8 +53,6 @@ export const POST = async (req) => {
         nextActionDate,
       },
     });
-
-    console.log("CONTACT");
 
     return new Response(JSON.stringify(contact), {
       status: 201,
