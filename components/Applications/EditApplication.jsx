@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createApplication } from "@/redux/reducers/applicationSlice";
@@ -15,18 +16,21 @@ import DeleteButton from "../Buttons/DeleteButton";
 const EditApplication = () => {
   const dispatch = useDispatch();
   const application = useSelector((state) => state.currentApplication);
+  const [error, setError] = useState("");
 
   const handleUpdate = async (formData) => {
-    console.log("BEGINNING OF HANDLE UPDATE");
+    const applicationId = application.id;
+
     const updatedApplication = await handleEditApplication(
       formData,
-      application.id
+      applicationId,
+      setError
     );
 
-    console.log("AFTER HANDLE UPDATE");
-
-    dispatch(createApplication(updatedApplication));
-    dispatch(clearCurrentModal());
+    if (updatedApplication) {
+      dispatch(createApplication(updatedApplication));
+      dispatch(clearCurrentModal());
+    }
   };
 
   const handleDelete = async () => {
@@ -54,6 +58,7 @@ const EditApplication = () => {
         type={"Edit"}
         application={application}
         handleUpdate={handleUpdate}
+        error={error}
       />
     </>
   );
