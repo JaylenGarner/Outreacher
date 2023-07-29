@@ -28,9 +28,9 @@ export const PUT = async (req, { params }) => {
       status: 201,
     });
   } catch (error) {
-    const errorObj = Object.values(error.errors);
+    console.log("ERROR", error);
 
-    return new Response(JSON.stringify(errorObj[0].message), {
+    return new Response(JSON.stringify(error), {
       status: 400,
     });
   }
