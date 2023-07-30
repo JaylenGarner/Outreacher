@@ -1,6 +1,7 @@
 import prisma from "../../../../lib/prisma";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { contactSchema } from "@/validations/contactValidation";
 import getNextActionDate from "../../../../lib/contact/getNextActionDate";
 
 export const GET = async (req) => {
@@ -54,20 +55,31 @@ export const POST = async (req) => {
       outreachDate,
     } = await req.json();
 
+    const reqObj = {
+      userId: session.user.id,
+      applicationId,
+      name,
+      title,
+      email,
+      linkedIn,
+      outreachStage,
+      outreachDate,
+      notes,
+    };
+
+    try {
+      await contactSchema.validate(reqObj);
+    } catch (error) {
+      setError(error.message);
+      return;
+    }
+
     const nextActionDate = getNextActionDate(outreachStage, outreachDate);
 
     const contact = await prisma.contact.create({
       data: {
-        userId: session.user.id,
-        applicationId,
-        name,
-        title,
-        email,
-        linkedIn,
-        notes,
-        outreachStage,
-        outreachDate,
         nextActionDate,
+        ...reqObj,
       },
     });
 

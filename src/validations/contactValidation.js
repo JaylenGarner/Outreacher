@@ -19,7 +19,6 @@ export const contactSchema = yup.object().shape({
     .max(2048, "LinkedIn URL must be less than 2048 characters"),
   notes: yup.string().max(2000, "Notes must be less than 2000 characters"),
   outreachStage: yup.string().oneOf(outreachStages),
-  applicationId: yup.number().required().positive().integer(),
   outreachDate: yup.date().required(),
   nextActionDate: yup.date(),
 });

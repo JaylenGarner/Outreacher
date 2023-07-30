@@ -1,6 +1,7 @@
 import prisma from "../../../../../lib/prisma";
 import { authOptions } from "../../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { applicationSchema } from "@/validations/applicationValidation";
 
 export const PUT = async (req, { params }) => {
   try {
@@ -14,6 +15,24 @@ export const PUT = async (req, { params }) => {
 
     const { company, position, posting, salary, location, notes, status } =
       await req.json();
+
+    const reqObj = {
+      userId: session.user.id,
+      company,
+      position,
+      posting,
+      salary,
+      location,
+      notes,
+      status,
+    };
+
+    try {
+      await applicationSchema.validate(reqObj);
+    } catch (error) {
+      setError(error.message);
+      return;
+    }
 
     const application = await prisma.application.findUnique({
       where: { id: Number(params.id) },
@@ -33,15 +52,7 @@ export const PUT = async (req, { params }) => {
       where: {
         id: Number(params.id),
       },
-      data: {
-        company,
-        position,
-        posting,
-        salary,
-        location,
-        notes,
-        status,
-      },
+      data: reqObj,
     });
 
     return new Response(JSON.stringify(updatedApplication), {

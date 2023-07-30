@@ -1,6 +1,7 @@
 import prisma from "../../../../../lib/prisma";
 import { authOptions } from "../../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { contactSchema } from "@/validations/contactValidation";
 import getNextActionDate from "../../../../../lib/contact/getNextActionDate";
 
 export const PUT = async (req, { params }) => {
@@ -15,6 +16,24 @@ export const PUT = async (req, { params }) => {
 
     const { name, title, email, linkedIn, outreachStage, outreachDate, notes } =
       await req.json();
+
+    const reqObj = {
+      userId: session.user.id,
+      name,
+      title,
+      email,
+      linkedIn,
+      outreachStage,
+      outreachDate,
+      notes,
+    };
+
+    try {
+      await contactSchema.validate(reqObj);
+    } catch (error) {
+      setError(error.message);
+      return;
+    }
 
     const contact = await prisma.contact.findUnique({
       where: { id: Number(params.id) },
@@ -36,16 +55,7 @@ export const PUT = async (req, { params }) => {
       where: {
         id: Number(params.id),
       },
-      data: {
-        name,
-        title,
-        email,
-        linkedIn,
-        outreachStage,
-        outreachDate,
-        notes,
-        nextActionDate,
-      },
+      data: { ...reqObj, nextActionDate },
     });
 
     return new Response(JSON.stringify(updatedContact), {
