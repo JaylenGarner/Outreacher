@@ -30,7 +30,6 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
 
     const formData = {
       e,
-      userId: session.user?.id,
       applicationId: application?.id,
       name,
       title,

@@ -24,5 +24,4 @@ export const applicationSchema = yup.object().shape({
   location: yup.string().max(200, "Location must be less than 200 characters"),
   notes: yup.string().max(2000, "Notes must be less than 2000 characters"),
   status: yup.string().oneOf(statuses),
-  userId: yup.number().required().positive().integer(),
 });

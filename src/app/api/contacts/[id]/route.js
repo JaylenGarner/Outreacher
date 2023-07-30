@@ -1,14 +1,38 @@
 import prisma from "../../../../../lib/prisma";
+import { authOptions } from "../../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 import getNextActionDate from "../../../../../lib/contact/getNextActionDate";
 
 export const PUT = async (req, { params }) => {
-  const { name, title, email, linkedIn, outreachStage, outreachDate, notes } =
-    await req.json();
-
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new Response("You must be signed in to edit contacts", {
+        status: 401,
+      });
+    }
+
+    const { name, title, email, linkedIn, outreachStage, outreachDate, notes } =
+      await req.json();
+
+    const contact = await prisma.contact.findUnique({
+      where: { id: Number(params.id) },
+    });
+
+    if (!contact) {
+      return new Response("Contact not found", { status: 404 });
+    }
+
+    if (session.user.id !== contact.userId) {
+      return new Response("You are not the owner of this contact", {
+        status: 401,
+      });
+    }
+
     const nextActionDate = getNextActionDate(outreachStage, outreachDate);
 
-    const contact = await prisma.contact.update({
+    const updatedContact = await prisma.contact.update({
       where: {
         id: Number(params.id),
       },
@@ -24,30 +48,50 @@ export const PUT = async (req, { params }) => {
       },
     });
 
-    return new Response(JSON.stringify(contact), {
+    return new Response(JSON.stringify(updatedContact), {
       status: 201,
     });
   } catch (error) {
-    return new Response(JSON.stringify(error), {
-      status: 400,
+    return new Response(`Failed to edit contact: ${error}`, {
+      status: 500,
     });
   }
 };
 
 export const DELETE = async (req, { params }) => {
   try {
-    const contact = await prisma.contact.delete({
-      where: {
-        id: Number(params.id),
-      },
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new Response("You must be signed in to perform this action", {
+        status: 401,
+      });
+    }
+
+    const contact = await prisma.application.findUnique({
+      where: { id: Number(params.id) },
     });
 
     if (!contact) {
       return new Response("Contact not found", { status: 404 });
     }
 
-    return new Response("Contact deleted succesfully", { status: 200 });
+    if (session.user.id !== contact.userId) {
+      return new Response("You are not the owner of this contact", {
+        status: 401,
+      });
+    }
+
+    await prisma.contact.delete({
+      where: {
+        id: Number(params.id),
+      },
+    });
+
+    return new Response("Contact deleted succesfully", { status: 202 });
   } catch (error) {
-    return new Response("Failed to delete contact", { status: 500 });
+    return new Response(`Failed to delete contact: ${error}`, {
+      status: 500,
+    });
   }
 };

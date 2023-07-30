@@ -20,7 +20,6 @@ export const contactSchema = yup.object().shape({
   notes: yup.string().max(2000, "Notes must be less than 2000 characters"),
   outreachStage: yup.string().oneOf(outreachStages),
   applicationId: yup.number().required().positive().integer(),
-  userId: yup.number().required().positive().integer(),
   outreachDate: yup.date().required(),
   nextActionDate: yup.date(),
 });
