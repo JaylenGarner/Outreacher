@@ -39,18 +39,19 @@ export const POST = async (req) => {
       body.userId = session.user.id;
     }
 
-    try {
-      await contactSchema.validate(body);
-    } catch (error) {
-      setError(error.message);
-      return;
-    }
-
     const nextActionDate = getNextActionDate(
       body.outreachStage,
       body.outreachDate
     );
     body.nextActionDate = nextActionDate;
+
+    try {
+      await contactSchema.validate(body);
+    } catch (error) {
+      console.log("Validation error");
+      setError(error.message);
+      return;
+    }
 
     console.log("Body", body);
 
