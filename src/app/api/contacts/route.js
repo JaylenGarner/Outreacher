@@ -46,15 +46,17 @@ export const POST = async (req) => {
       return;
     }
 
-    console.log("HERE");
-
     const nextActionDate = getNextActionDate(
       body.outreachStage,
       body.outreachDate
     );
     body.nextActionDate = nextActionDate;
 
+    console.log("Body", body);
+
     const contact = await prisma.contact.create({ data: body });
+
+    console.log("PAST CREATION");
 
     return new Response(JSON.stringify(contact), { status: 201 });
   } catch (error) {
