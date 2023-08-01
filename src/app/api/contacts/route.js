@@ -1,6 +1,6 @@
 import prisma from "../../../../lib/prisma";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 import { contactSchema } from "@/validations/contactValidation";
 import getNextActionDate from "../../../../lib/contact/getNextActionDate";
 
@@ -16,79 +16,48 @@ export const GET = async (req) => {
     }
 
     const contacts = await prisma.contact.findMany({
-      where: {
-        userId: session.user.id,
-      },
-      orderBy: {
-        updatedAt: "desc",
-      },
+      where: { userId: session.user.id },
+      orderBy: { updatedAt: "desc" },
     });
 
     return new Response(JSON.stringify(contacts), { status: 200 });
   } catch (error) {
-    console.log(error);
-    return new Response(`Failed to fetch contacts: ${error}`, {
-      status: 500,
-    });
+    return new Response(`Failed to fetch contacts: ${error}`, { status: 500 });
   }
 };
 
 export const POST = async (req) => {
   try {
     const session = await getServerSession(authOptions);
+    const body = await req.json();
 
     if (!session) {
-      return (
-        new Response("You must be signed in to create a contact"),
-        { status: 401 }
-      );
+      return new Response("You must be signed in to create a contact", {
+        status: 401,
+      });
+    } else {
+      body.userId = session.user.id;
     }
 
-    const {
-      applicationId,
-      name,
-      title,
-      email,
-      linkedIn,
-      notes,
-      outreachStage,
-      outreachDate,
-    } = await req.json();
-
-    const reqObj = {
-      userId: session.user.id,
-      applicationId,
-      name,
-      title,
-      email,
-      linkedIn,
-      outreachStage,
-      outreachDate,
-      notes,
-    };
-
     try {
-      await contactSchema.validate(reqObj);
+      await contactSchema.validate(body);
     } catch (error) {
       setError(error.message);
       return;
     }
 
-    const nextActionDate = getNextActionDate(outreachStage, outreachDate);
+    console.log("HERE");
 
-    const contact = await prisma.contact.create({
-      data: {
-        nextActionDate,
-        ...reqObj,
-      },
-    });
+    const nextActionDate = getNextActionDate(
+      body.outreachStage,
+      body.outreachDate
+    );
+    body.nextActionDate = nextActionDate;
 
-    return new Response(JSON.stringify(contact), {
-      status: 201,
-    });
+    const contact = await prisma.contact.create({ data: body });
+
+    return new Response(JSON.stringify(contact), { status: 201 });
   } catch (error) {
-    return new Response(`Failed to create contact: ${error}`, {
-      status: 500,
-    });
+    return new Response(`Failed to create contact: ${error}`, { status: 500 });
   }
 };

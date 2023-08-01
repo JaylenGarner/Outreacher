@@ -1,63 +1,50 @@
 import prisma from "../../../../../lib/prisma";
-import { authOptions } from "../../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { authOptions } from "../../auth/[...nextauth]/route";
 import { applicationSchema } from "@/validations/applicationValidation";
 
 export const PUT = async (req, { params }) => {
   try {
     const session = await getServerSession(authOptions);
+    const body = await req.json();
+    const userId = session.user.id;
+    const applicationId = Number(params.id);
 
     if (!session) {
       return new Response("You must be signed in to edit applications", {
         status: 401,
       });
+    } else {
+      body.userId = userId;
     }
 
-    const { company, position, posting, salary, location, notes, status } =
-      await req.json();
-
-    const reqObj = {
-      userId: session.user.id,
-      company,
-      position,
-      posting,
-      salary,
-      location,
-      notes,
-      status,
-    };
-
     try {
-      await applicationSchema.validate(reqObj);
+      await applicationSchema.validate(body);
     } catch (error) {
       setError(error.message);
       return;
     }
 
     const application = await prisma.application.findUnique({
-      where: { id: Number(params.id) },
+      where: { id: applicationId },
     });
 
     if (!application) {
       return new Response("Application not found", { status: 404 });
     }
 
-    if (session.user.id !== application.userId) {
+    if (userId !== application.userId) {
       return new Response("You are not the owner of this application", {
         status: 401,
       });
     }
 
     const updatedApplication = await prisma.application.update({
-      where: {
-        id: Number(params.id),
-      },
-      data: reqObj,
+      where: { id: applicationId },
+      data: body,
     });
 
-    return new Response(JSON.stringify(updatedApplication), {
-      status: 202,
-    });
+    return new Response(JSON.stringify(updatedApplication), { status: 202 });
   } catch (error) {
     return new Response(`Failed to edit application: ${error}`, {
       status: 500,
@@ -68,6 +55,8 @@ export const PUT = async (req, { params }) => {
 export const DELETE = async (req, { params }) => {
   try {
     const session = await getServerSession(authOptions);
+    const userId = session.user.id;
+    const applicationId = Number(params.id);
 
     if (!session) {
       return new Response("You must be signed in to perform this action", {
@@ -76,25 +65,19 @@ export const DELETE = async (req, { params }) => {
     }
 
     const application = await prisma.application.findUnique({
-      where: { id: Number(params.id) },
+      where: { id: applicationId },
     });
 
-    if (!application) {
+    if (!application)
       return new Response("Application not found", { status: 404 });
-    }
 
-    if (session.user.id !== application.userId) {
+    if (userId !== application.userId) {
       return new Response("You are not the owner of this application", {
         status: 401,
       });
     }
 
-    await prisma.application.delete({
-      where: {
-        id: Number(params.id),
-        userId: session.user.id,
-      },
-    });
+    await prisma.application.delete({ where: { id: applicationId } });
 
     return new Response("Application deleted successfully", { status: 202 });
   } catch (error) {
