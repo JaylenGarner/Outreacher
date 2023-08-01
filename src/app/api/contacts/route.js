@@ -48,16 +48,18 @@ export const POST = async (req) => {
     try {
       await contactSchema.validate(body);
     } catch (error) {
-      console.log("Validation error");
       setError(error.message);
       return;
     }
 
     console.log("Body", body);
 
-    const contact = await prisma.contact.create({ data: body });
-
-    console.log("PAST CREATION");
+    try {
+      const contact = await prisma.contact.create({ data: body });
+      console.log(contact);
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
 
     return new Response(JSON.stringify(contact), { status: 201 });
   } catch (error) {
