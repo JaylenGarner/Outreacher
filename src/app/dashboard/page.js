@@ -25,7 +25,9 @@ const Dashboard = () => {
 
   const fetchApplications = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/applications`);
+      const response = await fetch(
+        `https://outreacher.vercel.app/api/applications`
+      );
       const data = await response.json();
       dispatch(getApplications(data));
     } catch (error) {
@@ -35,7 +37,9 @@ const Dashboard = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/contacts`);
+      const response = await fetch(
+        `https://outreacher.vercel.app/api/contacts`
+      );
       const data = await response.json();
       dispatch(getContacts(data));
     } catch (error) {
