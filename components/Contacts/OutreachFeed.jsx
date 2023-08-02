@@ -20,7 +20,7 @@ const OutreachFeed = () => {
   }, [contacts]);
 
   return (
-    <div className="flex flex-col items-center overflow-y-scroll w-full">
+    <div className="flex flex-col items-center overflow-y-scroll w-full no-scrollbar">
       <div className="flex flex_center m-8">
         <h2 className="text-4xl font-bold text-white">Outreach</h2>
       </div>
