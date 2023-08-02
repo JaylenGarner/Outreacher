@@ -14,7 +14,7 @@ export const authOptions = {
 
         const apiUrl =
           process.env.NEXT_PUBLIC_ENV === "production"
-            ? "https://outreacher.vercel.app/api"
+            ? "https://outreacher.app/api"
             : "http://localhost:3000/api";
 
         console.log(apiUrl, "API URL");

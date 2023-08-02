@@ -15,7 +15,7 @@ import { setUser } from "@/redux/reducers/userSlice";
 
 const apiUrl =
   process.env.NEXT_PUBLIC_ENV === "production"
-    ? "https://outreacher.vercel.app/api"
+    ? "https://outreacher.app/api"
     : "http://localhost:3000/api";
 
 const Dashboard = () => {
