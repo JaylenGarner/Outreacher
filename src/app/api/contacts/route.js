@@ -53,7 +53,6 @@ export const POST = async (req) => {
     }
 
     const contact = await prisma.contact.create({ data: body });
-    console.log("result", contact);
     return new Response(JSON.stringify(contact), { status: 201 });
   } catch (error) {
     return new Response(`Failed to create contact: ${error}`, { status: 500 });
