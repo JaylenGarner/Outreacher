@@ -26,7 +26,7 @@ const OutreachFeed = () => {
       </div>
 
       <motion.div
-        className="overflow-y-scroll overflow-x-hidden w-4/6"
+        className="overflow-y-scroll overflow-x-hidden w-4/6 no-scrollbar"
         initial={{ y: 200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 35, damping: 14 }}
