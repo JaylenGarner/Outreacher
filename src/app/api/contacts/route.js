@@ -2,7 +2,7 @@ import prisma from "../../../../lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { contactSchema } from "@/validations/contactValidation";
-import getNextActionDate from "../../../../lib/contact/getNextActionDate";
+import getNextActionDate from "../../../../lib/helpers/getNextActionDate";
 
 export const GET = async (req) => {
   try {

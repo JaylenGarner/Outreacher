@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import handleCreateApplication from "../../lib/application/handleCreateApplication";
+import handleCreateApplication from "../../lib/handlers/application/handleCreateApplication";
 import ApplicationForm from "./ApplicationForm";
 import DeleteButton from "../Buttons/DeleteButton";
 

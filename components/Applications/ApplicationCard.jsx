@@ -3,7 +3,7 @@
 import { useDispatch } from "react-redux";
 import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
-import getEmoji from "../../lib/application/getEmoji";
+import getEmoji from "../../lib/helpers/getEmoji";
 import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactListButton from "../Buttons/ContactListButton";
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createContact } from "@/redux/reducers/contactSlice";
-import handleCreateContact from "../../lib/contact/handleCreateContact";
+import handleCreateContact from "../../lib/handlers/contact/handleCreateContact";
 import ContactForm from "./ContactForm";
 import DeleteButton from "../Buttons/DeleteButton";
 

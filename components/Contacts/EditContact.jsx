@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createContact, deleteContact } from "@/redux/reducers/contactSlice";
-import handleEditContact from "../../lib/contact/handleEditContact";
+import handleEditContact from "../../lib/handlers/contact/handleEditContact";
 import ContactForm from "./ContactForm";
 import { clearCurrentContact } from "@/redux/reducers/currentContactSlice";
 import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import DeleteButton from "../Buttons/DeleteButton";
 import ApplicationButton from "../Buttons/ApplicationButton";
-import handleDeleteContact from "../../lib/contact/handleDeleteContact";
+import handleDeleteContact from "../../lib/handlers/contact/handleDeleteContact";
 
 const EditContact = () => {
   const dispatch = useDispatch();

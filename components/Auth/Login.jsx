@@ -16,11 +16,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("HERE");
+
     const result = await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
+
+    console.log("HERE AFTER RESULE", result);
 
     if (result.error) {
       setError("Invalid credentials, please try again.");

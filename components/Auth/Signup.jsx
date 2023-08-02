@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "next-auth/react";
-import handleSignup from "../../lib/user/handleSignup";
+import handleSignup from "../../lib/handlers/user/handleSignup";
 import { motion } from "framer-motion";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import SubmitButton from "../Buttons/SubmitButton";

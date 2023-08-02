@@ -13,6 +13,11 @@ import { redirect } from "next/navigation";
 import { getContacts } from "@/redux/reducers/contactSlice";
 import { setUser } from "@/redux/reducers/userSlice";
 
+const apiUrl =
+  process.env.NEXT_PUBLIC_ENV === "production"
+    ? "https://outreacher.vercel.app/api"
+    : "http://localhost:3000/api";
+
 const Dashboard = () => {
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
@@ -25,9 +30,7 @@ const Dashboard = () => {
 
   const fetchApplications = async () => {
     try {
-      const response = await fetch(
-        `https://outreacher.vercel.app/api/applications`
-      );
+      const response = await fetch(`${apiUrl}/applications`);
       const data = await response.json();
       dispatch(getApplications(data));
     } catch (error) {
@@ -37,9 +40,7 @@ const Dashboard = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch(
-        `https://outreacher.vercel.app/api/contacts`
-      );
+      const response = await fetch(`${apiUrl}/contacts`);
       const data = await response.json();
       dispatch(getContacts(data));
     } catch (error) {

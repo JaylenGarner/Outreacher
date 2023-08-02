@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import OutreachCard from "./OutreachCard";
-import getOutreachFeed from "../../lib/contact/getOutreachFeed";
+import getOutreachFeed from "../../lib/helpers/getOutreachFeed";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 

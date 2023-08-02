@@ -10,7 +10,15 @@ export const authOptions = {
       },
 
       async authorize(credentials, req) {
-        const res = await fetch("https://outreacher.vercel.app/api/login", {
+        console.log("AUTHORIZE");
+
+        const apiUrl =
+          process.env.NEXT_PUBLIC_ENV === "production"
+            ? "https://outreacher.vercel.app/api"
+            : "http://localhost:3000/api";
+
+        console.log(apiUrl, "API URL");
+        const res = await fetch(`${apiUrl}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
