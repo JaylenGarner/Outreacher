@@ -1,4 +1,5 @@
 import "../../styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import { oswald } from "./fonts";
 
 import Provider from "../../components/Provider";
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <Provider>
         <body className={`${oswald.className} h-screen violet_gradient`}>
           <ReduxProvider>{children}</ReduxProvider>
+          <Analytics />
         </body>
       </Provider>
     </html>
