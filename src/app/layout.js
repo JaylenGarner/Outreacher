@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body className={`${oswald.className} h-screen violet_gradient`}>
+        <body
+          className={`${oswald.className} max-h-screen max-w-screen violet_gradient`}
+        >
           <ReduxProvider>{children}</ReduxProvider>
           <Analytics />
         </body>

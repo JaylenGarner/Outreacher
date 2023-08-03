@@ -23,8 +23,9 @@ const Home = () => {
   return (
     <div className="h-screen flex_center">
       {modalOpen && <Modal />}
-      <div className="flex flex_center flex-col space-y-6 max-w-[650px]">
-        <h1 className="text-8xl font-bold text-white ">Outreacher</h1>
+      <div className="flex flex_center flex-col max-w-[650px]">
+        <img src="/logo.svg" className="w-96"></img>
+
         <p className="text-center  text-slate-300 font-semibold text-2xl flex-wrap">
           Say goodbye to the hassle of tracking your follow-ups and let
           Outreacher simplify your job search. Our mission is to streamline your
@@ -32,7 +33,7 @@ const Home = () => {
           Spend less time on organization and more on making new connections.
         </p>
 
-        <div className="flex w-full flex_center space-x-8">
+        <div className="flex w-full flex_center space-x-8 mt-6">
           <AuthButton type={"Login"} />
           <AuthButton type={"Signup"} />
         </div>

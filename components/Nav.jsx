@@ -11,7 +11,8 @@ const Nav = () => {
     <div className="nav">
       <Link href="/dashboard">
         <div className="flex space-x-2 flex_center">
-          <h1 className="text-3xl font-bold">Outreacher</h1>
+          <img src="/logo.png" className="w-20"></img>
+          {/* <h1 className="text-3xl font-bold">Outreacher</h1> */}
         </div>
       </Link>
 
