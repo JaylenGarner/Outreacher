@@ -23,10 +23,10 @@ const Home = () => {
   return (
     <div className="h-screen flex_center">
       {modalOpen && <Modal />}
-      <div className="flex flex_center flex-col max-w-[650px]">
-        <img src="/logo.svg" className="w-96"></img>
+      <div className="flex flex_center flex-col max-w-[650px] w-screen">
+        <img src="/logo.svg" className="w-96 max-mobile:w-80"></img>
 
-        <p className="text-center  text-slate-300 font-semibold text-2xl flex-wrap">
+        <p className="text-center  text-slate-300 font-semibold text-2xl flex-wrap pr-4 pl-4 max-mobile:text-xl">
           Say goodbye to the hassle of tracking your follow-ups and let
           Outreacher simplify your job search. Our mission is to streamline your
           networking agenda and maximize the value of your outreach efforts.

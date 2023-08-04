@@ -18,7 +18,7 @@ const AuthButton = ({ type }) => {
           ? dispatch(setCurrentModal("Login"))
           : dispatch(setCurrentModal("Signup"));
       }}
-      className="bg-white w-[200px] h-[50px] rounded-full flex flex_center font-bold text-xl cursor-pointer"
+      className="bg-white w-[200px] h-[50px] max-mobile:w-[140px] rounded-full flex flex_center font-bold text-xl cursor-pointer"
     >
       {type}
     </motion.div>
