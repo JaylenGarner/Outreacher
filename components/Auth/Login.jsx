@@ -35,9 +35,9 @@ const Login = () => {
 
   return (
     <form className="form pt-4" onSubmit={handleSubmit}>
-      <h1 className="modal_header ">Login to Outreacher</h1>
+      <h1 className="modal_header">Login to Outreacher</h1>
 
-      {error ? (
+      {error && (
         <motion.span
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -46,8 +46,6 @@ const Login = () => {
         >
           {error}
         </motion.span>
-      ) : (
-        <span></span>
       )}
 
       <input
@@ -81,6 +79,7 @@ const Login = () => {
           Signup here
         </span>
       </span>
+      <br></br>
     </form>
   );
 };

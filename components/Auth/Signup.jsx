@@ -41,7 +41,7 @@ const Signup = () => {
     <form className="form pt-4" onSubmit={handleSubmit}>
       <h1 className="modal_header">Signup for Outreacher</h1>
 
-      {error ? (
+      {error && (
         <motion.span
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -50,51 +50,47 @@ const Signup = () => {
         >
           {error}
         </motion.span>
-      ) : (
-        <span></span>
       )}
 
-      <div className="flex justify-around w-full">
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          placeholder="First Name"
-          required
-          className="input"
-        ></input>
+      <input
+        type="text"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        placeholder="First Name"
+        required
+        className="input"
+      ></input>
 
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-          className="input"
-        ></input>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+        required
+        className="input"
+      ></input>
+
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        required
+        className="input"
+      ></input>
+
+      <input
+        type="password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        placeholder="Confirm Password"
+        required
+        className="input"
+      ></input>
+
+      <div className="pt-2">
+        <SubmitButton label={"Create Account"} />
       </div>
-
-      <div className="flex justify-around w-full pb-4">
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-          className="input"
-        ></input>
-
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          required
-          className="input"
-        ></input>
-      </div>
-
-      <SubmitButton label={"Create Account"} />
 
       <span>
         Have an account? &nbsp;
@@ -105,6 +101,7 @@ const Signup = () => {
           Login here
         </span>
       </span>
+      <br></br>
     </form>
   );
 };

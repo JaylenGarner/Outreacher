@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div className="h-screen flex_center">
       {modalOpen && <Modal />}
-      <div className="flex flex_center flex-col max-w-[650px] w-screen">
+      <div className="flex flex_center flex-col max-w-[650px] max-h-screen">
         <img src="/logo.svg" className="w-96 max-mobile:w-80"></img>
 
         <p className="text-center  text-slate-300 font-semibold text-2xl flex-wrap pr-4 pl-4 max-mobile:text-xl">
