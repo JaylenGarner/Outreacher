@@ -119,7 +119,6 @@ const ApplicationForm = ({
           <option>Queue</option>
           <option>Applied</option>
           <option>Interview</option>
-          <option>Coding Challenge</option>
           <option>No Response</option>
           <option>Rejected</option>
           <option>Offer</option>

@@ -3,6 +3,7 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
+import FeedButton from "../Buttons/FeedButton";
 import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 
 const ApplicationsFeed = () => {
@@ -14,6 +15,9 @@ const ApplicationsFeed = () => {
     <div className="flex flex-col overflow-y-scroll w-full items-center no-scrollbar">
       <div className="flex flex_center m-8 space-x-4">
         <h2 className="text-4xl font-bold  text-white">Applications</h2>
+        <div className=" lg:hidden">
+          <FeedButton />
+        </div>
         <CreateApplicationButton />
       </div>
 

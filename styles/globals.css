@@ -47,6 +47,10 @@
     @apply grid grid-cols-2 overflow-scroll no-scrollbar
 }
 
+.dashboard_mobile {
+    @apply grid grid-cols-1 overflow-scroll no-scrollbar
+}
+
 
 /* Modal */
 

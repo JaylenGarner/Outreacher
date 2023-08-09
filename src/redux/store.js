@@ -5,6 +5,7 @@ import currentApplication from "./reducers/currentApplicationSlice";
 import contacts from "./reducers/contactSlice";
 import currentContact from "./reducers/currentContactSlice";
 import currentModal from "./reducers/currentModalSlice";
+import currentFeed from "./reducers/currentFeedSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     contacts,
     currentContact,
     currentModal,
+    currentFeed,
   },
 });
 

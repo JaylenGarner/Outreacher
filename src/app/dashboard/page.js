@@ -8,7 +8,7 @@ import { getApplications } from "@/redux/reducers/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import { getContacts } from "@/redux/reducers/contactSlice";
 import { setUser } from "@/redux/reducers/userSlice";
@@ -23,6 +23,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const modalOpen = useSelector((state) => state.currentModal);
   const user = useSelector((state) => state.user);
+  const currentFeed = useSelector((state) => state.currentFeed);
 
   if (!session) {
     return redirect("/");
@@ -65,9 +66,16 @@ const Dashboard = () => {
     >
       <Nav />
       {modalOpen && <Modal />}
-      <div className="dashboard">
+
+      {/* Desktop */}
+      <div className="dashboard max-lg:hidden">
         <OutreachFeed />
         <ApplicationsFeed />
+      </div>
+
+      {/* Mobile & Tablet */}
+      <div className="dashboard_mobile lg:hidden">
+        {currentFeed === "outreach" ? <OutreachFeed /> : <ApplicationsFeed />}
       </div>
     </motion.div>
   );

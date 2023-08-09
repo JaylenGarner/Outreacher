@@ -4,7 +4,6 @@ const statuses = [
   "Queue",
   "Applied",
   "Interview",
-  "Coding Challenge",
   "No Response",
   "Rejected",
   "Offer",
