@@ -59,7 +59,7 @@ const Dashboard = () => {
 
   return (
     <motion.div
-      className="dashboard_container"
+      className="h-screen w-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -68,13 +68,13 @@ const Dashboard = () => {
       {modalOpen && <Modal />}
 
       {/* Desktop */}
-      <div className="dashboard max-lg:hidden">
+      <div className="dashboard max-split_dashboard:hidden">
         <OutreachFeed />
         <ApplicationsFeed />
       </div>
 
       {/* Mobile & Tablet */}
-      <div className="dashboard_mobile lg:hidden">
+      <div className="dashboard_mobile split_dashboard:hidden">
         {currentFeed === "outreach" ? <OutreachFeed /> : <ApplicationsFeed />}
       </div>
     </motion.div>

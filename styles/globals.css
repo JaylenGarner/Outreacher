@@ -39,10 +39,6 @@
 
 /* Dashboard */
 
-.dashboard_container {
-    @apply h-screen w-screen flex flex-col overflow-y-hidden
-}
-
 .dashboard {
     @apply grid grid-cols-2 overflow-scroll no-scrollbar
 }
@@ -99,7 +95,7 @@
 /* Cards */
 
 .card {
-    @apply flex pr-1 pl-1 mb-2 rounded-xl cursor-pointer items-center justify-between overflow-hidden h-[100px]
+    @apply flex pr-1 pl-1 mb-2 rounded-xl cursor-pointer flex_center overflow-hidden h-[100px] w-[650px] max-2xl:w-[500px] max-split_dashboard:w-[650px] max-md:w-[500px] max-sm:w-[400px] max-mobile:w-[315px]
 }
 
 .application_card {

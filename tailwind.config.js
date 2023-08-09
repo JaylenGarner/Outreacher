@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       screens: {
         mobile: "500px",
+        split_dashboard: "1200px",
       },
     },
   },

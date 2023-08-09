@@ -23,13 +23,13 @@ const OutreachFeed = () => {
     <div className="flex flex-col items-center overflow-y-scroll w-full no-scrollbar">
       <div className="flex flex_center m-8 space-x-4">
         <h2 className="text-4xl font-bold text-white">Outreach</h2>
-        <div className=" lg:hidden">
+        <div className=" split_dashboard:hidden">
           <FeedButton />
         </div>
       </div>
 
       <motion.div
-        className="overflow-y-scroll overflow-x-hidden w-4/6 no-scrollbar"
+        className="overflow-y-scroll overflow-x-hidden no-scrollbar"
         initial={{ y: 200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 35, damping: 14 }}
