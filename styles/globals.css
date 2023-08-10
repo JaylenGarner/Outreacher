@@ -39,6 +39,10 @@
 
 /* Dashboard */
 
+.dashboard_container {
+    @apply h-screen w-screen flex flex-col overflow-y-hidden
+}
+
 .dashboard {
     @apply grid grid-cols-2 overflow-scroll no-scrollbar
 }
@@ -50,16 +54,8 @@
 
 /* Modal */
 
-.modal_template {
-    @apply bg-white  rounded-xl z-20
-}
-
 .modal {
-    @apply modal_template h-[500px] w-[800px]
-}
-
-.auth_modal {
-    @apply modal_template h-fit w-fit
+    @apply h-fit w-fit bg-white  rounded-xl z-20
 }
 
 .modal_header {
@@ -69,19 +65,31 @@
 /* Forms */
 
 .form{
-    @apply flex flex-col w-full h-full items-center space-y-4 pr-8 pl-8
+    @apply flex flex-col w-full h-full items-center space-y-4  pr-10 pl-10 pb-4
 }
 
 .login_form {
     @apply form justify-center h-[500px]
 }
 
+.form_field {
+    @apply p-2  border border-black rounded-md text-ellipsis
+}
+
+.input_container {
+    @apply grid grid-cols-2 max-md:grid-cols-1 max-md:space-y-4
+}
+
 .input {
-    @apply p-2 border border-black rounded-md text-ellipsis w-[400px] max-sm:w-[350px] max-mobile:w-[220px] text-lg outline-none
+    @apply form_field h-[50px] w-[400px] max-sm:w-[350px] max-mobile:w-[220px] text-lg outline-none
+}
+
+.input_two {
+    @apply form_field h-[50px] max-break_modal:h-[40px] max-break_modal:text-sm w-[300px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] mr-4 ml-4
 }
 
 .textarea {
-    @apply w-[662px] resize-none
+    @apply form_field h-[160px] max-break_modal:h-[40px] max-md:h-[100px] w-[634px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] resize-none
 }
 
 .form_link {

@@ -45,7 +45,14 @@ const EditContact = () => {
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
-        <h1 className="modal_header">Contact for {application.company}</h1>
+        {/* Desktop */}
+        <h1 className="modal_header max-md:hidden">
+          Contact for {application.company}
+        </h1>
+
+        {/* Mobile & Tablet */}
+        <h1 className="modal_header md:hidden">Contact</h1>
+
         <ApplicationButton application={application} />
         <DeleteButton action={handleDelete} />
       </div>

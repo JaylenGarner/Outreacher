@@ -59,7 +59,7 @@ const Dashboard = () => {
 
   return (
     <motion.div
-      className="h-screen w-screen"
+      className="w-screen h-screen flex flex-col overflow-y-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

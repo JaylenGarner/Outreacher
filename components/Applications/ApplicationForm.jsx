@@ -64,14 +64,14 @@ const ApplicationForm = ({
         <span className="pt-1"></span>
       )}
 
-      <div className="flex justify-around w-full">
+      <div className="input_container">
         <input
           type="text"
           value={company}
           placeholder="Company"
           onChange={(e) => setCompany(e.target.value)}
           required
-          className="input"
+          className="input_two"
         />
 
         <input
@@ -79,18 +79,18 @@ const ApplicationForm = ({
           value={position}
           placeholder="Position"
           onChange={(e) => setPosition(e.target.value)}
-          className="input"
+          className="input_two"
           required
         />
       </div>
 
-      <div className="flex justify-around w-full">
+      <div className="input_container">
         <input
           type="text"
           value={posting}
           placeholder="Posting"
           onChange={(e) => setPosting(e.target.value)}
-          className="input"
+          className="input_two"
         />
 
         <input
@@ -98,23 +98,23 @@ const ApplicationForm = ({
           value={salary}
           placeholder="Salary"
           onChange={(e) => setSalary(e.target.value)}
-          className="input"
+          className="input_two"
         />
       </div>
 
-      <div className="flex justify-around w-full">
+      <div className="input_container">
         <input
           type="text"
           value={location}
           placeholder="Location"
           onChange={(e) => setLocation(e.target.value)}
-          className="input"
+          className="input_two"
         />
 
         <select
           value={status}
           onChange={(e) => setStatus(e.target.value)}
-          className="input"
+          className="input_two"
         >
           <option>Queue</option>
           <option>Applied</option>
@@ -130,7 +130,7 @@ const ApplicationForm = ({
         placeholder="Notes..."
         cols={30}
         rows={4}
-        className=" input textarea"
+        className="textarea"
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>

@@ -58,14 +58,14 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         <span className="pt-1"></span>
       )}
 
-      <div className="flex justify-around w-full">
+      <div className="input_container">
         <input
           type="text"
           value={name}
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
           required
-          className="input"
+          className="input_two"
         />
 
         <input
@@ -73,18 +73,18 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
           value={title}
           placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
-          className="input"
+          className="input_two"
           required
         />
       </div>
 
-      <div className="flex justify-around w-full">
+      <div className="input_container">
         <input
           type="text"
           value={linkedIn}
           placeholder="LinkedIn Profile URL"
           onChange={(e) => setLinkedIn(e.target.value)}
-          className="input"
+          className="input_two"
         />
 
         <input
@@ -92,15 +92,15 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
           value={email}
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-          className="input"
+          className="input_two"
         />
       </div>
 
-      <div className="flex justify-around w-full">
+      <div className="input_container">
         <select
           value={outreachStage}
           onChange={(e) => setOutreachStage(e.target.value)}
-          className="input"
+          className="input_two"
         >
           <option>Initial Outreach</option>
           <option>Follow Up</option>
@@ -112,7 +112,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
           type="date"
           value={outreachDate}
           onChange={(e) => setOutreachDate(e.target.value)}
-          className="input"
+          className="input_two"
         />
       </div>
 
@@ -120,7 +120,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         placeholder="Notes..."
         cols={30}
         rows={4}
-        className=" input textarea"
+        className="textarea"
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
