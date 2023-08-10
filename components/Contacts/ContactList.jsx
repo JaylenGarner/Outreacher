@@ -17,7 +17,7 @@ const ContactList = () => {
       </div>
 
       <motion.div
-        className="overflow-y-scroll overflow-x-hidden w-4/6 h-5/6 no-scrollbar"
+        className="overflow-y-scroll overflow-x-hidden no-scrollbar pr-10 pl-10 pb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
