@@ -46,15 +46,14 @@ const EditContact = () => {
     <>
       <div className="flex flex_center pt-4 space-x-4">
         {/* Desktop */}
-        <h1 className="modal_header max-md:hidden">
-          Contact for {application.company}
-        </h1>
-
-        {/* Mobile & Tablet */}
-        <h1 className="modal_header md:hidden">Contact</h1>
-
+        <h1 className="modal_header">Update Contact</h1>
         <ApplicationButton application={application} />
         <DeleteButton action={handleDelete} />
+      </div>
+      <div className="flex flex_center pt-2">
+        <span className="italic font-semibold  text-xl text-center">
+          {application.company}
+        </span>
       </div>
       <ContactForm
         type={"Edit"}

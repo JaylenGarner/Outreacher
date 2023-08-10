@@ -29,10 +29,13 @@ const CreateContact = () => {
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
-        <h1 className="modal_header">
-          Create Contact for {application.company}
-        </h1>
+        <h1 className="modal_header">Create Contact</h1>
         <DeleteButton action={handleDiscard} />
+      </div>
+      <div className="flex flex_center pt-2">
+        <span className="italic font-semibold  text-xl text-center">
+          {application.company}
+        </span>
       </div>
       <ContactForm type={"Create"} handleCreate={handleCreate} error={error} />
     </>

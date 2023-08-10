@@ -44,10 +44,7 @@ const EditApplication = () => {
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
-        <h1 className="modal_header">
-          Last Activity &nbsp;
-          {new Date(application.updatedAt).toLocaleDateString()}
-        </h1>
+        <h1 className="modal_header">Update Application</h1>
         <CreateContactButton application={application} />
         <ContactListButton application={application} />
         <DeleteButton action={handleDelete} />
