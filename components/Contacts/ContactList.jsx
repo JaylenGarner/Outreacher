@@ -10,14 +10,19 @@ const ContactList = () => {
   const contacts = useSelector((state) => state.contacts);
 
   return (
-    <div className="flex flex-col overflow-y-scroll w-full h-[500px] no-scrollbar">
-      <div className="flex flex_center space-x-4 m-4">
-        <h2 className="modal_header">Contacts for {application.company}</h2>
+    <div className="flex flex-col overflow-y-scroll h-[500px] no-scrollbar">
+      <div className="flex flex_center pt-4 space-x-4">
+        <h2 className="modal_header">Contact List</h2>
         <CreateContactButton application={application} />
+      </div>
+      <div className="flex flex_center pt-2">
+        <span className="italic font-semibold  text-xl text-center pb-4">
+          {application.company}
+        </span>
       </div>
 
       <motion.div
-        className="overflow-y-scroll overflow-x-hidden no-scrollbar pr-10 pl-10 pb-4"
+        className="overflow-y-scroll overflow-x-hidden no-scrollbar pr-6 pl-6 pb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
