@@ -101,7 +101,6 @@ const Signup = () => {
           Login here
         </span>
       </span>
-      <br></br>
     </form>
   );
 };
