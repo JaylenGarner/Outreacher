@@ -22,7 +22,7 @@ const ContactList = () => {
       </div>
 
       <motion.div
-        className="overflow-y-scroll overflow-x-hidden no-scrollbar pr-6 pl-6 pb-4"
+        className="overflow-y-scroll overflow-x-hidden no-scrollbar pr-6 pl-6 mb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
@@ -38,6 +38,7 @@ const ContactList = () => {
               );
             }
           })}
+        <div className="placeholder"></div>
       </motion.div>
     </div>
   );

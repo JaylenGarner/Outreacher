@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Info = () => {
   return (
-    <div className="pt-4 pb-4 pr-10 pl-10 flex_center flex-col space-y-4">
+    <div className="pt-4 pb-4 pr-10 pl-10 flex_center flex-col space-y-2">
       <h2 className="modal_header">Information</h2>
       <p className="max-w-[550px] text-lg pb-4 text-center">
         The Outreach Algorithm streamlines follow-up management by considering
@@ -22,7 +22,7 @@ const Info = () => {
 
       <div className="flex space-x-4 flex_center pt-4">
         <Link href="https://moonraydevelopment.com" target="_blank">
-          <img src="/moonray-logo.png" className="w-[80px]"></img>
+          <img src="/moonray-logo.svg" className="w-[80px]"></img>
         </Link>
         <Link href="https://www.linkedin.com/in/jaylen-garner/" target="_blank">
           <img src="/linkedin-logo.png" className="w-[65px]"></img>

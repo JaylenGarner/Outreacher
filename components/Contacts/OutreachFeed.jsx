@@ -9,7 +9,10 @@ import { useEffect, useState } from "react";
 
 const OutreachFeed = () => {
   const contacts = useSelector((state) => state.contacts);
+  const contactsLoaded = useSelector((state) => state.contactsLoaded);
   const [outreach, setOutreach] = useState([]);
+
+  console.log(contactsLoaded);
 
   useEffect(() => {
     const updateFeed = async () => {
@@ -28,23 +31,32 @@ const OutreachFeed = () => {
         </div>
       </div>
 
-      <motion.div
-        className="overflow-y-scroll overflow-x-hidden no-scrollbar"
-        initial={{ y: 200, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 35, damping: 14 }}
-      >
-        {outreach &&
-          outreach.map((contact) => {
-            return (
-              <OutreachCard
-                key={contact.id}
-                contact={contact}
-                className={"application_card"}
-              />
-            );
-          })}
-      </motion.div>
+      {!contactsLoaded ? (
+        <span>loading...</span>
+      ) : contactsLoaded && !outreach.length ? (
+        <span className="text-white text-2xl card text-center">
+          Start reaching out to contacts to populate your outreach feed, learn
+          more about the algorithm here.
+        </span>
+      ) : (
+        <motion.div
+          className="overflow-y-scroll overflow-x-hidden no-scrollbar"
+          initial={{ y: 200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 35, damping: 14 }}
+        >
+          {outreach &&
+            outreach.map((contact) => {
+              return (
+                <OutreachCard
+                  key={contact.id}
+                  contact={contact}
+                  className={"application_card"}
+                />
+              );
+            })}
+        </motion.div>
+      )}
     </div>
   );
 };

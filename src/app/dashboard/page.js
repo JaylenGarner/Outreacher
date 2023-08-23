@@ -5,6 +5,8 @@ import OutreachFeed from "../../../components/Contacts/OutreachFeed";
 import ApplicationsFeed from "../../../components/Applications/ApplicationsFeed";
 import Modal from "../../../components/Modal";
 import { getApplications } from "@/redux/reducers/applicationSlice";
+import { setApplicationsLoaded } from "@/redux/reducers/applicationsLoadedSlice";
+import { setContactsLoaded } from "@/redux/reducers/contactsLoadedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
@@ -34,6 +36,7 @@ const Dashboard = () => {
       const response = await fetch(`${apiUrl}/applications`);
       const data = await response.json();
       dispatch(getApplications(data));
+      dispatch(setApplicationsLoaded(true));
     } catch (error) {
       console.log(error);
     }
@@ -44,6 +47,7 @@ const Dashboard = () => {
       const response = await fetch(`${apiUrl}/contacts`);
       const data = await response.json();
       dispatch(getContacts(data));
+      dispatch(setContactsLoaded(true));
     } catch (error) {
       console.log(error);
     }

@@ -8,6 +8,7 @@ import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 
 const ApplicationsFeed = () => {
   const applications = useSelector((state) => state.applications);
+  const applicationsLoaded = useSelector((state) => state.applicationsLoaded);
   const sortByUpdatedAtDesc = (a, b) =>
     new Date(b.updatedAt) - new Date(a.updatedAt);
 
@@ -21,25 +22,35 @@ const ApplicationsFeed = () => {
         <CreateApplicationButton />
       </div>
 
-      <motion.div
-        className="overflow-y-scroll overflow-x-hidden no-scrollbar"
-        initial={{ y: 200, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 35, damping: 14 }}
-      >
-        {applications &&
-          Object.values(applications)
-            .slice()
-            .sort(sortByUpdatedAtDesc)
-            .map((application) => {
-              return (
-                <ApplicationCard
-                  key={application.id}
-                  application={application}
-                />
-              );
-            })}
-      </motion.div>
+      {!applicationsLoaded ? (
+        <span>loading...</span>
+      ) : applicationsLoaded && !Object.values(applications).length ? (
+        <span className="text-white text-2xl card text-center">
+          Here's to a fresh start. Let's start shaping a better future, one
+          opportunity at a time.
+        </span>
+      ) : (
+        <motion.div
+          className="overflow-y-scroll overflow-x-hidden no-scrollbar"
+          initial={{ y: 200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 35, damping: 14 }}
+        >
+          {applications &&
+            applicationsLoaded &&
+            Object.values(applications)
+              .slice()
+              .sort(sortByUpdatedAtDesc)
+              .map((application) => {
+                return (
+                  <ApplicationCard
+                    key={application.id}
+                    application={application}
+                  />
+                );
+              })}
+        </motion.div>
+      )}
     </div>
   );
 };
