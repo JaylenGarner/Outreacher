@@ -18,6 +18,7 @@ model User {
   password     String
   applications Application[]
   contacts     Contact[]
+  templates    Template[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
 }
@@ -54,4 +55,14 @@ model Contact {
   nextActionDate DateTime?
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
+}
+
+model Template {
+  id        Int      @id @default(autoincrement())
+  name      String
+  body      String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

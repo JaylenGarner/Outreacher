@@ -43,6 +43,17 @@ async function seedContact(applicationId, userId) {
   return contact;
 }
 
+async function seedTemplate(userId) {
+  const template = await prisma.template.create({
+    data: {
+      name: "Seed Template",
+      body: "Testing 123",
+      userId: userId,
+    },
+  });
+  return template;
+}
+
 async function main() {
   try {
     const user = await seedUser();
@@ -53,6 +64,9 @@ async function main() {
 
     const contact = await seedContact(application.id, user.id);
     console.log({ contact });
+
+    const template = await seedTemplate(user.id);
+    console.log({ template });
   } catch (e) {
     console.error(e);
   } finally {
