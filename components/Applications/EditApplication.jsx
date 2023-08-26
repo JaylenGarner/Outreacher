@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createApplication } from "@/redux/reducers/applicationSlice";
 import { deleteApplication } from "@/redux/reducers/applicationSlice";
+import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
 import handleEditApplication from "../../lib/handlers/application/handleEditApplication";
 import handleDeleteApplication from "../../lib/handlers/application/handleDeleteApplication";
 import ApplicationForm from "./ApplicationForm";
@@ -28,6 +29,7 @@ const EditApplication = () => {
     if (updatedApplication) {
       dispatch(createApplication(updatedApplication));
       dispatch(clearCurrentModal());
+      dispatch(setApplicationFormLoaded(false));
     }
   };
 

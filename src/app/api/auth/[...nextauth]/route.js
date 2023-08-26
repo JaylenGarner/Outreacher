@@ -10,14 +10,11 @@ export const authOptions = {
       },
 
       async authorize(credentials, req) {
-        console.log("AUTHORIZE");
-
         const apiUrl =
           process.env.NEXT_PUBLIC_ENV === "production"
             ? "https://outreacher.app/api"
             : "http://localhost:3000/api";
 
-        console.log(apiUrl, "API URL");
         const res = await fetch(`${apiUrl}/login`, {
           method: "POST",
           headers: {

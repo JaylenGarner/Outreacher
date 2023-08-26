@@ -3,6 +3,7 @@
 import { useSelector } from "react-redux";
 import OutreachCard from "./OutreachCard";
 import FeedButton from "../Buttons/FeedButton";
+import DotSpinner from "../LoadingSpinners/DotSpinner";
 import getOutreachFeed from "../../lib/helpers/getOutreachFeed";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -11,8 +12,6 @@ const OutreachFeed = () => {
   const contacts = useSelector((state) => state.contacts);
   const contactsLoaded = useSelector((state) => state.contactsLoaded);
   const [outreach, setOutreach] = useState([]);
-
-  console.log(contactsLoaded);
 
   useEffect(() => {
     const updateFeed = async () => {
@@ -32,7 +31,7 @@ const OutreachFeed = () => {
       </div>
 
       {!contactsLoaded ? (
-        <span>loading...</span>
+        <DotSpinner />
       ) : contactsLoaded && !outreach.length ? (
         <span className="text-white text-2xl card text-center">
           Start reaching out to contacts to populate your outreach feed, learn

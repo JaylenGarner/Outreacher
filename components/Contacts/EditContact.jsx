@@ -8,6 +8,7 @@ import handleEditContact from "../../lib/handlers/contact/handleEditContact";
 import ContactForm from "./ContactForm";
 import { clearCurrentContact } from "@/redux/reducers/currentContactSlice";
 import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
+import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
 import DeleteButton from "../Buttons/DeleteButton";
 import ApplicationButton from "../Buttons/ApplicationButton";
 import handleDeleteContact from "../../lib/handlers/contact/handleDeleteContact";
@@ -30,6 +31,7 @@ const EditContact = () => {
       dispatch(clearCurrentModal());
       dispatch(clearCurrentContact());
       dispatch(clearCurrentApplication());
+      dispatch(setContactFormLoaded(false));
     }
   };
 

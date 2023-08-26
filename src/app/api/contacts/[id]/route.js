@@ -66,7 +66,7 @@ export const DELETE = async (req, { params }) => {
       });
     }
 
-    const contact = await prisma.application.findUnique({
+    const contact = await prisma.contact.findUnique({
       where: { id: contactId },
     });
 

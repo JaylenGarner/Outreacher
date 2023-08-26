@@ -1,9 +1,11 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
+import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
 
 const ApplicationForm = ({
   type,
@@ -12,7 +14,11 @@ const ApplicationForm = ({
   handleUpdate,
   error,
 }) => {
-  const { data: session } = useSession();
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const applicationFormLoaded = useSelector(
+    (state) => state.applicationFormLoaded
+  );
 
   const [company, setCompany] = useState(
     application ? application?.company : ""
@@ -34,6 +40,7 @@ const ApplicationForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(setApplicationFormLoaded(true));
 
     const formData = {
       e,
@@ -135,7 +142,11 @@ const ApplicationForm = ({
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <SubmitButton label={type === "Create" ? type : "Save"} />
+      {!applicationFormLoaded ? (
+        <SubmitButton label={type === "Create" ? type : "Save"} />
+      ) : (
+        <TriangleSpinner />
+      )}
     </form>
   );
 };

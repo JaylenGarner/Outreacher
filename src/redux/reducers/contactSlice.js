@@ -30,7 +30,7 @@ export const contacts = createSlice({
       const applicationId = action.payload;
 
       Object.values(newState).forEach((contact) => {
-        if (contact.application === applicationId) {
+        if (contact.applicationId === applicationId) {
           delete newState[contact.id];
         }
       });

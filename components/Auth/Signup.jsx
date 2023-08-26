@@ -7,6 +7,7 @@ import handleSignup from "../../lib/handlers/user/handleSignup";
 import { motion } from "framer-motion";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import SubmitButton from "../Buttons/SubmitButton";
+import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,12 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     const response = await handleSignup(
       firstName,
       email,
@@ -34,6 +38,7 @@ const Signup = () => {
       });
 
       dispatch(setCurrentModal(null));
+      setIsLoading(false);
     }
   };
 
@@ -89,7 +94,11 @@ const Signup = () => {
       ></input>
 
       <div className="pt-2">
-        <SubmitButton label={"Create Account"} />
+        {!isLoading ? (
+          <SubmitButton label={"Create Account"} />
+        ) : (
+          <TriangleSpinner />
+        )}
       </div>
 
       <span>

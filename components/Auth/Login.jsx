@@ -6,17 +6,18 @@ import { signIn } from "next-auth/react";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
+import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
 
 const Login = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("HERE");
+    setIsLoading(true);
 
     const result = await signIn("credentials", {
       email,
@@ -24,12 +25,11 @@ const Login = () => {
       redirect: false,
     });
 
-    console.log("HERE AFTER RESULE", result);
-
     if (result.error) {
       setError("Invalid credentials, please try again.");
     } else {
       dispatch(setCurrentModal(null));
+      setIsLoading(false);
     }
   };
 
@@ -67,7 +67,7 @@ const Login = () => {
       ></input>
 
       <div className="pt-2">
-        <SubmitButton label={"Login"} />
+        {!isLoading ? <SubmitButton label={"Login"} /> : <TriangleSpinner />}
       </div>
 
       <span>

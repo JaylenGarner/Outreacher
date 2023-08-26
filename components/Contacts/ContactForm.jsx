@@ -1,15 +1,17 @@
 "use client";
 
-import { useSelector } from "react-redux";
-import { useSession } from "next-auth/react";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
+import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
 import dayjs from "dayjs";
 
 const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
-  const { data: session } = useSession();
+  const dispatch = useDispatch();
   const application = useSelector((state) => state.currentApplication);
+  const contactFormLoaded = useSelector((state) => state.contactFormLoaded);
 
   const [name, setName] = useState(contact ? contact?.name : "");
   const [title, setTitle] = useState(contact ? contact?.title : "");
@@ -27,6 +29,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(setContactFormLoaded(true));
 
     const formData = {
       e,
@@ -125,7 +128,11 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
         onChange={(e) => setNotes(e.target.value)}
       ></textarea>
 
-      <SubmitButton label={type === "Create" ? type : "Save"} />
+      {!contactFormLoaded ? (
+        <SubmitButton label={type === "Create" ? type : "Save"} />
+      ) : (
+        <TriangleSpinner />
+      )}
     </form>
   );
 };

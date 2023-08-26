@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
 import FeedButton from "../Buttons/FeedButton";
+import DotSpinner from "../LoadingSpinners/DotSpinner";
 import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 
 const ApplicationsFeed = () => {
@@ -23,7 +24,7 @@ const ApplicationsFeed = () => {
       </div>
 
       {!applicationsLoaded ? (
-        <span>loading...</span>
+        <DotSpinner />
       ) : applicationsLoaded && !Object.values(applications).length ? (
         <span className="text-white text-2xl card text-center">
           Here's to a fresh start. Let's start shaping a better future, one

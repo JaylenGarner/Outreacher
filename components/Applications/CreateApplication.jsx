@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createApplication } from "@/redux/reducers/applicationSlice";
+import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import handleCreateApplication from "../../lib/handlers/application/handleCreateApplication";
 import ApplicationForm from "./ApplicationForm";
@@ -18,6 +19,7 @@ const CreateApplication = () => {
     if (newApplication) {
       dispatch(createApplication(newApplication));
       dispatch(clearCurrentModal());
+      dispatch(setApplicationFormLoaded(false));
     }
   };
 
