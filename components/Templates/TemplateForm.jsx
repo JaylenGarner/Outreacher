@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
@@ -15,17 +14,15 @@ const TemplateForm = ({
   error,
 }) => {
   const dispatch = useDispatch();
+  const textareaRef = useRef(null);
 
-  // const applicationFormLoaded = useSelector(
-  //   (state) => state.applicationFormLoaded
-  // );
+  const templateFormLoaded = useSelector((state) => state.templateFormLoaded);
 
   const [name, setName] = useState(template ? template?.company : "");
   const [body, setBody] = useState(template ? template?.body : "");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(setApplicationFormLoaded(true));
 
     const formData = {
       e,
@@ -34,6 +31,21 @@ const TemplateForm = ({
     };
 
     type === "Create" ? handleCreate(formData) : handleUpdate(formData);
+  };
+
+  const handleVariableInsert = (variable) => {
+    const { selectionStart, selectionEnd } = textareaRef.current;
+    const newBody =
+      body.substring(0, selectionStart) +
+      variable +
+      body.substring(selectionEnd);
+
+    setBody(newBody);
+
+    const newCursorPos = selectionStart + variable.length;
+    textareaRef.current.selectionStart = newCursorPos;
+    textareaRef.current.selectionEnd = newCursorPos;
+    textareaRef.current.focus();
   };
 
   return (
@@ -50,7 +62,6 @@ const TemplateForm = ({
       ) : (
         <span className="pt-1"></span>
       )}
-
       <input
         type="text"
         value={name}
@@ -59,22 +70,37 @@ const TemplateForm = ({
         required
         className="input_two"
       />
+      <span className="text-xl font-bold text-center">Insert Variables:</span>
 
-      <select
-        // value={status}
-        onChange={(e) => setStatus(e.target.value)}
-        className="input_two"
-      >
-        <option>Queue</option>
-        <option>Applied</option>
-        <option>Interview</option>
-        <option>No Response</option>
-        <option>Rejected</option>
-        <option>Offer</option>
-        <option>Hired</option>
-      </select>
+      <div className="space-x-4">
+        <button
+          className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
+          onClick={() => handleVariableInsert("{Company}")}
+        >
+          Company
+        </button>
+        <button
+          className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
+          onClick={() => handleVariableInsert("{Position}")}
+        >
+          Position
+        </button>
+        <button
+          className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
+          onClick={() => handleVariableInsert("{Contact Name}")}
+        >
+          Contact Name
+        </button>
+        <button
+          className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
+          onClick={() => handleVariableInsert("{Contact Title}")}
+        >
+          Contact Title
+        </button>
+      </div>
 
       <textarea
+        ref={textareaRef}
         placeholder="Template..."
         cols={30}
         rows={4}
@@ -83,11 +109,11 @@ const TemplateForm = ({
         onChange={(e) => setBody(e.target.value)}
       ></textarea>
 
-      {/* {!applicationFormLoaded ? (
+      {!templateFormLoaded ? (
         <SubmitButton label={type === "Create" ? type : "Save"} />
       ) : (
         <TriangleSpinner />
-      )} */}
+      )}
     </form>
   );
 };

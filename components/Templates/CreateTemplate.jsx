@@ -30,11 +30,10 @@ const CreateTemplate = () => {
   return (
     <>
       <div className="flex flex_center pt-4">
-        {/* <h1 className="modal_header pr-4">Log Application</h1> */}
-        {/* <DeleteButton action={handleDiscard} /> */}
+        <h1 className="modal_header pr-4">Create Template</h1>
+        <DeleteButton action={handleDiscard} />
       </div>
       <TemplateForm type={"Create"} handleCreate={handleCreate} error={error} />
-      yo
     </>
   );
 };
