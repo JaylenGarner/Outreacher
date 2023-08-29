@@ -13,6 +13,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import { getContacts } from "@/redux/reducers/contactSlice";
+import { getTemplates } from "@/redux/reducers/templateSlice";
 import { setUser } from "@/redux/reducers/userSlice";
 
 const apiUrl =
@@ -53,10 +54,22 @@ const Dashboard = () => {
     }
   };
 
+  const fetchTemplates = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/templates`);
+      const data = await response.json();
+      dispatch(getTemplates(data));
+      // dispatch(setContactsLoaded(true));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (status === "authenticated") {
       fetchApplications();
       fetchContacts();
+      fetchTemplates();
       dispatch(setUser(session.user));
     }
   }, [user]);

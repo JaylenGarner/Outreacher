@@ -13,6 +13,7 @@ import CreateContact from "./Contacts/CreateContact";
 import EditContact from "./Contacts/EditContact";
 import ContactList from "./Contacts/ContactList";
 import CreateTemplate from "./Templates/CreateTemplate";
+import TemplateList from "./Templates/TemplateList";
 import Info from "./Info";
 import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
@@ -56,6 +57,7 @@ const Modal = () => {
         {currentModal === "Edit Contact" && <EditContact />}
         {currentModal === "Contact List" && <ContactList />}
         {currentModal === "Create Template" && <CreateTemplate />}
+        {currentModal === "Template List" && <TemplateList />}
         {currentModal === "Info" && <Info />}
       </motion.div>
     </motion.div>

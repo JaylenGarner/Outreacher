@@ -2,6 +2,29 @@ import prisma from "../../../../lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 
+export const GET = async (req) => {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return (
+        new Response("You must be signed in to view your templates"),
+        { status: 401 }
+      );
+    }
+
+    const templates = await prisma.template.findMany({
+      where: { userId: session.user.id },
+    });
+
+    return new Response(JSON.stringify(templates), { status: 200 });
+  } catch (error) {
+    return new Response(`Failed to fetch templates: ${error}`, {
+      status: 500,
+    });
+  }
+};
+
 export const POST = async (req) => {
   try {
     const session = await getServerSession(authOptions);

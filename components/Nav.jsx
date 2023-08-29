@@ -20,7 +20,7 @@ const Nav = () => {
 
       <div className="space-x-6">
         <span
-          onClick={() => dispatch(setCurrentModal("Create Template"))}
+          onClick={() => dispatch(setCurrentModal("Template List"))}
           className="font-bold text-2xl cursor-pointer"
         >
           Templates

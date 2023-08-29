@@ -74,26 +74,30 @@ const TemplateForm = ({
 
       <div className="space-x-4">
         <button
+          type="button"
           className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-          onClick={() => handleVariableInsert("{Company}")}
+          onClick={(e) => handleVariableInsert("{Company}")}
         >
           Company
         </button>
         <button
+          type="button"
           className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-          onClick={() => handleVariableInsert("{Position}")}
+          onClick={(e) => handleVariableInsert("{Position}")}
         >
           Position
         </button>
         <button
+          type="button"
           className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-          onClick={() => handleVariableInsert("{Contact Name}")}
+          onClick={(e) => handleVariableInsert("{Contact Name}")}
         >
           Contact Name
         </button>
         <button
+          type="button"
           className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-          onClick={() => handleVariableInsert("{Contact Title}")}
+          onClick={(e) => handleVariableInsert("{Contact Title}")}
         >
           Contact Title
         </button>

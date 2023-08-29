@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
 import FeedButton from "../Buttons/FeedButton";
 import DotSpinner from "../LoadingSpinners/DotSpinner";
-import CreateApplicationButton from "../Buttons/CreateApplicationButton";
+import CreateButton from "../Buttons/CreateButton";
 
 const ApplicationsFeed = () => {
   const applications = useSelector((state) => state.applications);
@@ -20,7 +20,9 @@ const ApplicationsFeed = () => {
         <div className=" split_dashboard:hidden">
           <FeedButton />
         </div>
-        <CreateApplicationButton />
+        <div className="pt-2">
+          <CreateButton type="Application" color="white" />
+        </div>
       </div>
 
       {!applicationsLoaded ? (
