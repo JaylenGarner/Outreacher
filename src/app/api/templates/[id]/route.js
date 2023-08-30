@@ -67,37 +67,36 @@ export const PUT = async (req, { params }) => {
   }
 };
 
-// export const DELETE = async (req, { params }) => {
-//   try {
-//     const session = await getServerSession(authOptions);
-//     const userId = session.user.id;
-//     const applicationId = Number(params.id);
+export const DELETE = async (req, { params }) => {
+  try {
+    const session = await getServerSession(authOptions);
+    const userId = session.user.id;
+    const templateId = Number(params.id);
 
-//     if (!session) {
-//       return new Response("You must be signed in to perform this action", {
-//         status: 401,
-//       });
-//     }
+    if (!session) {
+      return new Response("You must be signed in to perform this action", {
+        status: 401,
+      });
+    }
 
-//     const application = await prisma.application.findUnique({
-//       where: { id: applicationId },
-//     });
+    const template = await prisma.template.findUnique({
+      where: { id: templateId },
+    });
 
-//     if (!application)
-//       return new Response("Application not found", { status: 404 });
+    if (!template) return new Response("Template not found", { status: 404 });
 
-//     if (userId !== application.userId) {
-//       return new Response("You are not the owner of this application", {
-//         status: 401,
-//       });
-//     }
+    if (userId !== template.userId) {
+      return new Response("You are not the owner of this template", {
+        status: 401,
+      });
+    }
 
-//     await prisma.application.delete({ where: { id: applicationId } });
+    await prisma.template.delete({ where: { id: templateId } });
 
-//     return new Response("Application deleted successfully", { status: 202 });
-//   } catch (error) {
-//     return new Response(`Failed to delete application: ${error}`, {
-//       status: 500,
-//     });
-//   }
-// };
+    return new Response("Template deleted successfully", { status: 202 });
+  } catch (error) {
+    return new Response(`Failed to delete template: ${error}`, {
+      status: 500,
+    });
+  }
+};

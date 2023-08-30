@@ -3,30 +3,26 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-// import { createApplication } from "@/redux/reducers/applicationSlice";
-// import { deleteApplication } from "@/redux/reducers/applicationSlice";
 // import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
 import handleEditTemplate from "../../lib/handlers/template/handleEditTemplate";
+import handleDeleteTemplate from "../../lib/handlers/template/handleDeleteTemplate";
 import TemplateForm from "./TemplateForm";
 import DeleteButton from "../Buttons/DeleteButton";
 import { createTemplate } from "@/redux/reducers/templateSlice";
+import { deleteTemplate } from "@/redux/reducers/templateSlice";
 
 const EditTemplate = () => {
   const dispatch = useDispatch();
   const template = useSelector((state) => state.currentTemplate);
   const [error, setError] = useState("");
 
-  console.log(template);
-
   const handleUpdate = async (formData) => {
-    console.log("start");
     const updatedTemplate = await handleEditTemplate(
       formData,
       template.id,
       setError
     );
 
-    console.log(updatedTemplate, "UPDATED");
     if (updatedTemplate) {
       dispatch(createTemplate(updatedTemplate));
       dispatch(clearCurrentModal());
@@ -35,11 +31,12 @@ const EditTemplate = () => {
   };
 
   const handleDelete = async () => {
-    // const response = await handleDeleteApplication(application.id);
+    const response = await handleDeleteTemplate(template.id);
+
+    console.log(response, "REPSONSE");
 
     if (response) {
-      //   dispatch(deleteApplication(application));
-      //   dispatch(cascadeDeleteContacts(application.id));
+      dispatch(deleteTemplate(template));
       dispatch(clearCurrentModal());
     }
   };
