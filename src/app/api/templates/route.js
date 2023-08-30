@@ -1,6 +1,7 @@
 import prisma from "../../../../lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+import { templateSchema } from "@/validations/templateValidation";
 
 export const GET = async (req) => {
   try {
@@ -40,7 +41,7 @@ export const POST = async (req) => {
     }
 
     try {
-      //   await applicationSchema.validate(body);
+      await templateSchema.validate(body);
     } catch (error) {
       setError(error.message);
       return;

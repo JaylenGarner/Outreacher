@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createTemplate } from "@/redux/reducers/templateSlice";
-// import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
+import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoaded";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import handleCreateTemplate from "../../lib/handlers/template/handleCreateTemplate";
 import TemplateForm from "./TemplateForm";
@@ -19,7 +19,7 @@ const CreateTemplate = () => {
     if (newTemplate) {
       dispatch(createTemplate(newTemplate));
       dispatch(clearCurrentModal());
-      //   dispatch(setApplicationFormLoaded(false));
+      dispatch(setTemplateFormLoaded(false));
     }
   };
 

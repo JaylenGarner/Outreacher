@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
+import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoaded";
 
 const TemplateForm = ({
   type,
@@ -23,6 +24,7 @@ const TemplateForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(setTemplateFormLoaded(true));
 
     const formData = {
       e,

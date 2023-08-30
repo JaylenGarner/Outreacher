@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-// import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
+import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoaded";
 import handleEditTemplate from "../../lib/handlers/template/handleEditTemplate";
 import handleDeleteTemplate from "../../lib/handlers/template/handleDeleteTemplate";
 import TemplateForm from "./TemplateForm";
@@ -26,14 +26,12 @@ const EditTemplate = () => {
     if (updatedTemplate) {
       dispatch(createTemplate(updatedTemplate));
       dispatch(clearCurrentModal());
-      // dispatch(setApplicationFormLoaded(false));
+      dispatch(setTemplateFormLoaded(false));
     }
   };
 
   const handleDelete = async () => {
     const response = await handleDeleteTemplate(template.id);
-
-    console.log(response, "REPSONSE");
 
     if (response) {
       dispatch(deleteTemplate(template));

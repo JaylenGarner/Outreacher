@@ -17,7 +17,6 @@ const CreateButton = ({ type, color }) => {
       transition={{ duration: 0.5 }}
       onClick={(e) => {
         e.stopPropagation();
-        console.log(modalType);
         dispatch(setCurrentModal(modalType));
       }}
       className="hover:cursor-pointer"

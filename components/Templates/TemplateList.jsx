@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import CreateButton from "../Buttons/CreateButton";
 import TemplateCard from "./TemplateCard";
-// import CreateContactButton from "../Buttons/CreateContactButton";
-// import OutreachCard from "./OutreachCard";
 
 const TemplateList = () => {
   const templates = useSelector((state) => state.templates);

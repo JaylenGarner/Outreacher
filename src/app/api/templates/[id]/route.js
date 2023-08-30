@@ -1,7 +1,7 @@
 import prisma from "../../../../../lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
-// import { applicationSchema } from "@/validations/applicationValidation";
+import { templateSchema } from "@/validations/templateValidation";
 
 export const PUT = async (req, { params }) => {
   try {
@@ -10,7 +10,6 @@ export const PUT = async (req, { params }) => {
     const userId = session.user.id;
     const templateId = Number(params.id);
 
-    console.log("START", body);
     if (!session) {
       return new Response("You must be signed in to edit templates", {
         status: 401,
@@ -20,7 +19,7 @@ export const PUT = async (req, { params }) => {
     }
 
     try {
-      //   await applicationSchema.validate(body);
+      await templateSchema.validate(body);
     } catch (error) {
       setError(error.message);
       return;
@@ -29,8 +28,6 @@ export const PUT = async (req, { params }) => {
     const template = await prisma.template.findUnique({
       where: { id: templateId },
     });
-
-    console.log("TEMPLATE", template);
 
     if (!template) {
       return new Response("Template not found", { status: 404 });
@@ -42,22 +39,10 @@ export const PUT = async (req, { params }) => {
       });
     }
 
-    try {
-      const updatedTemplate = await prisma.template.update({
-        where: { id: templateId },
-        data: body,
-      });
-    } catch (error) {
-      console.log("ERROR", error);
-    }
     const updatedTemplate = await prisma.template.update({
       where: { id: templateId },
       data: body,
     });
-
-    console.log("MIDDLE");
-
-    console.log("HERE", updatedTemplate);
 
     return new Response(JSON.stringify(updatedTemplate), { status: 202 });
   } catch (error) {
