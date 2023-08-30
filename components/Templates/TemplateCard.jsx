@@ -1,6 +1,8 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
+import { setCurrentTemplate } from "@/redux/reducers/currentTemplateSlice";
+import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 
 import { motion } from "framer-motion";
 
@@ -13,9 +15,8 @@ const TemplateCard = ({ template }) => {
       whileHover={{ opacity: 0.8, scale: 0.99 }}
       key={template.id}
       onClick={() => {
-        // dispatch(setCurrentContact(contact));
-        // dispatch(setCurrentApplication(applications[contact.applicationId]));
-        // dispatch(setCurrentModal("Edit Contact"));
+        dispatch(setCurrentTemplate(template));
+        dispatch(setCurrentModal("Edit Template"));
       }}
     >
       <div className="card_content_col">

@@ -6,30 +6,32 @@ import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 // import { createApplication } from "@/redux/reducers/applicationSlice";
 // import { deleteApplication } from "@/redux/reducers/applicationSlice";
 // import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
-// import handleEditApplication from "../../lib/handlers/application/handleEditApplication";
-// import handleDeleteApplication from "../../lib/handlers/application/handleDeleteApplication";
-// import ApplicationForm from "./ApplicationForm";
-// import CreateContactButton from "../Buttons/CreateContactButton";
-// import ContactListButton from "../Buttons/ContactListButton";
-// import { cascadeDeleteContacts } from "@/redux/reducers/contactSlice";
+import handleEditTemplate from "../../lib/handlers/template/handleEditTemplate";
+import TemplateForm from "./TemplateForm";
 import DeleteButton from "../Buttons/DeleteButton";
+import { createTemplate } from "@/redux/reducers/templateSlice";
 
 const EditTemplate = () => {
   const dispatch = useDispatch();
-  const application = useSelector((state) => state.currentApplication);
+  const template = useSelector((state) => state.currentTemplate);
   const [error, setError] = useState("");
 
+  console.log(template);
+
   const handleUpdate = async (formData) => {
-    // const updatedApplication = await handleEditTemplate(
-    //   formData,
-    //   application.id,
-    //   setError
-    // );
-    // if (updatedApplication) {
-    //   dispatch(createApplication(updatedApplication));
-    //   dispatch(clearCurrentModal());
-    //   dispatch(setApplicationFormLoaded(false));
-    // }
+    console.log("start");
+    const updatedTemplate = await handleEditTemplate(
+      formData,
+      template.id,
+      setError
+    );
+
+    console.log(updatedTemplate, "UPDATED");
+    if (updatedTemplate) {
+      dispatch(createTemplate(updatedTemplate));
+      dispatch(clearCurrentModal());
+      // dispatch(setApplicationFormLoaded(false));
+    }
   };
 
   const handleDelete = async () => {
@@ -45,17 +47,15 @@ const EditTemplate = () => {
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
-        {/* <h1 className="modal_header">Update Application</h1> */}
-        {/* <CreateContactButton application={application} /> */}
-        {/* <ContactListButton application={application} /> */}
+        <h1 className="modal_header">Modify Template</h1>
         <DeleteButton action={handleDelete} />
       </div>
-      {/* <ApplicationForm
+      <TemplateForm
         type={"Edit"}
-        application={application}
+        template={template}
         handleUpdate={handleUpdate}
         error={error}
-      /> */}
+      />
     </>
   );
 };

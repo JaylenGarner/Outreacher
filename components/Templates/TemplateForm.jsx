@@ -18,7 +18,7 @@ const TemplateForm = ({
 
   const templateFormLoaded = useSelector((state) => state.templateFormLoaded);
 
-  const [name, setName] = useState(template ? template?.company : "");
+  const [name, setName] = useState(template ? template?.name : "");
   const [body, setBody] = useState(template ? template?.body : "");
 
   const handleSubmit = async (e) => {
