@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import LogoutButton from "./Buttons/LogoutButton";
 import Link from "next/link";
 
+import { motion } from "framer-motion";
+
 const Nav = () => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
@@ -18,19 +20,24 @@ const Nav = () => {
         </div>
       </Link>
 
-      <div className="space-x-6">
-        <span
-          onClick={() => dispatch(setCurrentModal("Template List"))}
-          className="font-bold text-2xl cursor-pointer"
-        >
-          Templates
-        </span>
-        <span
-          onClick={() => dispatch(setCurrentModal("Info"))}
-          className="font-bold text-2xl cursor-pointer"
-        >
-          Info
-        </span>
+      <div className="space-x-6 flex">
+        <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.5 }}>
+          <span
+            onClick={() => dispatch(setCurrentModal("Template List"))}
+            className="font-bold text-2xl cursor-pointer"
+          >
+            Templates
+          </span>
+        </motion.div>
+
+        <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.5 }}>
+          <span
+            onClick={() => dispatch(setCurrentModal("Info"))}
+            className="font-bold text-2xl cursor-pointer"
+          >
+            Info
+          </span>
+        </motion.div>
       </div>
 
       <div className="flex space-x-4 items-center">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoaded";
+import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoadedSlice";
 import handleEditTemplate from "../../lib/handlers/template/handleEditTemplate";
 import handleDeleteTemplate from "../../lib/handlers/template/handleDeleteTemplate";
 import TemplateForm from "./TemplateForm";

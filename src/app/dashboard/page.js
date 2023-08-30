@@ -7,6 +7,7 @@ import Modal from "../../../components/Modal";
 import { getApplications } from "@/redux/reducers/applicationSlice";
 import { setApplicationsLoaded } from "@/redux/reducers/applicationsLoadedSlice";
 import { setContactsLoaded } from "@/redux/reducers/contactsLoadedSlice";
+import { setTemplatesLoaded } from "@/redux/reducers/templatesLoadedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
@@ -59,7 +60,7 @@ const Dashboard = () => {
       const response = await fetch(`${apiUrl}/templates`);
       const data = await response.json();
       dispatch(getTemplates(data));
-      // dispatch(setContactsLoaded(true));
+      dispatch(setTemplatesLoaded(true));
     } catch (error) {
       console.log(error);
     }

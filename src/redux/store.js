@@ -10,7 +10,8 @@ import contactsLoaded from "./reducers/contactsLoadedSlice";
 import contactFormLoaded from "./reducers/contactFormLoadedSlice";
 import templates from "./reducers/templateSlice";
 import currentTemplate from "./reducers/currentTemplateSlice";
-import templateFormLoaded from "./reducers/templateFormLoaded";
+import templatesLoaded from "./reducers/templatesLoadedSlice";
+import templateFormLoaded from "./reducers/templateFormLoadedSlice";
 import currentModal from "./reducers/currentModalSlice";
 import currentFeed from "./reducers/currentFeedSlice";
 
@@ -27,6 +28,7 @@ const store = configureStore({
     contactFormLoaded,
     templates,
     currentTemplate,
+    templatesLoaded,
     templateFormLoaded,
     currentModal,
     currentFeed,
