@@ -14,6 +14,7 @@ import EditContact from "./Contacts/EditContact";
 import ContactList from "./Contacts/ContactList";
 import CreateTemplate from "./Templates/CreateTemplate";
 import EditTemplate from "./Templates/EditTemplate";
+import FillTemplate from "./Templates/FillTemplate";
 import TemplateList from "./Templates/TemplateList";
 import Info from "./Info";
 import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
@@ -35,6 +36,8 @@ const Modal = () => {
       dispatch(setCurrentContact(null));
     }
   };
+
+  console.log(currentModal);
 
   return (
     <motion.div className="backdrop" onClick={handleClick}>
@@ -60,6 +63,8 @@ const Modal = () => {
         {currentModal === "Create Template" && <CreateTemplate />}
         {currentModal === "Edit Template" && <EditTemplate />}
         {currentModal === "Template List" && <TemplateList />}
+        {currentModal === "Template List (Fill)" && <TemplateList />}
+        {currentModal === "Fill Template" && <FillTemplate />}
         {currentModal === "Info" && <Info />}
       </motion.div>
     </motion.div>

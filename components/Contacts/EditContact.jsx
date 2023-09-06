@@ -11,6 +11,7 @@ import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlic
 import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
 import DeleteButton from "../Buttons/DeleteButton";
 import ApplicationButton from "../Buttons/ApplicationButton";
+import TemplateFillButton from "../Buttons/TemplateFillButton";
 import handleDeleteContact from "../../lib/handlers/contact/handleDeleteContact";
 
 const EditContact = () => {
@@ -47,9 +48,10 @@ const EditContact = () => {
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
-        {/* Desktop */}
+
         <h1 className="modal_header">Update Contact</h1>
         <ApplicationButton application={application} />
+        <TemplateFillButton application={application} contact={contact}/>
         <DeleteButton action={handleDelete} />
       </div>
       <div className="flex flex_center pt-2">

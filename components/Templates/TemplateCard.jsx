@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const TemplateCard = ({ template }) => {
   const dispatch = useDispatch();
+  const currentModal = useSelector((state) => state.currentModal);
 
   return (
     <motion.div
@@ -16,7 +17,12 @@ const TemplateCard = ({ template }) => {
       key={template.id}
       onClick={() => {
         dispatch(setCurrentTemplate(template));
-        dispatch(setCurrentModal("Edit Template"));
+
+        if (currentModal === "Template List") {
+          dispatch(setCurrentModal("Edit Template"));
+        } else {
+          dispatch(setCurrentModal("Fill Template"));
+        }
       }}
     >
       <div className="card_content_col">
