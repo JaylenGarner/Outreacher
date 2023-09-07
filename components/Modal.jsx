@@ -27,7 +27,8 @@ const Modal = () => {
   const handleClick = () => {
     if (
       currentModal === "Create Application" ||
-      currentModal === "Create Contact"
+      currentModal === "Create Contact" ||
+      currentModal === "Fill Template"
     ) {
       return;
     } else {

@@ -70,11 +70,11 @@ const TemplateForm = ({
         placeholder="Template Name"
         onChange={(e) => setName(e.target.value)}
         required
-        className="input_two"
+        className="input_wide"
       />
       <span className="text-xl font-bold text-center">Insert Variables:</span>
 
-      <div className="space-x-4">
+      <div className="space-x-6">
         <button
           type="button"
           className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"

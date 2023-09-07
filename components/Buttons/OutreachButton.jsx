@@ -4,26 +4,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { handleOutreach } from "../../lib/handlers/contact/handleOutreach";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { clearCurrentContact } from "@/redux/reducers/currentContactSlice";
 import { clearCurrentTemplate } from "@/redux/reducers/currentTemplateSlice";
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createContact } from "@/redux/reducers/contactSlice";
+import { setContactIsNew } from "@/redux/reducers/contactIsNewSlice";
 
 const Checkmark = ({ contact }) => {
   const dispatch = useDispatch();
+  const contactIsNew = useSelector((state) => state.contactIsNew);
 
   const handleSubmit = async () => {
-    const updatedContact = await handleOutreach(contact);
-
-    if (updatedContact) {
-      dispatch(createContact(updatedContact));
+    if (contactIsNew) {
       dispatch(clearCurrentModal());
-      dispatch(clearCurrentContact());
-      dispatch(clearCurrentTemplate());
-      dispatch(clearCurrentApplication());
-      // dispatch(setContactFormLoaded(false));
+      dispatch(setContactIsNew(false));
+      return;
+    } else {
+      const updatedContact = await handleOutreach(contact);
+
+      if (updatedContact) {
+        dispatch(createContact(updatedContact));
+        dispatch(clearCurrentModal());
+        dispatch(clearCurrentContact());
+        dispatch(clearCurrentTemplate());
+        dispatch(clearCurrentApplication());
+        // dispatch(setContactFormLoaded(false));
+      }
     }
   };
 

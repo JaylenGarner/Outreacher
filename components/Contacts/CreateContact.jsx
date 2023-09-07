@@ -2,12 +2,18 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
+import {
+  clearCurrentModal,
+  setCurrentModal,
+} from "@/redux/reducers/currentModalSlice";
 import { createContact } from "@/redux/reducers/contactSlice";
 import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
 import handleCreateContact from "../../lib/handlers/contact/handleCreateContact";
 import ContactForm from "./ContactForm";
-import DeleteButton from "../Buttons/DeleteButton";
+import DiscardButton from "../Buttons/DiscardButton";
+import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
+import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
+import { setContactIsNew } from "@/redux/reducers/contactIsNewSlice";
 
 const CreateContact = () => {
   const dispatch = useDispatch();
@@ -19,20 +25,19 @@ const CreateContact = () => {
 
     if (newContact) {
       dispatch(createContact(newContact));
-      dispatch(clearCurrentModal());
+      dispatch(setCurrentApplication(application));
+      dispatch(setCurrentContact(newContact));
       dispatch(setContactFormLoaded(false));
+      dispatch(setContactIsNew(true));
+      dispatch(setCurrentModal("Template List (Fill)"));
     }
-  };
-
-  const handleDiscard = async () => {
-    dispatch(clearCurrentModal());
   };
 
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
         <h1 className="modal_header">Create Contact</h1>
-        <DeleteButton action={handleDiscard} />
+        <DiscardButton />
       </div>
       <div className="flex flex_center pt-2">
         <span className="italic font-semibold  text-xl text-center">

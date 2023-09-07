@@ -41,6 +41,7 @@ const TemplateList = () => {
                 <TemplateCard
                   key={template.id}
                   template={template}
+                  contactIsNew={false}
                   className={"contact_card"}
                 />
               );

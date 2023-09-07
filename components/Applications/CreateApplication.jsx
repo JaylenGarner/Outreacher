@@ -7,7 +7,7 @@ import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoaded
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import handleCreateApplication from "../../lib/handlers/application/handleCreateApplication";
 import ApplicationForm from "./ApplicationForm";
-import DeleteButton from "../Buttons/DeleteButton";
+import DiscardButton from "../Buttons/DiscardButton";
 
 const CreateApplication = () => {
   const dispatch = useDispatch();
@@ -23,15 +23,11 @@ const CreateApplication = () => {
     }
   };
 
-  const handleDiscard = () => {
-    dispatch(clearCurrentModal());
-  };
-
   return (
     <>
       <div className="flex flex_center pt-4">
         <h1 className="modal_header pr-4">Log Application</h1>
-        <DeleteButton action={handleDiscard} />
+        <DiscardButton />
       </div>
       <ApplicationForm
         type={"Create"}

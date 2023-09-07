@@ -91,6 +91,16 @@
     @apply form_field h-[50px] max-break_modal:h-[40px] max-break_modal:text-sm w-[300px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] mr-4 ml-4
 }
 
+.input_wide {
+        @apply form_field h-[50px] w-[634px] max-sm:w-[350px] max-mobile:w-[220px] text-lg outline-none
+
+}
+
+.textarea_narrow {
+        @apply form_field h-[160px] max-break_modal:h-[40px] max-md:h-[100px] w-[400px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] resize-none
+
+}
+
 .textarea {
     @apply form_field h-[160px] max-break_modal:h-[40px] max-md:h-[100px] w-[634px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] resize-none
 }
