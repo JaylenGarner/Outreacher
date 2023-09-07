@@ -13,7 +13,6 @@ const FeedButton = () => {
   return (
     <motion.div
       whileHover={{ scale: 1.2 }}
-      transition={{ duration: 0.5 }}
       onClick={(e) => {
         e.stopPropagation();
         let value = currentFeed === "outreach" ? "applications" : "outreach";

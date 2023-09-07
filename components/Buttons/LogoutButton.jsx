@@ -24,7 +24,7 @@ const LogoutButton = () => {
   }
 
   return (
-    <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.5 }}>
+    <motion.div whileHover={{ scale: 1.2 }}>
       <button onClick={() => handleSignOut()}>
         <FontAwesomeIcon
           icon={faArrowRightFromBracket}

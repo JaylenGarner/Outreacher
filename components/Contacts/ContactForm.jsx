@@ -20,6 +20,7 @@ const ContactForm = ({ type, contact, handleCreate, handleUpdate, error }) => {
   const [outreachStage, setOutreachStage] = useState(
     contact ? contact?.outreachStage : "Initial Outreach"
   );
+
   const [outreachDate, setOutreachDate] = useState(
     contact
       ? dayjs(contact?.outreachDate).format("YYYY-MM-DD")

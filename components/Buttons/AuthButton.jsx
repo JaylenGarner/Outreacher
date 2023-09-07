@@ -12,7 +12,6 @@ const AuthButton = ({ type }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
-      transition={{ duration: 0.5 }}
       onClick={() => {
         type === "Login"
           ? dispatch(setCurrentModal("Login"))

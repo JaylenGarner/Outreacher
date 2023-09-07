@@ -33,6 +33,7 @@ const ContactList = () => {
                 <OutreachCard
                   key={contact.id}
                   contact={contact}
+                  type={"Contact"}
                   className={"contact_card"}
                 />
               );

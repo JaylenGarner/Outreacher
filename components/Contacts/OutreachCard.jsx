@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 
 import { motion } from "framer-motion";
 
-const OutreachCard = ({ contact, className }) => {
+const OutreachCard = ({ contact, className, type }) => {
   const dispatch = useDispatch();
   const applications = useSelector((state) => state.applications);
 
@@ -20,7 +20,11 @@ const OutreachCard = ({ contact, className }) => {
       onClick={() => {
         dispatch(setCurrentContact(contact));
         dispatch(setCurrentApplication(applications[contact.applicationId]));
-        dispatch(setCurrentModal("Edit Contact"));
+        {
+          type === "Outreach"
+            ? dispatch(setCurrentModal("Template List (Fill)"))
+            : dispatch(setCurrentModal("Edit Contact"));
+        }
       }}
     >
       <div className="card_content_col">

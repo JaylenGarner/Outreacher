@@ -7,14 +7,10 @@ import { motion } from "framer-motion";
 const DeleteButton = ({ action }) => {
   return (
     <>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.5 }}
-        onClick={() => action()}
-      >
+      <motion.button whileHover={{ scale: 1.3 }} onClick={() => action()}>
         <FontAwesomeIcon
           icon={faTrash}
-          className="fa-xl hover:cursor-pointer hover:text-red-400"
+          className="fa-xl hover:cursor-pointer hover:text-[#FF0066]"
         />
       </motion.button>
     </>

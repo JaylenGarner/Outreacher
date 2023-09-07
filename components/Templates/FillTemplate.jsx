@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fillTemplate } from "../../lib/helpers/fillTemplate";
 import { useState } from "react";
-import Checkmark from "../Checkmark";
+import OutreachButton from "../Buttons/OutreachButton";
 import CopyButton from "../Buttons/CopyButton";
 
 const FillTemplate = () => {
@@ -16,23 +16,16 @@ const FillTemplate = () => {
     fillTemplate(application, contact, template)
   );
 
-  const handleShowCheck = () => {
-    setShowcheck(true);
-    setTimeout(() => {
-      setShowcheck(false);
-    }, 2000);
-  };
-
   return (
     <div className="pt-4 pb-4 pr-10 pl-10 flex_center flex-col space-y-2">
       <div className="flex flex_center space-x-4 mb-2">
         <h1 className="modal_header">Ready To Send</h1>
         <div className="w-10 flex space-x-6">
           <CopyButton
-            handleShowCheck={handleShowCheck}
+            handleShowCheck={() => setShowcheck(true)}
             content={filledTemplate}
           />
-          {showCheck && <Checkmark />}
+          {showCheck && <OutreachButton contact={contact} />}
         </div>
       </div>
 

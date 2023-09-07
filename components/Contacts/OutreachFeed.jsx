@@ -50,6 +50,7 @@ const OutreachFeed = () => {
                 <OutreachCard
                   key={contact.id}
                   contact={contact}
+                  type={"Outreach"}
                   className={"application_card"}
                 />
               );

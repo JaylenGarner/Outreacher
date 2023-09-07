@@ -14,7 +14,6 @@ const CreateButton = ({ type, color }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.2 }}
-      transition={{ duration: 0.5 }}
       onClick={(e) => {
         e.stopPropagation();
         dispatch(setCurrentModal(modalType));
