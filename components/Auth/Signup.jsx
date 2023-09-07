@@ -20,6 +20,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     setIsLoading(true);
 
     const response = await handleSignup(
@@ -30,6 +31,8 @@ const Signup = () => {
       setError
     );
 
+    console.log(response);
+
     if (response.ok) {
       await signIn("credentials", {
         email,
@@ -38,6 +41,8 @@ const Signup = () => {
       });
 
       dispatch(setCurrentModal(null));
+      setIsLoading(false);
+    } else {
       setIsLoading(false);
     }
   };

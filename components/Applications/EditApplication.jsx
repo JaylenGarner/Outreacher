@@ -13,11 +13,13 @@ import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactListButton from "../Buttons/ContactListButton";
 import { cascadeDeleteContacts } from "@/redux/reducers/contactSlice";
 import DeleteButton from "../Buttons/DeleteButton";
+import ChatoicOrbitRed from "../LoadingSpinners/ChaoticOrbitRed";
 
 const EditApplication = () => {
   const dispatch = useDispatch();
   const application = useSelector((state) => state.currentApplication);
   const [error, setError] = useState("");
+  const [deletionLoading, setDeletionLoading] = useState(false);
 
   const handleUpdate = async (formData) => {
     const updatedApplication = await handleEditApplication(
@@ -34,11 +36,13 @@ const EditApplication = () => {
   };
 
   const handleDelete = async () => {
+    setDeletionLoading(true);
     const response = await handleDeleteApplication(application.id);
 
     if (response) {
       dispatch(deleteApplication(application));
       dispatch(cascadeDeleteContacts(application.id));
+      setDeletionLoading(false);
       dispatch(clearCurrentModal());
     }
   };
@@ -49,7 +53,11 @@ const EditApplication = () => {
         <h1 className="modal_header">Update Application</h1>
         <CreateContactButton application={application} />
         <ContactListButton application={application} />
-        <DeleteButton action={handleDelete} />
+        {deletionLoading === false ? (
+          <DeleteButton action={handleDelete} />
+        ) : (
+          <ChatoicOrbitRed />
+        )}
       </div>
       <ApplicationForm
         type={"Edit"}

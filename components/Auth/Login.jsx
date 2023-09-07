@@ -27,6 +27,7 @@ const Login = () => {
 
     if (result.error) {
       setError("Invalid credentials, please try again.");
+      setIsLoading(false);
     } else {
       dispatch(setCurrentModal(null));
       setIsLoading(false);

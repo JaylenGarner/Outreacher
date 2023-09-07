@@ -10,11 +10,13 @@ import TemplateForm from "./TemplateForm";
 import DeleteButton from "../Buttons/DeleteButton";
 import { createTemplate } from "@/redux/reducers/templateSlice";
 import { deleteTemplate } from "@/redux/reducers/templateSlice";
+import ChatoicOrbitRed from "../LoadingSpinners/ChaoticOrbitRed";
 
 const EditTemplate = () => {
   const dispatch = useDispatch();
   const template = useSelector((state) => state.currentTemplate);
   const [error, setError] = useState("");
+  const [deletionLoading, setDeletionLoading] = useState(false);
 
   const handleUpdate = async (formData) => {
     const updatedTemplate = await handleEditTemplate(
@@ -31,10 +33,12 @@ const EditTemplate = () => {
   };
 
   const handleDelete = async () => {
+    setDeletionLoading(true);
     const response = await handleDeleteTemplate(template.id);
 
     if (response) {
       dispatch(deleteTemplate(template));
+      setDeletionLoading(false);
       dispatch(clearCurrentModal());
     }
   };
@@ -43,7 +47,11 @@ const EditTemplate = () => {
     <>
       <div className="flex flex_center pt-4 space-x-4">
         <h1 className="modal_header">Modify Template</h1>
-        <DeleteButton action={handleDelete} />
+        {deletionLoading === false ? (
+          <DeleteButton action={handleDelete} />
+        ) : (
+          <ChatoicOrbitRed />
+        )}
       </div>
       <TemplateForm
         type={"Edit"}

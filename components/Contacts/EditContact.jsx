@@ -13,10 +13,12 @@ import DeleteButton from "../Buttons/DeleteButton";
 import ApplicationButton from "../Buttons/ApplicationButton";
 import TemplateFillButton from "../Buttons/TemplateFillButton";
 import handleDeleteContact from "../../lib/handlers/contact/handleDeleteContact";
+import ChatoicOrbitRed from "../LoadingSpinners/ChaoticOrbitRed";
 
 const EditContact = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
+  const [deletionLoading, setDeletionLoading] = useState(false);
   const application = useSelector((state) => state.currentApplication);
   const contact = useSelector((state) => state.currentContact);
 
@@ -37,10 +39,12 @@ const EditContact = () => {
   };
 
   const handleDelete = async () => {
+    setDeletionLoading(true);
     const response = await handleDeleteContact(contact.id);
 
     if (response) {
       dispatch(deleteContact(contact));
+      setDeletionLoading(false);
       dispatch(clearCurrentModal());
     }
   };
@@ -48,11 +52,14 @@ const EditContact = () => {
   return (
     <>
       <div className="flex flex_center pt-4 space-x-4">
-
         <h1 className="modal_header">Update Contact</h1>
         <ApplicationButton application={application} />
-        <TemplateFillButton application={application} contact={contact}/>
-        <DeleteButton action={handleDelete} />
+        <TemplateFillButton application={application} contact={contact} />
+        {deletionLoading === false ? (
+          <DeleteButton action={handleDelete} />
+        ) : (
+          <ChatoicOrbitRed />
+        )}
       </div>
       <div className="flex flex_center pt-2">
         <span className="italic font-semibold  text-xl text-center">

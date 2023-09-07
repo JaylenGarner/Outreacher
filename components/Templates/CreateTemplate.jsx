@@ -7,7 +7,7 @@ import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoadedSlice"
 import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import handleCreateTemplate from "../../lib/handlers/template/handleCreateTemplate";
 import TemplateForm from "./TemplateForm";
-import DeleteButton from "../Buttons/DeleteButton";
+import DiscardButton from "../Buttons/DiscardButton";
 
 const CreateTemplate = () => {
   const dispatch = useDispatch();
@@ -23,15 +23,11 @@ const CreateTemplate = () => {
     }
   };
 
-  const handleDiscard = () => {
-    dispatch(clearCurrentModal());
-  };
-
   return (
     <>
       <div className="flex flex_center pt-4">
         <h1 className="modal_header pr-4">Create Template</h1>
-        <DeleteButton action={handleDiscard} />
+        <DiscardButton />
       </div>
       <TemplateForm type={"Create"} handleCreate={handleCreate} error={error} />
     </>
