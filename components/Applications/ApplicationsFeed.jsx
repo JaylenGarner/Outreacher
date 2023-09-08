@@ -1,17 +1,24 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { setApplicationFeedFilter } from "@/redux/reducers/applications/applicationFeedFilterSlice";
 import ApplicationCard from "./ApplicationCard";
 import CreateButton from "../Buttons/CreateButton";
 import SwitchButton from "../Buttons/SwitchButton";
+import FilterButton from "../Buttons/FilterButton";
 import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
 
 const ApplicationsFeed = () => {
+  const dispatch = useDispatch();
   const applications = useSelector((state) => state.applications);
   const applicationsLoaded = useSelector((state) => state.applicationsLoaded);
+  const currentFilter = useSelector((state) => state.applicationFeedFilter);
   const sortByUpdatedAtDesc = (a, b) =>
     new Date(b.updatedAt) - new Date(a.updatedAt);
+
+  useEffect(() => {}, [currentFilter]);
 
   return (
     <div className="flex flex-col overflow-y-scroll items-center no-scrollbar">
@@ -20,8 +27,9 @@ const ApplicationsFeed = () => {
         <div className=" split_dashboard:hidden">
           <SwitchButton />
         </div>
-        <div className="pt-1">
+        <div className="pt-1 flex space-x-4">
           <CreateButton type="Application" color="white" />
+          <FilterButton />
         </div>
       </div>
 
@@ -45,12 +53,17 @@ const ApplicationsFeed = () => {
               .slice()
               .sort(sortByUpdatedAtDesc)
               .map((application) => {
-                return (
-                  <ApplicationCard
-                    key={application.id}
-                    application={application}
-                  />
-                );
+                if (
+                  currentFilter === "All" ||
+                  application.status === currentFilter
+                ) {
+                  return (
+                    <ApplicationCard
+                      key={application.id}
+                      application={application}
+                    />
+                  );
+                }
               })}
         </motion.div>
       )}

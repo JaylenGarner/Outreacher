@@ -4,6 +4,7 @@ import applications from "./reducers/applications/applicationSlice";
 import currentApplication from "./reducers/applications/currentApplicationSlice";
 import applicationsLoaded from "./reducers/applications/applicationsLoadedSlice";
 import applicationFormLoaded from "./reducers/applications/applicationFormLoadedSlice";
+import applicationFeedFilter from "./reducers/applications/applicationFeedFilterSlice";
 import contacts from "./reducers/contacts/contactSlice";
 import currentContact from "./reducers/contacts/currentContactSlice";
 import contactsLoaded from "./reducers/contacts/contactsLoadedSlice";
@@ -23,6 +24,7 @@ const store = configureStore({
     currentApplication,
     applicationsLoaded,
     applicationFormLoaded,
+    applicationFeedFilter,
     contacts,
     currentContact,
     contactsLoaded,

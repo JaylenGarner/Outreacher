@@ -1,14 +1,16 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OutreachCard from "./OutreachCard";
 import SwitchButton from "../Buttons/SwitchButton";
 import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
 import getOutreachFeed from "../../lib/helpers/getOutreachFeed";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 
 const OutreachFeed = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts);
   const contactsLoaded = useSelector((state) => state.contactsLoaded);
   const [outreach, setOutreach] = useState([]);
@@ -33,10 +35,20 @@ const OutreachFeed = () => {
       {!contactsLoaded ? (
         <DotSpinnerWhite />
       ) : contactsLoaded && !outreach.length ? (
-        <span className="text-white text-2xl card text-center">
-          Start reaching out to contacts to populate your outreach feed, learn
-          more about the algorithm here.
-        </span>
+        <div className="card text-white text-2xl  text-center">
+          <span>
+            Start reaching out to contacts to populate your outreach feed, learn
+            more about the algorithm{" "}
+            <motion.span
+              className="font-bold underline"
+              whileHover={{ opacity: 0.8 }}
+              onClick={() => dispatch(setCurrentModal("Info"))}
+            >
+              here
+            </motion.span>
+          </span>
+          {/* <span className="font-bold">here</span> */}
+        </div>
       ) : (
         <motion.div
           className="overflow-y-scroll overflow-x-hidden no-scrollbar"
