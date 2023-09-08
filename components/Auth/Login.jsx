@@ -7,6 +7,7 @@ import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
+import TextHover from "../Animations/HoverScaleSmall";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -71,14 +72,16 @@ const Login = () => {
         {!isLoading ? <SubmitButton label={"Login"} /> : <TriangleSpinner />}
       </div>
 
-      <span>
+      <span className="flex">
         Don't have an account? &nbsp;
-        <span
-          className="form_link"
-          onClick={() => dispatch(setCurrentModal("Signup"))}
-        >
-          Signup here
-        </span>
+        <TextHover>
+          <span
+            className="form_link"
+            onClick={() => dispatch(setCurrentModal("Signup"))}
+          >
+            Signup here
+          </span>
+        </TextHover>
       </span>
     </form>
   );

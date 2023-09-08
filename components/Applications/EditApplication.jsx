@@ -6,12 +6,12 @@ import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { createApplication } from "@/redux/reducers/applicationSlice";
 import { deleteApplication } from "@/redux/reducers/applicationSlice";
 import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
+import { cascadeDeleteContacts } from "@/redux/reducers/contactSlice";
 import handleEditApplication from "../../lib/handlers/application/handleEditApplication";
 import handleDeleteApplication from "../../lib/handlers/application/handleDeleteApplication";
 import ApplicationForm from "./ApplicationForm";
 import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactListButton from "../Buttons/ContactListButton";
-import { cascadeDeleteContacts } from "@/redux/reducers/contactSlice";
 import DeleteButton from "../Buttons/DeleteButton";
 import ChatoicOrbitRed from "../LoadingSpinners/ChaoticOrbitRed";
 

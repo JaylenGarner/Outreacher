@@ -3,11 +3,10 @@
 import { useDispatch } from "react-redux";
 import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
-import getEmoji from "../../lib/helpers/getEmoji";
+import { motion } from "framer-motion";
 import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactListButton from "../Buttons/ContactListButton";
-
-import { motion } from "framer-motion";
+import getEmoji from "../../lib/helpers/getEmoji";
 
 const ApplicationCard = ({ application }) => {
   const dispatch = useDispatch();

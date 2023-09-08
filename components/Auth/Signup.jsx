@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
+import TextHover from "../Animations/HoverScaleSmall";
+import { handleCreateStarterTemplate } from "../../lib/handlers/template/handleCreateStarterTemplate";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -40,6 +42,7 @@ const Signup = () => {
         redirect: false,
       });
 
+      handleCreateStarterTemplate();
       dispatch(setCurrentModal(null));
       setIsLoading(false);
     } else {
@@ -106,14 +109,16 @@ const Signup = () => {
         )}
       </div>
 
-      <span>
+      <span className="flex">
         Have an account? &nbsp;
-        <span
-          className="form_link"
-          onClick={() => dispatch(setCurrentModal("Login"))}
-        >
-          Login here
-        </span>
+        <TextHover>
+          <span
+            className="form_link"
+            onClick={() => dispatch(setCurrentModal("Login"))}
+          >
+            Login here
+          </span>
+        </TextHover>
       </span>
     </form>
   );

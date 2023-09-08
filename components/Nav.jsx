@@ -5,8 +5,7 @@ import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
 import { useDispatch } from "react-redux";
 import LogoutButton from "./Buttons/LogoutButton";
 import Link from "next/link";
-
-import { motion } from "framer-motion";
+import HoverScaleSmall from "./Animations/HoverScaleSmall";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -21,23 +20,23 @@ const Nav = () => {
       </Link>
 
       <div className="space-x-6 flex">
-        <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.5 }}>
+        <HoverScaleSmall>
           <span
             onClick={() => dispatch(setCurrentModal("Template List"))}
             className="font-bold text-2xl cursor-pointer"
           >
             Templates
           </span>
-        </motion.div>
+        </HoverScaleSmall>
 
-        <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.5 }}>
+        <HoverScaleSmall>
           <span
             onClick={() => dispatch(setCurrentModal("Info"))}
             className="font-bold text-2xl cursor-pointer"
           >
             Info
           </span>
-        </motion.div>
+        </HoverScaleSmall>
       </div>
 
       <div className="flex space-x-4 items-center">

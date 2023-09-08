@@ -15,7 +15,6 @@ const ApplicationForm = ({
   error,
 }) => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
   const applicationFormLoaded = useSelector(
     (state) => state.applicationFormLoaded
   );

@@ -3,9 +3,9 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ApplicationCard from "./ApplicationCard";
-import FeedButton from "../Buttons/FeedButton";
-import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
 import CreateButton from "../Buttons/CreateButton";
+import SwitchButton from "../Buttons/SwitchButton";
+import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
 
 const ApplicationsFeed = () => {
   const applications = useSelector((state) => state.applications);
@@ -18,9 +18,9 @@ const ApplicationsFeed = () => {
       <div className="flex flex_center m-8 space-x-4">
         <h2 className="text-4xl font-bold  text-white">Applications</h2>
         <div className=" split_dashboard:hidden">
-          <FeedButton />
+          <SwitchButton />
         </div>
-        <div className="pt-2">
+        <div className="pt-1">
           <CreateButton type="Application" color="white" />
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useState } from "react";
 import OutreachButton from "../Buttons/OutreachButton";
 import CopyButton from "../Buttons/CopyButton";
 import DiscardButton from "../Buttons/DiscardButton";
+import TextHover from "../Animations/HoverScaleSmall";
 
 const FillTemplate = () => {
   const application = useSelector((state) => state.currentApplication);
@@ -37,9 +38,19 @@ const FillTemplate = () => {
         {contact.name}
       </span>
 
-      <div className="flex flex-col text-center text-xl font-extrabold underline italic pb-2 text-[#FF0066] space-y-2">
-        <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        <a href={contact.linkedIn}>LinkedIn</a>
+      <div className="flex text-center text-xl font-extrabold underline italic pb-2 text-[#FF0066] space-x-4">
+        {contact?.email && (
+          <TextHover>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </TextHover>
+        )}
+        {contact?.linkedIn && (
+          <TextHover>
+            <a href={contact.linkedIn} target={"_blank"}>
+              LinkedIn
+            </a>
+          </TextHover>
+        )}
       </div>
 
       <textarea

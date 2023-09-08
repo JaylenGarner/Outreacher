@@ -2,18 +2,18 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import HoverScaleMedium from "../Animations/HoverScaleMedium";
 
 const DeleteButton = ({ action }) => {
   return (
-    <>
-      <motion.button whileHover={{ scale: 1.3 }} onClick={() => action()}>
+    <HoverScaleMedium>
+      <button onClick={() => action()}>
         <FontAwesomeIcon
           icon={faTrash}
           className="fa-xl hover:cursor-pointer hover:text-[#FF0066]"
         />
-      </motion.button>
-    </>
+      </button>
+    </HoverScaleMedium>
   );
 };
 

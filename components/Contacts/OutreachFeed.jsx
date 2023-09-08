@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import OutreachCard from "./OutreachCard";
-import FeedButton from "../Buttons/FeedButton";
+import SwitchButton from "../Buttons/SwitchButton";
 import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
 import getOutreachFeed from "../../lib/helpers/getOutreachFeed";
 import { motion } from "framer-motion";
@@ -26,7 +26,7 @@ const OutreachFeed = () => {
       <div className="flex flex_center m-8 space-x-4">
         <h2 className="text-4xl font-bold text-white">Outreach</h2>
         <div className=" split_dashboard:hidden">
-          <FeedButton />
+          <SwitchButton />
         </div>
       </div>
 

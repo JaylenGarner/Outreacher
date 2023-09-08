@@ -2,22 +2,20 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClone } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import HoverScaleMedium from "../Animations/HoverScaleMedium";
 
 const CopyButton = ({ content, handleShowCheck }) => {
   return (
-    <div className="w-4">
-      <motion.div
-        whileHover={{ scale: 1.3 }}
+    <HoverScaleMedium>
+      <button
         onClick={() => {
           navigator.clipboard.writeText(content);
           handleShowCheck();
         }}
-        exit={{ opacity: 0, scale: 0 }}
       >
-        <FontAwesomeIcon icon={faClone} className="fa-xl cursor-pointer" />
-      </motion.div>
-    </div>
+        <FontAwesomeIcon icon={faClone} className="fa-xl" />
+      </button>
+    </HoverScaleMedium>
   );
 };
 

@@ -110,7 +110,7 @@
 }
 
 .form_link {
-    @apply  underline underline-offset-2 cursor-pointer
+    @apply  underline underline-offset-2 cursor-pointer text-[#FF0066]
 }
 
 .button {
