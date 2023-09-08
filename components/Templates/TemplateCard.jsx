@@ -1,8 +1,8 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentTemplate } from "@/redux/reducers/currentTemplateSlice";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentTemplate } from "@/redux/reducers/templates/currentTemplateSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 
 import { motion } from "framer-motion";
 

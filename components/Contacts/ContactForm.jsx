@@ -2,7 +2,7 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
+import { setContactFormLoaded } from "@/redux/reducers/contacts/contactFormLoadedSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";

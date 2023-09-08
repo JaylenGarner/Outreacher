@@ -1,12 +1,12 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import HoverScaleMedium from "../Animations/HoverScaleMedium";
-import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
+import { setCurrentContact } from "@/redux/reducers/contacts/currentContactSlice";
 
 const TemplateFillButton = ({ contact, application }) => {
   const dispatch = useDispatch();

@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoadedSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
+import { setTemplateFormLoaded } from "@/redux/reducers/templates/templateFormLoadedSlice";
 import handleEditTemplate from "../../lib/handlers/template/handleEditTemplate";
 import handleDeleteTemplate from "../../lib/handlers/template/handleDeleteTemplate";
 import TemplateForm from "./TemplateForm";
 import DeleteButton from "../Buttons/DeleteButton";
-import { createTemplate } from "@/redux/reducers/templateSlice";
-import { deleteTemplate } from "@/redux/reducers/templateSlice";
+import { createTemplate } from "@/redux/reducers/templates/templateSlice";
+import { deleteTemplate } from "@/redux/reducers/templates/templateSlice";
 import ChatoicOrbitRed from "../LoadingSpinners/ChaoticOrbitRed";
 
 const EditTemplate = () => {

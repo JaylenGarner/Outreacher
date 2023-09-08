@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import { createContact, deleteContact } from "@/redux/reducers/contactSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
+import {
+  createContact,
+  deleteContact,
+} from "@/redux/reducers/contacts/contactSlice";
 import handleEditContact from "../../lib/handlers/contact/handleEditContact";
 import ContactForm from "./ContactForm";
-import { clearCurrentContact } from "@/redux/reducers/currentContactSlice";
-import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
+import { clearCurrentContact } from "@/redux/reducers/contacts/currentContactSlice";
+import { clearCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { setContactFormLoaded } from "@/redux/reducers/contacts/contactFormLoadedSlice";
 import DeleteButton from "../Buttons/DeleteButton";
 import ApplicationButton from "../Buttons/ApplicationButton";
 import TemplateFillButton from "../Buttons/TemplateFillButton";

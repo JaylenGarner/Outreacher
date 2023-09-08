@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentFeed } from "@/redux/reducers/currentFeedSlice";
+import { setCurrentFeed } from "@/redux/reducers/structure/currentFeedSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRepeat } from "@fortawesome/free-solid-svg-icons";
 import HoverScaleMedium from "../Animations/HoverScaleMedium";

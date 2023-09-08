@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import HoverScaleSmall from "../Animations/HoverScaleSmall";
 
 const AuthButton = ({ type }) => {

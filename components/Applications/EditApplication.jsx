@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import { createApplication } from "@/redux/reducers/applicationSlice";
-import { deleteApplication } from "@/redux/reducers/applicationSlice";
-import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
-import { cascadeDeleteContacts } from "@/redux/reducers/contactSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
+import { createApplication } from "@/redux/reducers/applications/applicationSlice";
+import { deleteApplication } from "@/redux/reducers/applications/applicationSlice";
+import { setApplicationFormLoaded } from "@/redux/reducers/applications/applicationFormLoadedSlice";
+import { cascadeDeleteContacts } from "@/redux/reducers/contacts/contactSlice";
 import handleEditApplication from "../../lib/handlers/application/handleEditApplication";
 import handleDeleteApplication from "../../lib/handlers/application/handleDeleteApplication";
 import ApplicationForm from "./ApplicationForm";

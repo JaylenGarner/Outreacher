@@ -1,20 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import user from "./reducers/userSlice";
-import applications from "./reducers/applicationSlice";
-import currentApplication from "./reducers/currentApplicationSlice";
-import applicationsLoaded from "./reducers/applicationsLoadedSlice";
-import applicationFormLoaded from "./reducers/applicationFormLoadedSlice";
-import contacts from "./reducers/contactSlice";
-import currentContact from "./reducers/currentContactSlice";
-import contactsLoaded from "./reducers/contactsLoadedSlice";
-import contactFormLoaded from "./reducers/contactFormLoadedSlice";
-import templates from "./reducers/templateSlice";
-import currentTemplate from "./reducers/currentTemplateSlice";
-import contactIsNew from "./reducers/contactIsNewSlice";
-import templatesLoaded from "./reducers/templatesLoadedSlice";
-import templateFormLoaded from "./reducers/templateFormLoadedSlice";
-import currentModal from "./reducers/currentModalSlice";
-import currentFeed from "./reducers/currentFeedSlice";
+import user from "./reducers/user/userSlice";
+import applications from "./reducers/applications/applicationSlice";
+import currentApplication from "./reducers/applications/currentApplicationSlice";
+import applicationsLoaded from "./reducers/applications/applicationsLoadedSlice";
+import applicationFormLoaded from "./reducers/applications/applicationFormLoadedSlice";
+import contacts from "./reducers/contacts/contactSlice";
+import currentContact from "./reducers/contacts/currentContactSlice";
+import contactsLoaded from "./reducers/contacts/contactsLoadedSlice";
+import contactFormLoaded from "./reducers/contacts/contactFormLoadedSlice";
+import templates from "./reducers/templates/templateSlice";
+import currentTemplate from "./reducers/templates/currentTemplateSlice";
+import contactIsNew from "./reducers/contacts/contactIsNewSlice";
+import templatesLoaded from "./reducers/templates/templatesLoadedSlice";
+import templateFormLoaded from "./reducers/templates/templateFormLoadedSlice";
+import currentModal from "./reducers/structure/currentModalSlice";
+import currentFeed from "./reducers/structure/currentFeedSlice";
 
 const store = configureStore({
   reducer: {

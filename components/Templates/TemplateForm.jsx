@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
-import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoadedSlice";
+import { setTemplateFormLoaded } from "@/redux/reducers/templates/templateFormLoadedSlice";
 import TextHover from "../Animations/HoverScaleSmall";
 
 const TemplateForm = ({

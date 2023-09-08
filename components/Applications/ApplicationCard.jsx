@@ -1,8 +1,8 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { motion } from "framer-motion";
 import CreateContactButton from "../Buttons/CreateContactButton";
 import ContactListButton from "../Buttons/ContactListButton";

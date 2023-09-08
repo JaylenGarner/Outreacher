@@ -1,9 +1,9 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { setCurrentContact } from "@/redux/reducers/contacts/currentContactSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import dayjs from "dayjs";
 
 import { motion } from "framer-motion";

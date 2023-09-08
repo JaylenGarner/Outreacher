@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   clearCurrentModal,
   setCurrentModal,
-} from "@/redux/reducers/currentModalSlice";
-import { createContact } from "@/redux/reducers/contactSlice";
-import { setContactFormLoaded } from "@/redux/reducers/contactFormLoadedSlice";
+} from "@/redux/reducers/structure/currentModalSlice";
+import { createContact } from "@/redux/reducers/contacts/contactSlice";
+import { setContactFormLoaded } from "@/redux/reducers/contacts/contactFormLoadedSlice";
 import handleCreateContact from "../../lib/handlers/contact/handleCreateContact";
 import ContactForm from "./ContactForm";
 import DiscardButton from "../Buttons/DiscardButton";
-import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { setContactIsNew } from "@/redux/reducers/contactIsNewSlice";
+import { setCurrentContact } from "@/redux/reducers/contacts/currentContactSlice";
+import { setCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { setContactIsNew } from "@/redux/reducers/contacts/contactIsNewSlice";
 
 const CreateContact = () => {
   const dispatch = useDispatch();

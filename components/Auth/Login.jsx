@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "next-auth/react";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";

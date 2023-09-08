@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { signIn } from "next-auth/react";
 import handleSignup from "../../lib/handlers/user/handleSignup";
 import { motion } from "framer-motion";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";
 import TextHover from "../Animations/HoverScaleSmall";

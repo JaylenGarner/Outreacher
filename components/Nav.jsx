@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { useDispatch } from "react-redux";
 import LogoutButton from "./Buttons/LogoutButton";
 import Link from "next/link";

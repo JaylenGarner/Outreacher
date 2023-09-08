@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import HoverScaleMedium from "../Animations/HoverScaleMedium";
 import { useDispatch } from "react-redux";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 
 const DiscardButton = () => {
   const dispatch = useDispatch();

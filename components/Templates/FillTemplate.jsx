@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fillTemplate } from "../../lib/helpers/fillTemplate";
 import { useState } from "react";
-import OutreachButton from "../Buttons/OutreachButton";
+import CheckmarkButton from "../Buttons/CheckmarkButton";
 import CopyButton from "../Buttons/CopyButton";
 import DiscardButton from "../Buttons/DiscardButton";
 import TextHover from "../Animations/HoverScaleSmall";
@@ -18,8 +18,6 @@ const FillTemplate = () => {
     fillTemplate(application, contact, template)
   );
 
-  console.log("From fill template", contact);
-
   return (
     <div className="pt-4 pb-4 pr-10 pl-10 flex_center flex-col space-y-2">
       <div className="flex flex_center space-x-4 ">
@@ -29,7 +27,7 @@ const FillTemplate = () => {
             handleShowCheck={() => setShowcheck(true)}
             content={filledTemplate}
           />
-          {showCheck && <OutreachButton contact={contact} />}
+          {showCheck && <CheckmarkButton contact={contact} />}
           <DiscardButton />
         </div>
       </div>

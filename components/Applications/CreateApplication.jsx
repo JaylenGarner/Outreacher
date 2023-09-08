@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createApplication } from "@/redux/reducers/applicationSlice";
-import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { createApplication } from "@/redux/reducers/applications/applicationSlice";
+import { setApplicationFormLoaded } from "@/redux/reducers/applications/applicationFormLoadedSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import handleCreateApplication from "../../lib/handlers/application/handleCreateApplication";
 import ApplicationForm from "./ApplicationForm";
 import DiscardButton from "../Buttons/DiscardButton";

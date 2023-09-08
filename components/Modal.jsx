@@ -1,6 +1,6 @@
 "use client";
 
-import { setCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
@@ -17,8 +17,8 @@ import EditTemplate from "./Templates/EditTemplate";
 import FillTemplate from "./Templates/FillTemplate";
 import TemplateList from "./Templates/TemplateList";
 import Info from "./Info";
-import { setCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { setCurrentContact } from "@/redux/reducers/currentContactSlice";
+import { setCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { setCurrentContact } from "@/redux/reducers/contacts/currentContactSlice";
 
 const Modal = () => {
   const dispatch = useDispatch();

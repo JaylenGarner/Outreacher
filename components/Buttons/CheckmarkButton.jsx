@@ -1,20 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { handleOutreach } from "../../lib/handlers/contact/handleOutreach";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
-import { clearCurrentContact } from "@/redux/reducers/currentContactSlice";
-import { clearCurrentTemplate } from "@/redux/reducers/currentTemplateSlice";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
-import { createContact } from "@/redux/reducers/contactSlice";
-import { setContactIsNew } from "@/redux/reducers/contactIsNewSlice";
+import { clearCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
+import { clearCurrentContact } from "@/redux/reducers/contacts/currentContactSlice";
+import { clearCurrentTemplate } from "@/redux/reducers/templates/currentTemplateSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
+import { createContact } from "@/redux/reducers/contacts/contactSlice";
+import { setContactIsNew } from "@/redux/reducers/contacts/contactIsNewSlice";
+import { ChaoticOrbit } from "@uiball/loaders";
 
-const Checkmark = ({ contact }) => {
+const CheckmarkButton = ({ contact }) => {
   const dispatch = useDispatch();
   const contactIsNew = useSelector((state) => state.contactIsNew);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
     if (contactIsNew) {
@@ -22,6 +25,7 @@ const Checkmark = ({ contact }) => {
       dispatch(setContactIsNew(false));
       return;
     } else {
+      setIsLoading(true);
       const updatedContact = await handleOutreach(contact);
 
       if (updatedContact) {
@@ -30,7 +34,7 @@ const Checkmark = ({ contact }) => {
         dispatch(clearCurrentContact());
         dispatch(clearCurrentTemplate());
         dispatch(clearCurrentApplication());
-        // dispatch(setContactFormLoaded(false));
+        setIsLoading(false);
       }
     }
   };
@@ -47,13 +51,17 @@ const Checkmark = ({ contact }) => {
         duration: 1,
       }}
     >
-      <FontAwesomeIcon
-        icon={faCheck}
-        className="fa-xl text-green-500 cursor-pointer"
-        onClick={handleSubmit}
-      />
+      {isLoading === false ? (
+        <FontAwesomeIcon
+          icon={faCheck}
+          className="fa-xl text-green-500 cursor-pointer"
+          onClick={handleSubmit}
+        />
+      ) : (
+        <ChaoticOrbit color="#21C55D" size={20} />
+      )}
     </motion.div>
   );
 };
 
-export default Checkmark;
+export default CheckmarkButton;

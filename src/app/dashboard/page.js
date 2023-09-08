@@ -4,18 +4,18 @@ import Nav from "../../../components/Nav";
 import OutreachFeed from "../../../components/Contacts/OutreachFeed";
 import ApplicationsFeed from "../../../components/Applications/ApplicationsFeed";
 import Modal from "../../../components/Modal";
-import { getApplications } from "@/redux/reducers/applicationSlice";
-import { setApplicationsLoaded } from "@/redux/reducers/applicationsLoadedSlice";
-import { setContactsLoaded } from "@/redux/reducers/contactsLoadedSlice";
-import { setTemplatesLoaded } from "@/redux/reducers/templatesLoadedSlice";
+import { getApplications } from "@/redux/reducers/applications/applicationSlice";
+import { setApplicationsLoaded } from "@/redux/reducers/applications/applicationsLoadedSlice";
+import { setContactsLoaded } from "@/redux/reducers/contacts/contactsLoadedSlice";
+import { setTemplatesLoaded } from "@/redux/reducers/templates/templatesLoadedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
-import { getContacts } from "@/redux/reducers/contactSlice";
-import { getTemplates } from "@/redux/reducers/templateSlice";
-import { setUser } from "@/redux/reducers/userSlice";
+import { getContacts } from "@/redux/reducers/contacts/contactSlice";
+import { getTemplates } from "@/redux/reducers/templates/templateSlice";
+import { setUser } from "@/redux/reducers/user/userSlice";
 
 const apiUrl =
   process.env.NEXT_PUBLIC_ENV === "production"

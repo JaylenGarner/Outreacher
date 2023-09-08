@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setApplicationFormLoaded } from "@/redux/reducers/applicationFormLoadedSlice";
+import { setApplicationFormLoaded } from "@/redux/reducers/applications/applicationFormLoadedSlice";
 import { motion } from "framer-motion";
 import SubmitButton from "../Buttons/SubmitButton";
 import TriangleSpinner from "../LoadingSpinners/TriangleSpinner";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { clearApplications } from "@/redux/reducers/applicationSlice";
-import { clearCurrentApplication } from "@/redux/reducers/currentApplicationSlice";
+import { clearApplications } from "@/redux/reducers/applications/applicationSlice";
+import { clearCurrentApplication } from "@/redux/reducers/applications/currentApplicationSlice";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

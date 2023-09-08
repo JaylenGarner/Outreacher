@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createTemplate } from "@/redux/reducers/templateSlice";
-import { setTemplateFormLoaded } from "@/redux/reducers/templateFormLoadedSlice";
-import { clearCurrentModal } from "@/redux/reducers/currentModalSlice";
+import { createTemplate } from "@/redux/reducers/templates/templateSlice";
+import { setTemplateFormLoaded } from "@/redux/reducers/templates/templateFormLoadedSlice";
+import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import handleCreateTemplate from "../../lib/handlers/template/handleCreateTemplate";
 import TemplateForm from "./TemplateForm";
 import DiscardButton from "../Buttons/DiscardButton";
