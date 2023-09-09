@@ -1,9 +1,8 @@
 "use client";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { setApplicationFeedFilter } from "@/redux/reducers/applications/applicationFeedFilterSlice";
 import ApplicationCard from "./ApplicationCard";
 import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 import SwitchButton from "../Buttons/SwitchButton";
@@ -11,7 +10,6 @@ import FilterButton from "../Buttons/FilterButton";
 import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
 
 const ApplicationsFeed = () => {
-  const dispatch = useDispatch();
   const applications = useSelector((state) => state.applications);
   const applicationsLoaded = useSelector((state) => state.applicationsLoaded);
   const currentFilter = useSelector((state) => state.applicationFeedFilter);

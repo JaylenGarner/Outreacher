@@ -1,6 +1,6 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fillTemplate } from "../../lib/helpers/fillTemplate";
 import { useState } from "react";
 import CheckmarkButton from "../Buttons/CheckmarkButton";

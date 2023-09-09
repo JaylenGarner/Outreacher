@@ -28,7 +28,7 @@ const LogoutButton = () => {
     <motion.div whileHover={{ scale: 1.2, opacity: 0.8 }}>
       <Tooltip
         content="Logout"
-        className="bg-slate-800 text-slate-100 pt-1 pb-1 pr-3 pl-3 rounded-lg"
+        className="tooltip"
         placement="top"
         closeDelay={50}
       >

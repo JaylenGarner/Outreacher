@@ -3,7 +3,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentTemplate } from "@/redux/reducers/templates/currentTemplateSlice";
 import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
-
 import { motion } from "framer-motion";
 
 const TemplateCard = ({ template }) => {
@@ -25,20 +24,8 @@ const TemplateCard = ({ template }) => {
         }
       }}
     >
-      <div className="card_content_col">
-        {/* <span className="text-xl font-bold">Last Outreach</span> */}
-        {/* <span className="font-semibold text-md">
-          {dayjs(contact?.outreachDate).format("MM/DD/YYYY")}
-        </span> */}
-      </div>
-
-      <div className="card_content ">
+      <div className="card_content">
         <p className="card_company">{template.name}</p>
-      </div>
-
-      <div className="card_content_col">
-        {/* <span className="text-xl font-bold">Status</span> */}
-        {/* <span className="font-semibold text-md">{contact.outreachStage}</span> */}
       </div>
     </motion.div>
   );

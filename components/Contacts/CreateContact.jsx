@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  clearCurrentModal,
-  setCurrentModal,
-} from "@/redux/reducers/structure/currentModalSlice";
+import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { createContact } from "@/redux/reducers/contacts/contactSlice";
 import { setContactFormLoaded } from "@/redux/reducers/contacts/contactFormLoadedSlice";
 import handleCreateContact from "../../lib/handlers/contact/handleCreateContact";

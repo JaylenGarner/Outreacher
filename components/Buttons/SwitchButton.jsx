@@ -15,7 +15,7 @@ const SwitchButton = () => {
     <HoverScaleMedium>
       <Tooltip
         content="Switch Feed"
-        className="bg-slate-800 text-slate-100 pt-1 pb-1 pr-3 pl-3 rounded-lg"
+        className="tooltip"
         placement="top"
         closeDelay={50}
       >

@@ -35,6 +35,10 @@
     @apply h-[1px] w-[650px] max-2xl:w-[500px] max-split_dashboard:w-[650px] max-md:w-[500px] max-sm:w-[400px] max-mobile:w-[315px]
 }
 
+.tooltip {
+    @apply bg-slate-800 text-slate-100 pt-1 pb-1 pr-3 pl-3 rounded-lg
+}
+
 /* Nav */
 
 .nav {

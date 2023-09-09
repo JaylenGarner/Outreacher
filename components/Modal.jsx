@@ -39,8 +39,6 @@ const Modal = () => {
     }
   };
 
-  console.log(currentModal);
-
   return (
     <motion.div className="backdrop" onClick={handleClick}>
       <motion.div

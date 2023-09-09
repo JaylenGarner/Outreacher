@@ -33,8 +33,6 @@ const Signup = () => {
       setError
     );
 
-    console.log(response);
-
     if (response.ok) {
       await signIn("credentials", {
         email,

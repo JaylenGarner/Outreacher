@@ -1,6 +1,6 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import AuthButton from "../../components/Buttons/AuthButton";
 import { useSession } from "next-auth/react";
 import Modal from "../../components/Modal";
@@ -9,7 +9,6 @@ import { redirect } from "next/navigation";
 
 const Home = () => {
   const { data: session, status } = useSession();
-  const dispatch = useDispatch();
   const modalOpen = useSelector((state) => state.currentModal);
 
   if (status === "loading") {
