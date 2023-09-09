@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { motion } from "framer-motion";
+import HoverScaleSmall from "./Animations/HoverScaleSmall";
 
 const Info = () => {
   return (
@@ -15,20 +17,36 @@ const Info = () => {
       <span className="text-lg text-center">
         Your input is valuable! Share feedback or feature suggestions:
         <br></br>
-        <a href="mailto:jaylen@moonraydevelopment.com" className="font-bold">
+        <motion.a
+          whileHover={{ color: "#FF0066" }}
+          href="mailto:jaylen@moonraydevelopment.com"
+          className="font-bold"
+        >
           jaylen@moonraydevelopment.com
-        </a>
+        </motion.a>
       </span>
 
       <div className="flex space-x-4 flex_center pt-4">
         <Link href="https://moonraydevelopment.com" target="_blank">
-          <img src="/moonray-logo.svg" className="w-[80px]"></img>
+          <motion.img
+            src="/moonray-logo.svg"
+            className="w-[80px]"
+            whileHover={{ opacity: 0.6 }}
+          ></motion.img>
         </Link>
         <Link href="https://www.linkedin.com/in/jaylen-garner/" target="_blank">
-          <img src="/linkedin-logo.png" className="w-[65px]"></img>
+          <motion.img
+            src="/linkedin-logo.png"
+            className="w-[65px]"
+            whileHover={{ opacity: 0.6 }}
+          ></motion.img>
         </Link>
         <Link href="https://github.com/JaylenGarner" target="_blank">
-          <img src="/github-logo.png" className="w-[70px]"></img>
+          <motion.img
+            src="/github-logo.png"
+            className="w-[70px]"
+            whileHover={{ opacity: 0.6 }}
+          ></motion.img>
         </Link>
       </div>
     </div>

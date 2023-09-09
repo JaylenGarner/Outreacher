@@ -2,7 +2,10 @@ import { motion } from "framer-motion";
 
 const HoverScaleMedium = ({ children }) => {
   return (
-    <motion.div className="cursor-pointer" whileHover={{ scale: 1.3 }}>
+    <motion.div
+      className="cursor-pointer"
+      whileHover={{ scale: 1.3, opacity: 0.8 }}
+    >
       {children}
     </motion.div>
   );

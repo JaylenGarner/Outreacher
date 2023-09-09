@@ -75,46 +75,50 @@ const TemplateForm = ({
       />
       <span className="text-xl font-bold text-center">Insert Variables:</span>
 
-      <div className="space-x-6 flex">
-        <TextHover>
-          <button
-            type="button"
-            className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-            onClick={(e) => handleVariableInsert("{Company}")}
-          >
-            Company
-          </button>
-        </TextHover>
+      <div className="sm:space-x-6 flex max-sm:flex-col max-sm:space-y-4">
+        <div className="flex space-x-6 justify-center items-center">
+          <TextHover>
+            <button
+              type="button"
+              className="border-2 border-black rounded-full w-[110px] h-10"
+              onClick={(e) => handleVariableInsert("{Company}")}
+            >
+              Company
+            </button>
+          </TextHover>
 
-        <TextHover>
-          <button
-            type="button"
-            className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-            onClick={(e) => handleVariableInsert("{Position}")}
-          >
-            Position
-          </button>
-        </TextHover>
+          <TextHover>
+            <button
+              type="button"
+              className="border-2 border-black rounded-full w-[110px] h-10"
+              onClick={(e) => handleVariableInsert("{Position}")}
+            >
+              Position
+            </button>
+          </TextHover>
+        </div>
 
-        <TextHover>
-          <button
-            type="button"
-            className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-            onClick={(e) => handleVariableInsert("{Contact Name}")}
-          >
-            Contact Name
-          </button>
-        </TextHover>
+        <div className="flex space-x-6 justify-center items-center">
+          <TextHover>
+            <button
+              type="button"
+              className="border-2 border-black rounded-full w-[110px] h-10"
+              onClick={(e) => handleVariableInsert("{Contact Name}")}
+            >
+              Contact Name
+            </button>
+          </TextHover>
 
-        <TextHover>
-          <button
-            type="button"
-            className="border-2 border-black pt-1 pb-1 pl-3 pr-3 rounded-full"
-            onClick={(e) => handleVariableInsert("{Contact Title}")}
-          >
-            Contact Title
-          </button>
-        </TextHover>
+          <TextHover>
+            <button
+              type="button"
+              className="border-2 border-black  rounded-full w-[110px] h-10"
+              onClick={(e) => handleVariableInsert("{Contact Title}")}
+            >
+              Contact Title
+            </button>
+          </TextHover>
+        </div>
       </div>
 
       <textarea

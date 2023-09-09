@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setApplicationFeedFilter } from "@/redux/reducers/applications/applicationFeedFilterSlice";
+import { motion } from "framer-motion";
 
 const FilterButton = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,11 @@ const FilterButton = () => {
       </HoverScaleMedium>
 
       {selectionOpen && (
-        <select
+        <motion.select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="rounded text-center"
+          whileHover={{ opacity: 0.8, scale: 1.1 }}
+          className="rounded text-center cursor-pointer"
         >
           <option>All</option>
           <option>Queue</option>
@@ -38,7 +40,7 @@ const FilterButton = () => {
           <option>Rejected</option>
           <option>Offer</option>
           <option>Hired</option>
-        </select>
+        </motion.select>
       )}
     </>
   );

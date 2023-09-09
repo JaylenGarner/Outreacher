@@ -12,12 +12,10 @@ const Nav = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="nav font-bold ">
-      <Link href="/dashboard">
-        <div className="flex space-x-2 flex_center">
-          <img src="/logo.png" className="w-20 ml-8"></img>
-        </div>
-      </Link>
+    <div className="nav font-bold md:mr-4 md:ml-4">
+      <div className="flex space-x-2 flex_center">
+        <img src="/logo.png" className="w-20"></img>
+      </div>
 
       <div className="space-x-6 flex text-2xl">
         <HoverScaleSmall>
@@ -29,10 +27,15 @@ const Nav = () => {
         <HoverScaleSmall>
           <span onClick={() => dispatch(setCurrentModal("Info"))}>Info</span>
         </HoverScaleSmall>
+
+        {/* <HoverScaleSmall>
+          <span onClick={() => dispatch(setCurrentModal("Info"))}>
+            Tutorial
+          </span>
+        </HoverScaleSmall> */}
       </div>
 
-      <div className="flex space-x-4 items-center mr-8">
-        <h1 className="text-2xl">{session?.user?.firstName}</h1>
+      <div className="md:w-20 flex justify-end items-center">
         <LogoutButton />
       </div>
     </div>
