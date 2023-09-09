@@ -23,7 +23,9 @@ const ApplicationsFeed = () => {
   return (
     <div className="flex flex-col overflow-y-scroll items-center no-scrollbar">
       <div className="flex flex_center m-8 space-x-4">
-        <h2 className="text-4xl font-bold  text-white">Applications</h2>
+        <h2 className="text-4xl font-bold  text-white max-sm:text-3xl">
+          Applications
+        </h2>
         <div className=" split_dashboard:hidden">
           <SwitchButton />
         </div>

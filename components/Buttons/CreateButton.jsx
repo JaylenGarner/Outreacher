@@ -22,7 +22,15 @@ const CreateButton = ({ type, color }) => {
     >
       <FontAwesomeIcon
         icon={faCirclePlus}
-        className={`${type === "Application" ? "fa-2xl" : "fa-xl"} ${
+        className={` max-sm:hidden ${
+          type === "Application" ? "fa-2xl" : "fa-xl"
+        } ${color === "black" ? "text-black" : "text-white"}`}
+      />
+
+      {/* Resizing for mobile application feed */}
+      <FontAwesomeIcon
+        icon={faCirclePlus}
+        className={`sm:hidden fa-xl ${
           color === "black" ? "text-black" : "text-white"
         }`}
       />

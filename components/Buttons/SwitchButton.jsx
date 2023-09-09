@@ -19,7 +19,15 @@ const SwitchButton = () => {
           dispatch(setCurrentFeed(value));
         }}
       >
-        <FontAwesomeIcon icon={faRepeat} className="fa-2xl text-white pt-1" />
+        <FontAwesomeIcon
+          icon={faRepeat}
+          className="sm:hidden fa-xl text-white pt-1"
+        />
+
+        <FontAwesomeIcon
+          icon={faRepeat}
+          className="max-sm:hidden text-white pt-1 fa-2xl"
+        />
       </button>
     </HoverScaleMedium>
   );
