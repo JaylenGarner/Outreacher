@@ -20,7 +20,7 @@ const FilterButton = () => {
         setFilter(e.target.value);
       }}
       whileHover={{ opacity: 0.8, scale: 1.1 }}
-      className="rounded text-center cursor-pointer"
+      className="rounded text-center cursor-pointer focus:outline-none"
     >
       <option>All</option>
       <option>Queue</option>

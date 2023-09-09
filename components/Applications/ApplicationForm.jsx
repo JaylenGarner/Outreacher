@@ -62,12 +62,12 @@ const ApplicationForm = ({
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="pt-1 text-center text-red-500 font-bold"
+          className="error pt-2"
         >
           {error}
         </motion.span>
       ) : (
-        <span className="pt-1"></span>
+        <span className="pt-2"></span>
       )}
 
       <div className="input_container">

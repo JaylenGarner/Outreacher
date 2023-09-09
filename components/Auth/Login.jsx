@@ -44,7 +44,7 @@ const Login = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="text-center text-red-500 font-bold text-lg"
+          className="error"
         >
           {error}
         </motion.span>
