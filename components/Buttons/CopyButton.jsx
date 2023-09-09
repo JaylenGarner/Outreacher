@@ -15,6 +15,7 @@ const CopyButton = ({ content, handleShowCheck }) => {
         closeDelay={50}
       >
         <button
+          className="focus:outline-none"
           onClick={() => {
             navigator.clipboard.writeText(content);
             handleShowCheck();

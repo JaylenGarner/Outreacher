@@ -20,16 +20,14 @@ const CreateContactButton = ({ application }) => {
         closeDelay={50}
       >
         <button
+          className="focus:outline-none"
           onClick={(e) => {
             e.stopPropagation();
             dispatch(setCurrentApplication(application));
             dispatch(setCurrentModal("Create Contact"));
           }}
         >
-          <FontAwesomeIcon
-            icon={faUserPlus}
-            className="fa-xl hover:cursor-pointer"
-          />
+          <FontAwesomeIcon icon={faUserPlus} className="fa-xl" />
         </button>
       </Tooltip>
     </HoverScaleMedium>

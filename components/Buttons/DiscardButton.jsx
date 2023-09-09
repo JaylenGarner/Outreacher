@@ -18,7 +18,10 @@ const DiscardButton = () => {
         placement="top"
         closeDelay={50}
       >
-        <button onClick={() => dispatch(clearCurrentModal())}>
+        <button
+          className="focus:outline-none"
+          onClick={() => dispatch(clearCurrentModal())}
+        >
           <FontAwesomeIcon
             icon={faX}
             className="fa-lg hover:cursor-pointer hover:text-[#FF0066]"

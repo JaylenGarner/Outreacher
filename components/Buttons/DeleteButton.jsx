@@ -14,7 +14,7 @@ const DeleteButton = ({ action }) => {
         placement="top"
         closeDelay={50}
       >
-        <button onClick={() => action()}>
+        <button className="focus:outline-none" onClick={() => action()}>
           <FontAwesomeIcon
             icon={faTrash}
             className="fa-xl hover:cursor-pointer hover:text-[#FF0066]"

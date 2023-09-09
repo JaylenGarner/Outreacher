@@ -20,6 +20,7 @@ const SwitchButton = () => {
         closeDelay={50}
       >
         <button
+          className="focus:outline-none"
           onClick={(e) => {
             e.stopPropagation();
             let value =

@@ -32,7 +32,7 @@ const LogoutButton = () => {
         placement="top"
         closeDelay={50}
       >
-        <button onClick={() => handleSignOut()}>
+        <button className="focus:outline-none" onClick={() => handleSignOut()}>
           <FontAwesomeIcon
             icon={faArrowRightFromBracket}
             className="fa-xl cursor-pointer"

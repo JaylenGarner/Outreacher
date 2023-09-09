@@ -21,6 +21,7 @@ const TemplateFillButton = ({ contact, application }) => {
         closeDelay={50}
       >
         <button
+          className="focus:outline-none"
           onClick={(e) => {
             e.stopPropagation();
             dispatch(setCurrentApplication(application));
