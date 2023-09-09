@@ -22,6 +22,7 @@ const EditApplication = () => {
   const [deletionLoading, setDeletionLoading] = useState(false);
 
   const handleUpdate = async (formData) => {
+    setError("");
     const updatedApplication = await handleEditApplication(
       formData,
       application.id,
@@ -31,8 +32,8 @@ const EditApplication = () => {
     if (updatedApplication) {
       dispatch(createApplication(updatedApplication));
       dispatch(clearCurrentModal());
-      dispatch(setApplicationFormLoaded(false));
     }
+    dispatch(setApplicationFormLoaded(false));
   };
 
   const handleDelete = async () => {

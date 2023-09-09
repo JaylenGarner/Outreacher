@@ -32,19 +32,19 @@ const FillTemplate = () => {
         </div>
       </div>
 
-      <span className="italic font-semibold  text-xl text-center">
+      <span className="italic font-semibold  text-xl text-center w-[300px] overflow-hidden text-ellipsis">
         {contact.name}
       </span>
 
       <div className="flex text-center text-xl font-extrabold underline italic pb-2 text-[#FF0066] space-x-4">
         {contact?.email && (
           <TextHover>
-            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            <a href={`mailto:${contact.email}`}>Email</a>
           </TextHover>
         )}
         {contact?.linkedIn && (
           <TextHover>
-            <a href={contact.linkedIn} target={"_blank"}>
+            <a href={contact.linkedIn} target="_blank">
               LinkedIn
             </a>
           </TextHover>

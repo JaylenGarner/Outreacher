@@ -19,6 +19,7 @@ const EditTemplate = () => {
   const [deletionLoading, setDeletionLoading] = useState(false);
 
   const handleUpdate = async (formData) => {
+    setError("");
     const updatedTemplate = await handleEditTemplate(
       formData,
       template.id,
@@ -28,8 +29,8 @@ const EditTemplate = () => {
     if (updatedTemplate) {
       dispatch(createTemplate(updatedTemplate));
       dispatch(clearCurrentModal());
-      dispatch(setTemplateFormLoaded(false));
     }
+    dispatch(setTemplateFormLoaded(false));
   };
 
   const handleDelete = async () => {

@@ -14,13 +14,14 @@ const CreateTemplate = () => {
   const [error, setError] = useState("");
 
   const handleCreate = async (formData) => {
+    setError("");
     const newTemplate = await handleCreateTemplate(formData, setError);
 
     if (newTemplate) {
       dispatch(createTemplate(newTemplate));
       dispatch(clearCurrentModal());
-      dispatch(setTemplateFormLoaded(false));
     }
+    dispatch(setTemplateFormLoaded(false));
   };
 
   return (

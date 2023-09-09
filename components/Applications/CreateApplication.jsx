@@ -14,13 +14,14 @@ const CreateApplication = () => {
   const [error, setError] = useState("");
 
   const handleCreate = async (formData) => {
+    setError("");
     const newApplication = await handleCreateApplication(formData, setError);
 
     if (newApplication) {
       dispatch(createApplication(newApplication));
       dispatch(clearCurrentModal());
-      dispatch(setApplicationFormLoaded(false));
     }
+    dispatch(setApplicationFormLoaded(false));
   };
 
   return (

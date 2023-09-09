@@ -26,6 +26,7 @@ const EditContact = () => {
   const contact = useSelector((state) => state.currentContact);
 
   const handleUpdate = async (formData) => {
+    setError("");
     const updatedContact = await handleEditContact(
       formData,
       contact.id,
@@ -37,8 +38,9 @@ const EditContact = () => {
       dispatch(clearCurrentModal());
       dispatch(clearCurrentContact());
       dispatch(clearCurrentApplication());
-      dispatch(setContactFormLoaded(false));
     }
+
+    dispatch(setContactFormLoaded(false));
   };
 
   const handleDelete = async () => {

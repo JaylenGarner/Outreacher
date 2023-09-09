@@ -106,7 +106,7 @@
 }
 
 .textarea_lg {
-    @apply form_field h-[350px] pb-4 max-break_modal:h-[40px] w-[634px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] resize-none
+    @apply form_field h-[350px] pb-4 max-break_modal:h-[300px] w-[634px] max-md:w-[400px] max-sm:w-[350px] max-mobile:w-[220px] resize-none
 }
 
 .form_link {

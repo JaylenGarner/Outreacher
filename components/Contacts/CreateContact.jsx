@@ -21,6 +21,7 @@ const CreateContact = () => {
   const application = useSelector((state) => state.currentApplication);
 
   const handleCreate = async (formData) => {
+    setError("");
     const newContact = await handleCreateContact(formData, setError);
 
     if (newContact) {
@@ -31,6 +32,7 @@ const CreateContact = () => {
       dispatch(setContactIsNew(true));
       dispatch(setCurrentModal("Template List (Fill)"));
     }
+    dispatch(setContactFormLoaded(false));
   };
 
   return (
