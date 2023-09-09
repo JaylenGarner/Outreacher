@@ -13,6 +13,7 @@ import { clearCurrentModal } from "@/redux/reducers/structure/currentModalSlice"
 import { createContact } from "@/redux/reducers/contacts/contactSlice";
 import { setContactIsNew } from "@/redux/reducers/contacts/contactIsNewSlice";
 import { ChaoticOrbit } from "@uiball/loaders";
+import { Tooltip } from "@nextui-org/tooltip";
 
 const CheckmarkButton = ({ contact }) => {
   const dispatch = useDispatch();
@@ -40,27 +41,34 @@ const CheckmarkButton = ({ contact }) => {
   };
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.3 }}
-      initial={{ rotate: 90, scale: 0 }}
-      animate={{ rotate: 0, scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        duration: 1,
-      }}
+    <Tooltip
+      content="Confirm Outreach"
+      className="bg-slate-800 text-slate-100 pt-1 pb-1 pr-3 pl-3 rounded-lg"
+      placement="top"
+      closeDelay={50}
     >
-      {isLoading === false ? (
-        <FontAwesomeIcon
-          icon={faCheck}
-          className="fa-xl text-green-500 cursor-pointer"
-          onClick={handleSubmit}
-        />
-      ) : (
-        <ChaoticOrbit color="#21C55D" size={20} />
-      )}
-    </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.3 }}
+        initial={{ rotate: 90, scale: 0 }}
+        animate={{ rotate: 0, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+          duration: 1,
+        }}
+      >
+        {isLoading === false ? (
+          <FontAwesomeIcon
+            icon={faCheck}
+            className="fa-xl text-green-500 cursor-pointer"
+            onClick={handleSubmit}
+          />
+        ) : (
+          <ChaoticOrbit color="#21C55D" size={20} />
+        )}
+      </motion.div>
+    </Tooltip>
   );
 };
 

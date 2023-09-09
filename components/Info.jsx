@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import HoverScaleSmall from "./Animations/HoverScaleSmall";
 
 const Info = () => {
   return (

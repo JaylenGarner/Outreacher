@@ -5,6 +5,7 @@ import { setCurrentFeed } from "@/redux/reducers/structure/currentFeedSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRepeat } from "@fortawesome/free-solid-svg-icons";
 import HoverScaleMedium from "../Animations/HoverScaleMedium";
+import { Tooltip } from "@nextui-org/tooltip";
 
 const SwitchButton = () => {
   const dispatch = useDispatch();
@@ -12,23 +13,31 @@ const SwitchButton = () => {
 
   return (
     <HoverScaleMedium>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          let value = currentFeed === "outreach" ? "applications" : "outreach";
-          dispatch(setCurrentFeed(value));
-        }}
+      <Tooltip
+        content="Switch Feed"
+        className="bg-slate-800 text-slate-100 pt-1 pb-1 pr-3 pl-3 rounded-lg"
+        placement="top"
+        closeDelay={50}
       >
-        <FontAwesomeIcon
-          icon={faRepeat}
-          className="sm:hidden fa-xl text-white pt-1"
-        />
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            let value =
+              currentFeed === "outreach" ? "applications" : "outreach";
+            dispatch(setCurrentFeed(value));
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faRepeat}
+            className="sm:hidden fa-xl text-white pt-1"
+          />
 
-        <FontAwesomeIcon
-          icon={faRepeat}
-          className="max-sm:hidden text-white pt-1 fa-2xl"
-        />
-      </button>
+          <FontAwesomeIcon
+            icon={faRepeat}
+            className="max-sm:hidden text-white pt-1 fa-2xl"
+          />
+        </button>
+      </Tooltip>
     </HoverScaleMedium>
   );
 };

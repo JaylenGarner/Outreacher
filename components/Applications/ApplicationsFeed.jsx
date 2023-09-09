@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { setApplicationFeedFilter } from "@/redux/reducers/applications/applicationFeedFilterSlice";
 import ApplicationCard from "./ApplicationCard";
-import CreateButton from "../Buttons/CreateButton";
+import CreateApplicationButton from "../Buttons/CreateApplicationButton";
 import SwitchButton from "../Buttons/SwitchButton";
 import FilterButton from "../Buttons/FilterButton";
 import DotSpinnerWhite from "../LoadingSpinners/DotSpinnerWhite";
@@ -30,7 +30,7 @@ const ApplicationsFeed = () => {
           <SwitchButton />
         </div>
         <div className="pt-1 flex space-x-4">
-          <CreateButton type="Application" color="white" />
+          <CreateApplicationButton type="Application" color="white" />
           <FilterButton />
         </div>
       </div>

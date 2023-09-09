@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { Tooltip } from "@nextui-org/tooltip";
 
 const LogoutButton = () => {
   const { data: session } = useSession();
@@ -25,12 +26,19 @@ const LogoutButton = () => {
 
   return (
     <motion.div whileHover={{ scale: 1.2, opacity: 0.8 }}>
-      <button onClick={() => handleSignOut()}>
-        <FontAwesomeIcon
-          icon={faArrowRightFromBracket}
-          className="fa-xl cursor-pointer"
-        />
-      </button>
+      <Tooltip
+        content="Logout"
+        className="bg-slate-800 text-slate-100 pt-1 pb-1 pr-3 pl-3 rounded-lg"
+        placement="top"
+        closeDelay={50}
+      >
+        <button onClick={() => handleSignOut()}>
+          <FontAwesomeIcon
+            icon={faArrowRightFromBracket}
+            className="fa-xl cursor-pointer"
+          />
+        </button>
+      </Tooltip>
     </motion.div>
   );
 };

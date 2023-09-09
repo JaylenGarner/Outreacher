@@ -26,7 +26,9 @@ const OutreachFeed = () => {
   return (
     <div className="flex flex-col items-center overflow-y-scroll w-full no-scrollbar">
       <div className="flex flex_center m-8 space-x-4">
-        <h2 className="text-4xl font-bold text-white">Outreach</h2>
+        <h2 className="text-4xl font-bold  text-white max-sm:text-3xl">
+          Outreach
+        </h2>
         <div className=" split_dashboard:hidden">
           <SwitchButton />
         </div>
@@ -47,7 +49,6 @@ const OutreachFeed = () => {
               here
             </motion.span>
           </span>
-          {/* <span className="font-bold">here</span> */}
         </div>
       ) : (
         <motion.div

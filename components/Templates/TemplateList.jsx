@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import CreateButton from "../Buttons/CreateButton";
+import CreateTemplateButton from "../Buttons/CreateTemplateButton";
 import DotSpinnerBlue from "../LoadingSpinners/DotSpinnerBlue";
 import TemplateCard from "./TemplateCard";
 
@@ -15,9 +15,7 @@ const TemplateList = () => {
     <div className="flex flex-col items-center overflow-y-scroll h-[500px] no-scrollbar">
       <div className="flex flex_center pt-4 space-x-4">
         <h2 className="modal_header">Your Templates</h2>
-        {currentModal === "Template List" && (
-          <CreateButton type="Template" color="black" />
-        )}
+        {currentModal === "Template List" && <CreateTemplateButton />}
       </div>
 
       {!templatesLoaded ? (

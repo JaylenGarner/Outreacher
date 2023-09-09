@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 import { setCurrentModal } from "@/redux/reducers/structure/currentModalSlice";
 import { useDispatch } from "react-redux";
 import LogoutButton from "./Buttons/LogoutButton";
-import Link from "next/link";
 import HoverScaleSmall from "./Animations/HoverScaleSmall";
 
 const Nav = () => {
@@ -25,14 +24,8 @@ const Nav = () => {
         </HoverScaleSmall>
 
         <HoverScaleSmall>
-          <span onClick={() => dispatch(setCurrentModal("Info"))}>Info</span>
+            <span onClick={() => dispatch(setCurrentModal("Info"))}>Info</span>
         </HoverScaleSmall>
-
-        {/* <HoverScaleSmall>
-          <span onClick={() => dispatch(setCurrentModal("Info"))}>
-            Tutorial
-          </span>
-        </HoverScaleSmall> */}
       </div>
 
       <div className="md:w-20 flex justify-end items-center">
