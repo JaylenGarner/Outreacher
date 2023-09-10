@@ -3,7 +3,7 @@
 
 By _[Jaylen Garner](https://github.com/JaylenGarner)_
 
-streamline your networking agenda and maximize the value of your outreach efforts.
+Streamline your networking agenda and maximize the value of your outreach efforts, try it [here](https://outreacher.app/).
 
 ## Technologies Used
 
@@ -16,11 +16,15 @@ streamline your networking agenda and maximize the value of your outreach effort
 - PostgresSQL
 - Prisma
 - Bcrypt
+- Docker (Development)
+- Day.js
+- Yup (Validations)
+- Vercel (Deployment)
 
 ## Overview
 
 ### Login/Signup
-Outreacher immediately directs users to the splash page upon accessing the site. From there, users can choose to sign up or login. Any attempt to access site pages without a login will redirect users to the login page.
+Outreacher immediately directs users to the splash page upon accessing the site. From there, users can choose to sign up or login. Any attempt to access site pages without a login will redirect users to the splash page.
 
 ![Recording 2023-09-10 at 12 05 55](https://github.com/JaylenGarner/Outreacher/assets/93837049/755ba6e9-2f25-41c2-94d8-b80cce0ca1b2)
 
@@ -32,7 +36,7 @@ Upon logging in, users are greeted with two feeds: "Outreach" and "Applications.
 
 ### Navigation Bar
 
-The Navigation bar offers users two choices: they can either select 'Info' to access more details about the application or navigate to their Template list. Additionally, the option to log out is available in the navbar.
+The Navigation bar offers users two choices: they can either select 'Info' to access more details about the application or navigate to their Template list. The option to log out is available.
 
 ### Template List
 
@@ -66,11 +70,32 @@ To view an application's list of contacts, simply click on the 'Contact List' bu
 
 ![ezgif com-video-to-gif](https://github.com/JaylenGarner/Outreacher/assets/93837049/207aecdd-0d4f-42fa-82d7-185a1ecf7838)
 
-### Outreach Feed / Outreach Algorithm
+### Outreach Feed
 
 Your Outreach feed undergoes daily updates as per the algorithm's recommendations for daily outreach targets. Once you've initiated the initial outreach, the contact will appear in your feed two days later. If this day coincides with a Saturday, Sunday, or a US holiday, the outreach will be postponed until the next eligible business day. This cycle continues for each contact until you have reached your final follow up. Marking a contact's status as 'ongoing correspondance' will also remove it from the outreach cycle. 
 
+When you choose a contact from the Outreach Feed, you'll receive a prompt to choose a template to fill. After choosing the template, copying the content, and confirming the outreach, the contact will transition automatically to the next phase of the outreach cycle.
+
+![ezgif com-video-to-gif](https://github.com/JaylenGarner/Outreacher/assets/93837049/cbeb9667-4555-4ab8-ac71-83dcd041af3a)
+
+### Outreach Algorithm
+
 ![Screenshot 2023-09-10 at 1 55 33 PM](https://github.com/JaylenGarner/Outreacher/assets/93837049/ba8c0380-ea56-44a5-8226-a4702f93ed16)
 
+### Info
+
+The Info modal offers a brief description explaining the application's purpose, along with a welcoming message encouraging feedback and feature suggestions.
+
+<img width="651" alt="Screenshot 2023-09-10 at 2 11 09 PM" src="https://github.com/JaylenGarner/Outreacher/assets/93837049/bde03f9f-86e2-4e64-91b5-1bd828c39d0a">
+
+### Tooltips
+
+When you hover over most of the application's buttons, a tooltip will appear providing information about the button's function.
+
+### Mobile Responsiveness Design
+
+The application dashboard's user interface adapts for smaller screen sizes, allowing users to switch between both feeds seamlessly. Every component of the application is designed to be fully responsive across all screen sizes.
+
+![ezgif com-video-to-gif](https://github.com/JaylenGarner/Outreacher/assets/93837049/a876df97-2638-4c1d-970a-2785601b1525)
 
 
