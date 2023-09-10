@@ -14,7 +14,7 @@ import { handleCreateStarterTemplate } from "../../lib/handlers/template/handleC
 const Signup = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -26,7 +26,7 @@ const Signup = () => {
     setIsLoading(true);
 
     const response = await handleSignup(
-      firstName,
+      name,
       email,
       password,
       confirmPassword,
@@ -65,9 +65,9 @@ const Signup = () => {
 
       <input
         type="text"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        placeholder="First Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
         required
         className="input"
       ></input>

@@ -5,7 +5,7 @@ import { userSchema } from "@/validations/userValidation";
 export const POST = async (req) => {
   try {
     const body = await req.json();
-    const { firstName, email } = body;
+    const { name, email } = body;
 
     const existingUser = await prisma.user.findUnique({ where: { email } });
 
@@ -22,7 +22,7 @@ export const POST = async (req) => {
 
     const user = await prisma.user.create({
       data: {
-        firstName,
+        name,
         email,
         password: await bcrypt.hash(body.password, 10),
       },
