@@ -43,7 +43,7 @@ const Info = () => {
         <Link href="https://github.com/JaylenGarner" target="_blank">
           <motion.img
             src="/github-logo.png"
-            className="w-[70px]"
+            className="w-[76px]"
             whileHover={{ opacity: 0.6 }}
           ></motion.img>
         </Link>
