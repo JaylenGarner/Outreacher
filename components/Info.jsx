@@ -40,7 +40,7 @@ const Info = () => {
             whileHover={{ opacity: 0.6 }}
           ></motion.img>
         </Link>
-        <Link href="https://github.com/JaylenGarner" target="_blank">
+        <Link href="https://github.com/JaylenGarner/Outreacher" target="_blank">
           <motion.img
             src="/github-logo.png"
             className="w-[76px]"
