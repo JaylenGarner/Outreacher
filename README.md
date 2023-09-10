@@ -19,7 +19,7 @@ Streamline your networking agenda and maximize the value of your outreach effort
 - Docker (Development)
 - Day.js
 - Yup (Validations)
-- Vercel (Deployment)
+- Vercel (Hosting)
 
 ## Overview
 
