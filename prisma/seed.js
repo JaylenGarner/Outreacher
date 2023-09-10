@@ -7,7 +7,7 @@ async function seedUser() {
     where: { email: "test@test.com" },
     update: {},
     create: {
-      firstName: "Test",
+      name: "Test",
       email: "test@test.com",
       password: `$2y$12$GBfcgD6XwaMferSOdYGiduw3Awuo95QAPhxFE0oNJ.Ds8qj3pzEZy`,
     },

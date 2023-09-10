@@ -37,8 +37,9 @@ const ApplicationsFeed = () => {
         <DotSpinnerWhite />
       ) : applicationsLoaded && !Object.values(applications).length ? (
         <span className="text-white text-2xl card text-center">
-          Here's to a fresh start. Let's start shaping a better future, one
-          opportunity at a time.
+          Get started by creating an application. From there, you can add
+          contacts and select one of your templates to automatically compose an
+          outreach message.
         </span>
       ) : (
         <motion.div
