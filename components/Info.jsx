@@ -19,6 +19,7 @@ const Info = () => {
           whileHover={{ color: "#FF0066" }}
           href="https://github.com/JaylenGarner/Outreacher/blob/main/README.md"
           className="font-bold"
+          target="_blank"
         >
           here
         </motion.a>
