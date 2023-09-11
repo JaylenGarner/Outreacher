@@ -9,9 +9,13 @@ export const metadata = {
   title: "Outreacher",
   description: "Streamline your networking agenda",
   openGraph: {
-    images: ["/logo-small.png"],
     title: "Outreacher",
     description: "Streamline your networking agenda",
+    url: "https://outreacher.app",
+    siteName: "Outreacher",
+    images: ["/logo-black-bg.png"],
+    locale: "en_US",
+    type: "website",
   },
 };
 
