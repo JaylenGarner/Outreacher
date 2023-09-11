@@ -10,6 +10,8 @@ export const metadata = {
   description: "Streamline your networking agenda",
   openGraph: {
     images: ["/logo-small.png"],
+    title: "Outreacher",
+    description: "Streamline your networking agenda",
   },
 };
 
